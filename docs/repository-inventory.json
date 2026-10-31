@@ -1,0 +1,138 @@
+{
+  "checked": "2026-10-31",
+  "scope": "Metadata and file-tree inventory; sampled source review for PlatformerUnity, AIFlocking and TectureFinderTool. No historical projects were run.",
+  "repositories": [
+    {
+      "repository": "PlatformerUnity",
+      "url": "https://github.com/pritchoudhary/PlatformerUnity",
+      "treeSha": "d5ad2b06f5581d55b4bfc84c9de5ae6429b60767",
+      "truncated": false,
+      "readmes": [
+        "README.md"
+      ],
+      "scripts": [
+        "Assets/Editor/PrefabEditor.cs",
+        "Assets/Scripts/CameraBehaviour.cs",
+        "Assets/Scripts/GameManager.cs",
+        "Assets/Scripts/HitPlayer.cs",
+        "Assets/Scripts/MoveEnemy.cs",
+        "Assets/Scripts/Node.cs",
+        "Assets/Scripts/PauseMenu.cs",
+        "Assets/Scripts/PlayerScript.cs",
+        "Assets/Scripts/PrefabPlacer.cs",
+        "Assets/Scripts/ShootProjectiles.cs",
+        "Assets/Scripts/SpawnPlayer.cs"
+      ]
+    },
+    {
+      "repository": "AIFlocking",
+      "url": "https://github.com/pritchoudhary/AIFlocking",
+      "treeSha": "6152a9c3ddca029dfb5536e2a5f9ca3aec351b52",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Flocking/Assets/Scripts/BoidController.cs",
+        "Flocking/Assets/Scripts/BoidFlocking.cs",
+        "Flocking/Assets/Scripts/BoidWatcher.cs"
+      ]
+    },
+    {
+      "repository": "TectureFinderTool",
+      "url": "https://github.com/pritchoudhary/TectureFinderTool",
+      "treeSha": "67d82650e7210d70056ed18be1b988ea99c4566d",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Assets/Editor/Data/EnumDefine.cs",
+        "Assets/Editor/Data/SearchState.cs",
+        "Assets/Editor/Data/TypeBitConverter.cs",
+        "Assets/Editor/TextureViewerWindow.cs",
+        "Assets/Editor/ToolConfig.cs",
+        "Assets/Editor/TreeView/TextureTreeElement.cs",
+        "Assets/Editor/TreeView/TextureTreeView.cs",
+        "Assets/Editor/TreeView/TextureTreeViewItem.cs",
+        "Assets/Editor/TreeView/TextureTreeViewState.cs",
+        "Assets/Editor/TreeView/TextureTreeView_Sort.cs",
+        "Assets/Editor/TreeViewColumn/ColumnSearchField.cs",
+        "Assets/Editor/TreeViewColumn/EHeaderColumn.cs",
+        "Assets/Editor/TreeViewColumn/TextureColumn.cs",
+        "Assets/Editor/TreeViewColumn/TextureColumnHeader.cs",
+        "Assets/Editor/TreeViewColumn/TextureColumnHeaderState.cs",
+        "Assets/Editor/Utils/CustomUI.cs",
+        "Assets/Editor/Utils/MyExtensionMethods.cs",
+        "Assets/Editor/Utils/MyStyle.cs",
+        "Assets/Editor/Utils/UIUtils.cs"
+      ]
+    },
+    {
+      "repository": "CameraThings",
+      "url": "https://github.com/pritchoudhary/CameraThings",
+      "treeSha": "ccbdeddb3a6eff042572d612a8b4f75afaddc316",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Camera/Assets/Scripts/BezierCurves/Bezier.cs",
+        "Camera/Assets/Scripts/BezierCurves/BezierCurve.cs",
+        "Camera/Assets/Scripts/BezierCurves/BezierEditor.cs",
+        "Camera/Assets/Scripts/BezierSpline.cs",
+        "Camera/Assets/Scripts/BezierSplineInspector.cs",
+        "Camera/Assets/Scripts/Lines/Line.cs",
+        "Camera/Assets/Scripts/Lines/LineInspector.cs",
+        "Camera/Assets/Scripts/SplineWalker.cs"
+      ]
+    },
+    {
+      "repository": "CameraMovement",
+      "url": "https://github.com/pritchoudhary/CameraMovement",
+      "treeSha": "6469cbb8742d955f7cf4d2eb011c83a85aa552e5",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Assets/CharacterMotor.cs",
+        "Assets/FPSInputController.cs",
+        "Assets/MouseLook.cs",
+        "Assets/Scripts/CameraController.cs",
+        "Assets/Scripts/CameraFollow.cs",
+        "Assets/Scripts/CameraSwitcher.cs",
+        "Assets/Scripts/CatmullRomSpline.cs",
+        "Assets/Scripts/CharacterControllerTP.cs",
+        "Assets/Scripts/CharacterStateMachine.cs",
+        "Assets/Scripts/LookAtCamera.cs"
+      ]
+    },
+    {
+      "repository": "EnemyAI",
+      "url": "https://github.com/pritchoudhary/EnemyAI",
+      "treeSha": "21412c3dad7e6c355f550af67610e912b77f1765",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs",
+        "Assets/Scripts/EnemyCamera.cs",
+        "Assets/Scripts/EnemySight.cs",
+        "Assets/Scripts/basicAI.cs"
+      ]
+    },
+    {
+      "repository": "MusicVisualizer",
+      "url": "https://github.com/pritchoudhary/MusicVisualizer",
+      "treeSha": "58d6fd128648e466cf87d7149426a889bf6fc9cf",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "Assets/Visualizer.cs"
+      ]
+    },
+    {
+      "repository": "2D-Physics-Game",
+      "url": "https://github.com/pritchoudhary/2D-Physics-Game",
+      "treeSha": "68fc8453de4bc879222e9e0a9baa1849faac2a3a",
+      "truncated": false,
+      "readmes": [],
+      "scripts": [
+        "PingPong/Assets/Scripts/Ball.cs",
+        "PingPong/Assets/Scripts/MoveRacket.cs"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import './globals.css';
+export const metadata: Metadata = { title: 'Pritish Choudhary / Engineering Lab', description: 'Experiments in motion, physics, and the tools behind interactive worlds.', robots: { index: false, follow: false } };
+export default function Layout({ children }: { children: React.ReactNode }) { return <html lang="en"><body><a className="skip" href="#main">Skip to content</a><header className="wrap nav"><Link href="/" className="brand"><span className="brandmark">pc.</span><span>Pritish Choudhary<small>ENGINEERING LAB</small></span></Link><nav aria-label="Main navigation"><Link href="/#experiments">Experiments</Link><Link href="/#archive">Archive</Link><a href="https://github.com/pritchoudhary">GitHub ↗</a></nav></header>{children}<footer className="wrap footer"><span>PRITISH CHOUDHARY <span className="muted">/ Engineering in progress.</span></span><a href="https://www.pritishchoudhary.com/">Current portfolio ↗</a></footer></body></html> }
