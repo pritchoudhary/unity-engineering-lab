@@ -43,3 +43,7 @@ Every project must satisfy [EXPERIMENT-STANDARD.md](EXPERIMENT-STANDARD.md): at 
 - Advanced items such as networking, soft bodies, and destruction are bounded educational prototypes. State exclusions and keep production-readiness claims proportional to evidence.
 - Planned titles stay marked planned until built. Browser demonstrations do not establish Unity or WebGL validation. Public deployment remains separately authorized.
 - At each checkpoint record actual tests, working examples, limitations, blockers, and carryover. Two per week is the delivery target, not an automatic completion label.
+
+## After April: faceless YouTube release phase
+
+Beginning in May 2027, turn completed experiments into simple visual explanations, using screen recordings, diagrams, captions, and voice-over without a face camera. Prepare video briefs and repeatable capture recipes during development so the launch phase has source material ready. See [YOUTUBE-PLAN.md](YOUTUBE-PLAN.md) for episode structure, initial ideas, capture requirements, and unresolved release decisions. The final project batch ends May 2; choose the launch batch based on actual readiness. No upload cadence or public publication is committed yet.

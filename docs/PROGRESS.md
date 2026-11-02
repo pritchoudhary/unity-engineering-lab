@@ -58,3 +58,6 @@ Validation: all 17 tests and production build pass. Browser verified all three n
 
 ## November 2 — Two projects per week
 User increased cadence from one to two projects weekly and requested more roadmap projects. Added docs/ROADMAP.md with 26 weekly pairs (52 scoped project ideas), preserving the first four priorities and adding three application scopes per planned project. New later titles are explicitly a proposed working backlog. Updated visible dates for the first four projects and kickoff references. The multiple-use-case quality gate remains mandatory; carryover must be reported honestly. Automation updated to Monday/Thursday at 09:00 Asia/Kolkata with the existing April 26 end date.
+
+## November 2 — Post-April YouTube intent
+User plans to release this work on YouTube after April, using simple explanations without showing their face; voice-over is possible. Added docs/YOUTUBE-PLAN.md, an initial Spring Physics video brief, and a video-preparation requirement in the experiment standard. Capture planning happens alongside development; May release preparation will select completed work and decide narration, cadence, and packaging. No footage, voice-over, or uploads claimed or authorized.

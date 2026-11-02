@@ -13,3 +13,7 @@ Before marking an experiment ready:
 - Validate each application's sequence and measurable outcomes. Be truthful about browser versus verified Unity builds.
 
 Current spring suite: road-driven suspension, interrupted interface highlight, reversing-target camera follow, and repeated-impulse impact recovery. Future experiments must satisfy the same breadth and depth standard before being considered complete.
+
+## Prepare for post-April YouTube explanations
+
+For each project, create a short video brief following [YOUTUBE-PLAN.md](YOUTUBE-PLAN.md): a plain-language viewer question, a visual hook, a controlled comparison, multiple applications, a failure case, and a viewer challenge. Plan faceless screen/diagram recordings with optional voice-over. Save reproducible settings and evidence as the project is built; distinguish planned shots from recorded footage. Video publishing begins only after the post-April launch plan is agreed, not during automated project development.
