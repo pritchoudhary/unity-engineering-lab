@@ -49,3 +49,6 @@ The featured browser lesson now uses a separate SI-unit, one-mass base-excitatio
 
 ### Multiple applications per experiment
 Read `docs/EXPERIMENT-STANDARD.md` before extending the portfolio. The spring application selector includes suspension, interrupted UI highlights, reversing-target camera tracking, and repeated-impulse recovery. The last three share the scalar solver and use deterministic input sequences with fixed-reference graphs, tunable stiffness/damping, task metrics, and manual inspection. Their normalized animation units are intentionally separate from the suspension lesson's SI units.
+
+### Delivery roadmap
+Target two projects per week across 26 weekly batches. See [the expanded 52-project roadmap](docs/ROADMAP.md) for pairs, application scopes, dependencies, and the quality gate. Scheduled sessions: Monday and Thursday, 09:00 Asia/Kolkata, through April 26, 2027.
