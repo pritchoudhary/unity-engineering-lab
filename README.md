@@ -46,3 +46,6 @@ Keep the original site live. Domain migration and public publishing require appr
 
 ### Guided suspension lesson
 The featured browser lesson now uses a separate SI-unit, one-mass base-excitation model (`lib/suspension.mjs`). Visitors predict the effect of damping, compare against a fixed weak-damper reference, inspect displacement/acceleration traces, and meet two competing design briefs. RK4 integrates at 240 Hz. Tests cover timestep convergence, bump continuity, settling criteria, and achievable brief targets. The targets are teaching constraints, not safety criteria. Wheel/tire dynamics and contact are omitted. This new model is browser-only and has not been ported to the Unity project.
+
+### Multiple applications per experiment
+Read `docs/EXPERIMENT-STANDARD.md` before extending the portfolio. The spring application selector includes suspension, interrupted UI highlights, reversing-target camera tracking, and repeated-impulse recovery. The last three share the scalar solver and use deterministic input sequences with fixed-reference graphs, tunable stiffness/damping, task metrics, and manual inspection. Their normalized animation units are intentionally separate from the suspension lesson's SI units.

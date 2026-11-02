@@ -14,3 +14,14 @@ test('reject invalid parameters, states and timesteps',()=>{const p={mass:1,stif
 test('target following converges without snapping at a target change',async()=>{const {follow}=await import('../lib/spring.mjs');const p={mass:1,stiffness:70,damping:2*Math.sqrt(70)};let s={x:0,v:0};const first=follow(s,1,p);assert.ok(first.x>0&&first.x<.01);s=first;for(let i=0;i<2400;i++)s=follow(s,1,p);assert.ok(Math.abs(s.x-1)<1e-4);});
 test('retargeting preserves inertial continuity',async()=>{const {follow}=await import('../lib/spring.mjs');const p={mass:1,stiffness:30,damping:2};let s={x:0,v:0};for(let i=0;i<30;i++)s=follow(s,1,p);const next=follow(s,-1,p);assert.ok(next.v>0,'direction does not reverse instantly');assert.ok(Math.abs(next.x-s.x)<.03,'position stays continuous');});
 test('cosmetic impulse moves away from rest and then recovers',async()=>{const {follow}=await import('../lib/spring.mjs');const p={mass:1,stiffness:60,damping:Math.sqrt(60)};let s={x:0,v:5};s=follow(s,0,p);assert.ok(s.x>0);for(let i=0;i<2400;i++)s=follow(s,0,p);assert.ok(Math.abs(s.x)<1e-4&&Math.abs(s.v)<1e-4);assert.throws(()=>follow(s,NaN,p));});
+
+test('application sequences preserve their distinct inputs and achieve briefs', async()=>{
+ const {experiment,targetAt,scenarios}=await import('../lib/motion-experiments.mjs');
+ assert.equal(targetAt('ui',.6),1);assert.equal(targetAt('ui',.75),0);
+ assert.equal(targetAt('camera',1.5),1);assert.equal(targetAt('camera',2.5),0);
+ for(const mode of ['ui','camera','impact']){
+  const preset=scenarios[mode].presets.at(-1);const r=experiment(mode,preset[1],preset[2]);
+  assert.ok(r.error<=.12);assert.ok(r.points.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.v)));
+  if(mode==='impact'){assert.ok(r.peak<=.8);assert.equal(r.points[120].x,0);assert.equal(r.points[120].v,3);assert.ok(r.points.every(p=>p.target===0));}
+ }
+});
