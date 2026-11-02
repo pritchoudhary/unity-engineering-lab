@@ -43,3 +43,6 @@ The browser companion is JavaScript, not a Unity WebGL build. Planned project pa
 ## Publication
 
 Keep the original site live. Domain migration and public publishing require approval. Search indexing is disabled in the draft metadata. Remote repository setup, preview hosting and Unity/WebGL validation remain tracked in `docs/PROGRESS.md`.
+
+### Guided suspension lesson
+The featured browser lesson now uses a separate SI-unit, one-mass base-excitation model (`lib/suspension.mjs`). Visitors predict the effect of damping, compare against a fixed weak-damper reference, inspect displacement/acceleration traces, and meet two competing design briefs. RK4 integrates at 240 Hz. Tests cover timestep convergence, bump continuity, settling criteria, and achievable brief targets. The targets are teaching constraints, not safety criteria. Wheel/tire dynamics and contact are omitted. This new model is browser-only and has not been ported to the Unity project.

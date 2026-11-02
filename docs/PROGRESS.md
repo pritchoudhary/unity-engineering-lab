@@ -48,3 +48,6 @@ Git status verified: local repository has no remote and no commits, so nothing h
 ## GitHub handoff — October 31, 2026
 
 The user authorized repository creation and push. Preview server session 5567 was stopped successfully. GitHub CLI authentication verified as pritchoudhary. Creating a private unity-engineering-lab repository with the current source and web validation workflow; website deployment and domain changes remain pending approval. Earlier local-only status above records prior checkpoints.
+
+## November 2 — Guided learning redesign
+Replaced the three shallow motion examples with a suspension investigation: prediction, fixed-reference comparison, linked timeline/cross-section and plots, measured acceleration/travel/settling, and passenger versus payload briefs. Added applicability, model failures, Unity transfer guidance, and a source-linked method disclosure. Removed the outdated scenario integration guide from the detail page. Added a separate RK4 base-excitation model and five meaningful numerical/brief tests (16 total passing). Production build passes. Browser checks verified preset changes, achievable passenger/payload feedback, prediction selection, and 390px mobile rendering. Unity/WebGL status remains unverified. Preview server is temporary and will be stopped after QA.
