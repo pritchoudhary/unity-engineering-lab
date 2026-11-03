@@ -31,3 +31,7 @@ Use the existing repeatable sequences in the four browser lessons. Record the ex
 ## Deliverables still to prepare
 
 Final narration script, actual captures, simplified diagrams, captions/transcript, thumbnail candidates, and a public lab URL when publication is approved. Start with the working title “One spring, four different jobs.” Test the explanation with a newcomer before locking the edit.
+
+## Additional shot idea from November 3 QA
+
+Use UI stiffness 100 and damping ratio 0.15, then scrub to 1.1 seconds. The highlight has passed its resting destination and moved to approximately −0.95 units. Contrast with Snappy (95, 0.85), keeping the same fixed plot scale. Explain why hiding the negative part of the graph would conceal an important trade-off. QA still available at `docs/spring-overshoot-qa.png`; no video recorded. Manual camera inspection now jumps to the actual reversal at 1.5 seconds.

@@ -61,3 +61,13 @@ User increased cadence from one to two projects weekly and requested more roadma
 
 ## November 2 — Post-April YouTube intent
 User plans to release this work on YouTube after April, using simple explanations without showing their face; voice-over is possible. Added docs/YOUTUBE-PLAN.md, an initial Spring Physics video brief, and a video-preparation requirement in the experiment standard. Capture planning happens alongside development; May release preparation will select completed work and decide narration, cadence, and packaging. No footage, voice-over, or uploads claimed or authorized.
+
+## November 3 — Scheduled continuation: spring visibility regression
+
+Resumed the November 2 heartbeat after project write permission was granted. Audited all 7,644 UI/camera/impact slider combinations (91 stiffness values × 28 damping ratios × 3 applications). Confirmed that the old fixed graph clipped negative overshoot and some positive peaks; the UI highlight and camera frame could leave their stage. For example, UI k=100, ζ=0.15 reaches x≈−0.951 and x≈1.534, beyond the old visible graph range.
+
+Added a fixed −1.25…1.75 plot domain with labeled −1/0/1 ticks and stable stage mappings. No silent per-preset rescaling: visitors can compare bounce fairly while all supported motion remains visible. Fixed manual camera inspection to select its actual 1.5-second reversal instead of the UI/impact 0.75-second event.
+
+Validation: 19/19 tests pass, including an exhaustive sweep checking finite motion and plot/stage bounds for every exposed slider combination. Production build and its TypeScript stage pass. Browser verified the UI negative-overshoot case at t=1.1 s and manual camera inspection at t=1.5 s, with playback disabled. Screenshot: docs/spring-overshoot-qa.png (browser QA still, not video footage). Temporary preview server stopped after checks. No Unity retry or new Unity/WebGL validation is claimed.
+
+Git fetch initially required additional .git metadata write access; that access was subsequently granted. Fetched origin before committing the verified fix; the pending YouTube planning commit is included in the synchronization. Next: diagnose Unity ILPP startup before another bounded validation attempt, and continue Scene Health Inspector with three application studies. Do not mark the Unity milestone complete based on browser tests.
