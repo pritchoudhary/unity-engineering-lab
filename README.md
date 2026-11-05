@@ -52,3 +52,6 @@ Read `docs/EXPERIMENT-STANDARD.md` before extending the portfolio. The spring ap
 
 ### Delivery roadmap
 Target two projects per week across 26 weekly batches. See [the expanded 52-project roadmap](docs/ROADMAP.md) for pairs, application scopes, dependencies, and the quality gate. Scheduled sessions: Monday and Thursday, 09:00 Asia/Kolkata, through April 26, 2027.
+
+### Scene Health Inspector browser prototype
+Three synthetic lessons cover prefab migration, dependency handoff, and inactive hierarchy. The prototype includes object inspection, scan scope and severity filters, coverage metrics, predictions, reset, and deliberate modeled repairs. Full-scene error counts prevent filters from masquerading as fixes. It does not parse or modify Unity scenes; the native Editor adapter remains pending. See `docs/SCENE-HEALTH-MILESTONE.md` for the manifest contract and verification limits.
