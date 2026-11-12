@@ -64,3 +64,6 @@ Only direct serialized object fields marked `[RequiredSceneReference]` require a
 ```sh
 unity run ./unity --editor-version 6000.5.2f1 --timeout 120 -- -executeMethod EngineeringLab.SceneHealth.Editor.SceneHealthValidation.Run -nographics -logFile /tmp/scene-health-validation.log
 ```
+
+### Vehicle Suspension and Modern Spline in Unity
+Open **Tools → Engineering Lab → Vehicle Suspension** for the rough-road, brake-dive and wheel-contact comparisons. **Tools → Engineering Lab → Create Modern Spline** creates an editable scene rail for camera, road and patrol studies. See [the native walkthrough and validation command](docs/WEEK-TWO-UNITY.md).
