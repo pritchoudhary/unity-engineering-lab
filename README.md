@@ -54,4 +54,13 @@ Read `docs/EXPERIMENT-STANDARD.md` before extending the portfolio. The spring ap
 Target two projects per week across 26 weekly batches. See [the expanded 52-project roadmap](docs/ROADMAP.md) for pairs, application scopes, dependencies, and the quality gate. Scheduled sessions: Monday and Thursday, 09:00 Asia/Kolkata, through April 26, 2027.
 
 ### Scene Health Inspector browser prototype
-Three synthetic lessons cover prefab migration, dependency handoff, and inactive hierarchy. The prototype includes object inspection, scan scope and severity filters, coverage metrics, predictions, reset, and deliberate modeled repairs. Full-scene error counts prevent filters from masquerading as fixes. It does not parse or modify Unity scenes; the native Editor adapter remains pending. See `docs/SCENE-HEALTH-MILESTONE.md` for the manifest contract and verification limits.
+Three synthetic lessons cover prefab migration, dependency handoff, and inactive hierarchy. The prototype includes object inspection, scan scope and severity filters, coverage metrics, predictions, reset, and deliberate modeled repairs. Full-scene error counts prevent filters from masquerading as fixes. It does not parse or modify Unity scenes; the separate native Editor tool scans the active scene. See `docs/SCENE-HEALTH-MILESTONE.md` for the manifest contract and verification limits.
+
+### Try the native inspector
+Open the `unity/` project with Unity 6000.5.2f1. Select **Tools → Engineering Lab → Create Scene Health Practice Scene**, then **Scan active scene**. The additive, unsaved practice scene includes an intentionally broken script slot, an unassigned required dependency, and an inactive pool. In any other loaded scene use **Tools → Engineering Lab → Scene Health Inspector**. Compare the full error count before and after excluding inactive objects; select a finding to ping its owner. Re-scan after changing a field.
+
+Only direct serialized object fields marked `[RequiredSceneReference]` require an edit-time assignment. Empty optional fields are ignored. Detection of stale references depends on Unity retaining an object identity and is not exhaustive. The scanner never deletes components or enables objects. Run **Tools → Engineering Lab → Validate Scene Health**, or from the repository root:
+
+```sh
+unity run ./unity --editor-version 6000.5.2f1 --timeout 120 -- -executeMethod EngineeringLab.SceneHealth.Editor.SceneHealthValidation.Run -nographics -logFile /tmp/scene-health-validation.log
+```

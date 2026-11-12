@@ -4,7 +4,7 @@ Prepared November 5, 2026 against portfolio commit `f34cd61`.
 
 ## Status
 
-The analysis core and three interactive synthetic-scene lessons are now integrated into the portfolio. The page is labeled Browser prototype. It is not a Unity Editor inspector or a Unity scene-file parser. Native implementation and validation are still pending; the entire experiment is not marked complete.
+Three browser exercises use synthetic manifests; a separate Unity Editor window inspects real loaded scenes. Both are available. See the README for the practice scene, menu paths, and validation command.
 
 The initial scheduled run staged this work because the checkout was read-only. The subsequent user-requested continuation restored project-file write access and applied the staged patch. The browser UI now provides object selection, prediction prompts, scan scope, severity filters, inactive controls, full-scene error counts, deliberate exercise repairs, and reset. The earlier GitHub connector 404 was an access failure, not evidence of repository deletion.
 
@@ -39,11 +39,6 @@ Run from the staged folder or from the repository after applying:
 node --test tests/scene-health.test.mjs
 ```
 
-Integration validation: all 31 repository tests and the production build (including TypeScript) pass. A temporary localhost server failed with a sandbox PermissionError; no browser QA, screenshot, or video recording was performed for this milestone. No Unity compilation or WebGL export was performed. Existing Spring Lab Unity ILPP startup remains unresolved.
+The browser suite and build passed. Unity 6000.5.2f1 compiled the native inspector and passed 13 checks on November 5, including a real missing-script prefab, required versus optional fields, subtree reference resolution, inactive coverage, repair and re-scan, and preservation of object state. The separate Spring solver passed its eight checks and generated its scene. These results do not verify a WebGL player or interactive Editor window layout.
 
-## Next integration steps
-
-1. Visually test all three lessons on desktop and mobile once localhost preview is permitted. Verify filtering versus repairing, reset, object selection, prediction prompts, and focus/accessibility.
-2. Implement a Unity Editor adapter using validated editor APIs. Export resolved script slots and references with explicit completeness/requiredness policy; distinguish intentionally empty fields from broken serialized links. Select/ping the original object for manual review. Do not delete components or enable objects automatically.
-3. Verify the adapter on three dedicated test scenes after resolving the Unity startup problem. Native scans must agree with the intended evidence, not merely the synthetic fixture expectations.
-4. Capture the video brief's planned comparisons after browser QA and native demonstrations exist.
+Next: manually check the Editor window and capture the three practice-scene comparisons. Stale-reference detection depends on Unity retaining an identity and is not comprehensive.
