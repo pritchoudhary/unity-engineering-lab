@@ -23,3 +23,25 @@ Use **Tools → Engineering Lab → Validate Vehicle and Spline**, or run:
 unity run ./unity --editor-version 6000.5.2f1 --timeout 120 -- -executeMethod EngineeringLab.WeekTwo.Editor.WeekTwoValidation.Run -nographics -logFile /tmp/weektwo-unity.log
 ```
 Look for WEEK_TWO_VALIDATION_PASSED in the log. Checks exercise the numerical models and a temporary Unity preview scene, not visual GUI interaction.
+
+## Verified Editor run
+
+On November 13, 2026, Unity Editor 6000.5.2f1 ran `WeekTwoValidation.Run()` against revision `59e0550`. The project Editor log recorded these results.
+
+```text
+PASS: flat equilibrium
+PASS: rough-road browser reference parity
+PASS: soft comfort challenge
+PASS: nose-down brake pulse and parity
+PASS: firm brake challenge
+PASS: tire unloads then recovers
+PASS: contact challenge
+PASS: step refinement
+PASS: default browser geometry parity
+PASS: distance sampling vs parameter sampling
+PASS: world scale invalidates cached lengths
+PASS: world-metre road width normal to tangent
+PASS: patrol dwell and return
+PASS: editing a handle invalidates distance table
+WEEK_TWO_VALIDATION_PASSED: 14 checks
+```
