@@ -32,7 +32,7 @@ namespace EngineeringLab.Demonstrations.Editor
         [MenuItem("Tools/Engineering Lab/Open Demonstration Scenes")]
         static void OpenFolder()
         {
-            Selection.activeObject = AssetDatabase.LoadAssetAtPath<Object>("Assets/Demonstrations/Scenes");
+            Selection.activeObject = AssetDatabase.LoadAssetAtPath<Object>("Assets/Scenes");
             EditorGUIUtility.PingObject(Selection.activeObject);
         }
     }

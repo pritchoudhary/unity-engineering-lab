@@ -13,7 +13,7 @@ namespace EngineeringLab.Demonstrations.Editor
 {
     public static class DemonstrationScenes
     {
-        public const string Folder = "Assets/Demonstrations/Scenes";
+        public const string Folder = "Assets/Scenes";
         [MenuItem("Tools/Engineering Lab/Create Missing Demonstration Scenes")]
         public static void CreateMissing()
         {
@@ -90,7 +90,8 @@ namespace EngineeringLab.Demonstrations.Editor
             var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/SceneHealth/Fixtures/MissingScript.prefab");
             if (!asset) throw new Exception("Missing Scene Health fixture");
             var migration = (GameObject)PrefabUtility.InstantiatePrefab(asset, scene);
-            migration.name = "Migration fixture — intentionally missing script";
+            PrefabUtility.UnpackPrefabInstance(migration, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+            migration.name = "Intentional missing-script exercise — standalone scene object";
             migration.transform.position = new Vector3(-5, 0, 0);
         }
         static void Vehicles(Scene scene)
@@ -170,7 +171,15 @@ namespace EngineeringLab.Demonstrations.Editor
                     }
                     if (name == "ModernSpline" && objects.Count(t => t.GetComponent<CubicRail>()) != 3) throw new Exception("Spline cases missing");
                     if (name == "ScenePlacement" && objects.Length < 50) throw new Exception("Placement examples missing");
-                    if (name == "SceneHealth" && !objects.Any(t => !t.gameObject.activeSelf)) throw new Exception("Inactive fixture missing");
+                    if (name == "SceneHealth")
+                    {
+                        var findings = EngineeringLab.SceneHealth.Editor.SceneHealthScanner.Scan(scene).Findings;
+                        if (!objects.Any(t => !t.gameObject.activeSelf) ||
+                            findings.Count(f => f.Rule == "missing-script") != 1 ||
+                            findings.Count(f => f.Rule == "required-reference") != 2 ||
+                            scene.GetRootGameObjects().Any(go => PrefabUtility.IsPartOfPrefabInstance(go)))
+                            throw new Exception("Scene Health exercises or standalone references invalid");
+                    }
                     checks++;
                 }
                 finally { EditorSceneManager.ClosePreviewScene(scene); }
