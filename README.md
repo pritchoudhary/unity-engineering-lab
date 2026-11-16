@@ -67,3 +67,7 @@ unity run ./unity --editor-version 6000.5.2f1 --timeout 120 -- -executeMethod En
 
 ### Vehicle Suspension and Modern Spline in Unity
 Open **Tools → Engineering Lab → Vehicle Suspension** for the rough-road, brake-dive and wheel-contact comparisons. **Tools → Engineering Lab → Create Modern Spline** creates an editable scene rail for camera, road and patrol studies. See [the native walkthrough and validation command](docs/WEEK-TWO-UNITY.md).
+
+## Unity demonstration scenes
+
+Every Editor tool has a saved demonstration scene. In Unity, choose **Tools → Engineering Lab → Open Demonstration Scenes**, or use **Open demonstration scene** in the tool. Select **START HERE** for instructions and practical tasks. See [Unity demonstrations](docs/UNITY-DEMONSTRATIONS.md) for the scene map and verified status.

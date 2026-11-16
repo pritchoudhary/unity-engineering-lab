@@ -8,7 +8,8 @@ namespace EngineeringLab.WeekTwo.Editor
         [MenuItem("Tools/Engineering Lab/Create Modern Spline")]
         public static void Create(){var go=new GameObject("Modern Spline");Undo.RegisterCreatedObjectUndo(go,"Create spline");go.AddComponent<CubicRail>();Selection.activeGameObject=go;SceneView.lastActiveSceneView?.FrameSelected();}
         public override void OnInspectorGUI(){
-            DrawDefaultInspector();var rail=(CubicRail)target;
+            DrawDefaultInspector();
+            if (GUILayout.Button("Open demonstration scene")) EngineeringLab.Demonstrations.Editor.DemonstrationScenes.Open("ModernSpline");var rail=(CubicRail)target;
             EditorGUILayout.LabelField("World length (m)",rail.Length.ToString("F2"));
             EditorGUILayout.LabelField("Original length at unit scale","12.43 m (approx.)");
             EditorGUILayout.HelpBox(rail.use==RailUse.Camera?"Drag the two handles. Toggle constant speed and compare the spacing of the white time markers.":rail.use==RailUse.Road?"Change road width and inspect the ribbon edges. Tight bends can overlap; this is an authoring guide, not a mesh intersection solver.":"Scrub Inspect Time to the far endpoint. Increase the wait and see how much faster the guard must move to finish in four seconds.",MessageType.Info);

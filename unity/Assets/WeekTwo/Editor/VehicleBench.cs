@@ -14,6 +14,7 @@ namespace EngineeringLab.WeekTwo.Editor
         void Compute(){result=HalfCar.Simulate(test,k,c);baseline=HalfCar.Simulate(test);}
         void OnGUI(){
             EditorGUILayout.LabelField("Two wheels, one chassis",EditorStyles.boldLabel);
+            if (GUILayout.Button("Open demonstration scene")) EngineeringLab.Demonstrations.Editor.DemonstrationScenes.Open("VehicleSuspension");
             EditorGUI.BeginChangeCheck();
             test=(RoadTest)GUILayout.Toolbar((int)test,new[]{"Rough road","Brake dive","Wheel contact"});
             k=EditorGUILayout.IntSlider("Rate per axle (N/m)",k,12000,40000);

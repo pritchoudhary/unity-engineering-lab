@@ -17,3 +17,7 @@ Current spring suite: road-driven suspension, interrupted interface highlight, r
 ## Prepare for post-April YouTube explanations
 
 For each project, create a short video brief following [YOUTUBE-PLAN.md](YOUTUBE-PLAN.md): a plain-language viewer question, a visual hook, a controlled comparison, multiple applications, a failure case, and a viewer challenge. Plan faceless screen/diagram recordings with optional voice-over. Save reproducible settings and evidence as the project is built; distinguish planned shots from recorded footage. Video publishing begins only after the post-April launch plan is agreed, not during automated project development.
+
+## Native Editor demonstration scenes
+
+User requirement, November 16, 2026: every native Editor tool needs a corresponding saved Unity scene that makes its purpose understandable inside Unity. Ship working example objects, useful initial settings, in-Unity instructions and a learning task. Link to the scene from the tool. Validation/build helper scripts use the scene of the tool they support. Check scene import and required component references. Keep Play mode, visual interaction and build validation claims tied to actual checks.

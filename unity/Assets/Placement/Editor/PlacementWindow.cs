@@ -24,6 +24,7 @@ namespace EngineeringLab.Placement.Editor
         {
             scroll = EditorGUILayout.BeginScrollView(scroll);
             EditorGUILayout.LabelField("Scene Placement Toolkit", EditorStyles.boldLabel);
+            if (GUILayout.Button("Open demonstration scene")) EngineeringLab.Demonstrations.Editor.DemonstrationScenes.Open("ScenePlacement");
             mode = (PlacementMode)EditorGUILayout.EnumPopup("Application", mode);
             prefab = (GameObject)EditorGUILayout.ObjectField("Prefab (optional)", prefab, typeof(GameObject), false);
             origin = EditorGUILayout.Vector3Field("World origin (m)", origin);

@@ -31,6 +31,7 @@ namespace EngineeringLab.SceneHealth.Editor
         }
         void OnGUI()
         {
+            if (GUILayout.Button("Open demonstration scene")) EngineeringLab.Demonstrations.Editor.DemonstrationScenes.Open("SceneHealth");
             EditorGUILayout.LabelField("Scene Health Inspector",EditorStyles.boldLabel);
             EditorGUILayout.HelpBox("Read-only scan of the active loaded scene. Findings are a snapshot: re-scan after any field edit. Optional null fields are not errors. No automatic fixes are performed.",MessageType.Info);
             EditorGUI.BeginChangeCheck();
