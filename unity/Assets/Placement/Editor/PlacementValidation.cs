@@ -1,5 +1,7 @@
 using System;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace EngineeringLab.Placement.Editor
@@ -46,6 +48,23 @@ namespace EngineeringLab.Placement.Editor
             try { PlacementLayout.Grid(1, 1, float.NaN); }
             catch (ArgumentOutOfRangeException) { rejects = true; }
             Check(rejects, "invalid spacing rejected");
+            var scene = EditorSceneManager.NewPreviewScene();
+            try
+            {
+                var surface = new GameObject("Slope fixture");
+                SceneManager.MoveGameObjectToScene(surface, scene);
+                surface.transform.rotation = Quaternion.Euler(30, 0, 0);
+                var collider = surface.AddComponent<BoxCollider>();
+                collider.size = new Vector3(12, .5f, 12);
+                Physics.SyncTransforms();
+                bool hitSurface = collider.Raycast(new Ray(Vector3.up * 20, Vector3.down), out var hit, 40);
+                Check(hitSurface, "surface collider raycast");
+                Check(Vector3.Angle(Vector3.up, hit.normal) > 15 &&
+                    Vector3.Angle(Vector3.up, hit.normal) < 45, "slope filter comparison");
+                Check(Vector3.Angle(PlacementLayout.SurfaceRotation(hit.normal, 70) * Vector3.up,
+                    hit.normal) < .01f, "raycast normal alignment");
+            }
+            finally { EditorSceneManager.ClosePreviewScene(scene); }
             Debug.Log($"PLACEMENT_VALIDATION_PASSED: {checks} checks");
         }
     }

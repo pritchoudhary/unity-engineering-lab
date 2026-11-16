@@ -16,6 +16,6 @@ Viewer challenge — Predict the final row of a 7-object, 3-column grid. Then ex
 
 Voice-over and screen plan — Show the job first. Draw rows and columns, then show the spacing comparison. Draw a downward ray and surface normal before demonstrating alignment. Show rejected scatter candidates, accepted count, and the repeatable seed. End with the challenge. Use readable captions and parameter overlays. No face camera is needed.
 
-Evidence — Ten managed checks passed on November 16. Unity assembly compilation passed. Native Editor execution and interaction QA remain pending. Capture status is planned. No recording paths exist. No browser or Unity footage is claimed.
+Evidence — Ten managed checks passed on November 16. Unity assembly compilation passed. Native Unity 6000.5.2f1 Editor validation subsequently passed all 15 checks, including collider raycast and slope alignment. Interaction QA remains pending. Capture status is planned. No recording paths exist. No browser or Unity footage is claimed.
 
 Assets — Original code and Unity primitives. Use a disposable portfolio scene without accounts or unrelated work. Narration method and release cadence remain undecided.

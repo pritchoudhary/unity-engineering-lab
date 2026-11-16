@@ -24,4 +24,25 @@ Use grids for regular layouts, surface alignment for collider-backed props, and 
 
 All three Editor scripts compiled with the installed Unity 6000.5.2f1 Roslyn compiler and Unity reference assemblies. An independent managed execution passed ten checks covering grid footprint, half-spacing comparison, partial rows, scatter default fill, seed replay, bounds, minimum separation, dense shortfall, seed variation and NaN rejection.
 
-The Unity batch attempt failed before validation on a sandbox-denied Package Manager socket. No native Editor execution is claimed for this project. Run Tools → Engineering Lab → Validate Scene Placement to execute the 12-check suite, including surface rotation. Then manually verify raycast filtering, preview refresh, prefab overrides and grouped Undo. Browser lesson and footage remain pending. The project remains in progress.
+The initial Unity batch attempt failed before validation on a sandbox-denied Package Manager socket. After supporting permissions were approved, the normal Unity 6000.5.2f1 Editor ran the expanded suite and recorded PLACEMENT_VALIDATION_PASSED: 15 checks. This includes a temporary preview-scene collider raycast, 15/45-degree slope comparison and alignment to the returned normal. An initial Edit Mode scene-creation error in the validation harness was corrected to use EditorSceneManager.NewPreviewScene. Run Tools → Engineering Lab → Validate Scene Placement to reproduce. Manual verification of the window, preview refresh, prefab overrides and grouped Undo remains pending. Browser lesson and footage remain pending. The project remains in progress.
+
+### Native Editor result, November 16
+
+```text
+PASS: grid footprint
+PASS: half spacing halves footprint
+PASS: partial final row
+PASS: surface up follows normal
+PASS: local yaw preserves surface alignment
+PASS: default scatter fills request
+PASS: same seed replays positions
+PASS: scatter stays inside square
+PASS: minimum pivot spacing
+PASS: dense stress request reports shortfall
+PASS: seed changes layout
+PASS: invalid spacing rejected
+PASS: surface collider raycast
+PASS: slope filter comparison
+PASS: raycast normal alignment
+PLACEMENT_VALIDATION_PASSED: 15 checks
+```
