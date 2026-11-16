@@ -97,3 +97,11 @@ Created two 12-second captioned model animations in docs/video-previews and adde
 ## November 14 — Week-two Editor results verified
 
 The November 13 Unity 6000.5.2f1 Editor run passed all eight Vehicle Suspension and six Modern Spline checks on revision `59e0550`. The [individual results](WEEK-TWO-UNITY.md#verified-editor-run) include browser-reference parity, wheel unloading and recovery, distance sampling, and spline cache invalidation. Manual interaction QA for the six use cases and native footage remain pending. WebGL remains unverified.
+
+## November 16 — Scene Placement native milestone
+
+Implemented the Monday project as a native Editor window with grid layouts, downward surface projection and slope filtering, and deterministic scatter with minimum XZ pivot spacing. Added ghost preview, accepted/requested counts, fixed references, prefab instantiation and grouped Undo with rollback on creation failure. Recipes and limits are in SCENE-PLACEMENT.md; a faceless video brief covers all three applications.
+
+Validation: all three new scripts compiled against installed Unity 6000.5.2f1 reference assemblies. Independent managed execution passed ten grid/scatter checks. Its initial default-fill assertion exposed an over-dense scatter default; increased default width to 16 m and all ten checks passed. The Unity CLI attempt encountered a sandbox-denied Package Manager socket before the validation method executed. The 12-check Editor suite, surface raycasts, prefab behavior, Undo and visual interaction remain unverified. No preview server was started.
+
+Carryover: week-two visual interaction QA and native recordings. Scene Placement browser lesson and native execution remain pending, so this project is in progress. Thursday's Ballistics Lab remains planned; preserve these gaps when continuing.
