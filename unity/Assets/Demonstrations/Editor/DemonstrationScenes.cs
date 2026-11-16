@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using EngineeringLab.Placement;
 using EngineeringLab.Placement.Editor;
 using EngineeringLab.SceneHealth;
 using EngineeringLab.WeekTwo;
@@ -61,6 +62,7 @@ namespace EngineeringLab.Demonstrations.Editor
                 SceneManager.SetActiveScene(scene);
                 var lesson = new GameObject("START HERE — " + name).AddComponent<DemoLesson>();
                 lesson.tool = tool; lesson.instructions = instructions; lesson.challenge = challenge;
+                lesson.gameObject.AddComponent<LabStage>().tool = tool;
                 var camera = new GameObject("Overview camera").AddComponent<Camera>();
                 camera.transform.position = new Vector3(25, 28, -35);
                 camera.transform.LookAt(new Vector3(5, 0, 5));

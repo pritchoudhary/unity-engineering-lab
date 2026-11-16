@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EngineeringLab.Placement.Editor
+namespace EngineeringLab.Placement
 {
     public static class PlacementLayout
     {

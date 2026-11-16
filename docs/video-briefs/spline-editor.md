@@ -13,3 +13,5 @@ Reproducible values from the browser model at f394996: default geometry length 1
 Viewer challenge: explain why a longer wait speeds up the moving guard but widening the road doesn't change the centerline. Keep the values visible as captions so the comparison works with sound muted.
 
 Generated review asset: [12-second captioned model animation](../video-previews/spline-editor.mp4). Rendered from the JavaScript model with scripts/render-week-two.mjs; no screen capture, voice-over or Unity footage.
+
+November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.

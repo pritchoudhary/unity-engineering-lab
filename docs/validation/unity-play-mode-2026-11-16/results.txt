@@ -1,0 +1,70 @@
+Unity Editor 6000.5.2f1, November 16, 2026
+Scripted native Play-mode review of five scenes and three views each.
+
+PLAY_REVIEW_PASS: SceneHealth case 0 measured evidence
+PLAY_REVIEW_PASS: SceneHealth playback advances 0
+PLAY_REVIEW_PASS: SceneHealth stable visual object count 0
+PLAY_REVIEW_PASS: SceneHealth fresh screenshot 0
+PLAY_REVIEW_PASS: SceneHealth actual fixture repair 0
+PLAY_REVIEW_PASS: SceneHealth case 1 measured evidence
+PLAY_REVIEW_PASS: SceneHealth playback advances 1
+PLAY_REVIEW_PASS: SceneHealth stable visual object count 1
+PLAY_REVIEW_PASS: SceneHealth fresh screenshot 1
+PLAY_REVIEW_PASS: SceneHealth actual fixture repair 1
+PLAY_REVIEW_PASS: SceneHealth case 2 measured evidence
+PLAY_REVIEW_PASS: SceneHealth playback advances 2
+PLAY_REVIEW_PASS: SceneHealth stable visual object count 2
+PLAY_REVIEW_PASS: SceneHealth fresh screenshot 2
+PLAY_REVIEW_PASS: SceneHealth actual fixture repair 2
+PLAY_REVIEW_PASS: VehicleSuspension case 0 measured evidence
+PLAY_REVIEW_PASS: VehicleSuspension playback advances 0
+PLAY_REVIEW_PASS: VehicleSuspension stable visual object count 0
+PLAY_REVIEW_PASS: VehicleSuspension fresh screenshot 0
+PLAY_REVIEW_PASS: VehicleSuspension case 1 measured evidence
+PLAY_REVIEW_PASS: VehicleSuspension playback advances 1
+PLAY_REVIEW_PASS: VehicleSuspension stable visual object count 1
+PLAY_REVIEW_PASS: VehicleSuspension fresh screenshot 1
+PLAY_REVIEW_PASS: VehicleSuspension case 2 measured evidence
+PLAY_REVIEW_PASS: VehicleSuspension playback advances 2
+PLAY_REVIEW_PASS: VehicleSuspension stable visual object count 2
+PLAY_REVIEW_PASS: VehicleSuspension fresh screenshot 2
+PLAY_REVIEW_PASS: ModernSpline case 0 measured evidence
+PLAY_REVIEW_PASS: ModernSpline playback advances 0
+PLAY_REVIEW_PASS: ModernSpline stable visual object count 0
+PLAY_REVIEW_PASS: ModernSpline fresh screenshot 0
+PLAY_REVIEW_PASS: ModernSpline case 1 measured evidence
+PLAY_REVIEW_PASS: ModernSpline playback advances 1
+PLAY_REVIEW_PASS: ModernSpline stable visual object count 1
+PLAY_REVIEW_PASS: ModernSpline fresh screenshot 1
+PLAY_REVIEW_PASS: ModernSpline case 2 measured evidence
+PLAY_REVIEW_PASS: ModernSpline playback advances 2
+PLAY_REVIEW_PASS: ModernSpline stable visual object count 2
+PLAY_REVIEW_PASS: ModernSpline fresh screenshot 2
+PLAY_REVIEW_PASS: ScenePlacement case 0 measured evidence
+PLAY_REVIEW_PASS: ScenePlacement playback advances 0
+PLAY_REVIEW_PASS: ScenePlacement stable visual object count 0
+PLAY_REVIEW_PASS: ScenePlacement fresh screenshot 0
+PLAY_REVIEW_PASS: ScenePlacement case 1 measured evidence
+PLAY_REVIEW_PASS: ScenePlacement playback advances 1
+PLAY_REVIEW_PASS: ScenePlacement stable visual object count 1
+PLAY_REVIEW_PASS: ScenePlacement fresh screenshot 1
+PLAY_REVIEW_PASS: ScenePlacement case 2 measured evidence
+PLAY_REVIEW_PASS: ScenePlacement playback advances 2
+PLAY_REVIEW_PASS: ScenePlacement stable visual object count 2
+PLAY_REVIEW_PASS: ScenePlacement fresh screenshot 2
+PLAY_REVIEW_PASS: SpringLab case 0 measured evidence
+PLAY_REVIEW_PASS: SpringLab playback advances 0
+PLAY_REVIEW_PASS: SpringLab stable visual object count 0
+PLAY_REVIEW_PASS: SpringLab fresh screenshot 0
+PLAY_REVIEW_PASS: SpringLab case 1 measured evidence
+PLAY_REVIEW_PASS: SpringLab playback advances 1
+PLAY_REVIEW_PASS: SpringLab stable visual object count 1
+PLAY_REVIEW_PASS: SpringLab fresh screenshot 1
+PLAY_REVIEW_PASS: SpringLab case 2 measured evidence
+PLAY_REVIEW_PASS: SpringLab playback advances 2
+PLAY_REVIEW_PASS: SpringLab stable visual object count 2
+PLAY_REVIEW_PASS: SpringLab fresh screenshot 2
+NATIVE_PRESENTATION_REVIEW: 63 checks, 0 failures
+
+Unity SearchDatabase emitted startup indexing exceptions before review.
+These originated in UnityEditor.Search, outside the presentation code.

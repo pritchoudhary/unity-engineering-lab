@@ -17,3 +17,5 @@ Keep the spring rate at 22,000 N/m. Compare damping 1,800 → 2,400 N·s/m, with
 End card: restore Standard, reduce only damping by 600 N·s/m, and predict which of the three measures will improve before inspecting the results. This model cannot tell us real tire grip.
 
 Generated review asset: [12-second captioned model animation](../video-previews/vehicle-suspension.mp4). Rendered from the JavaScript model with scripts/render-week-two.mjs; no screen capture, voice-over or Unity footage.
+
+November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.

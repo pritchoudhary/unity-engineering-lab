@@ -35,3 +35,5 @@ Final narration script, actual captures, simplified diagrams, captions/transcrip
 ## Additional shot idea from November 3 QA
 
 Use UI stiffness 100 and damping ratio 0.15, then scrub to 1.1 seconds. The highlight has passed its resting destination and moved to approximately −0.95 units. Contrast with Snappy (95, 0.85), keeping the same fixed plot scale. Explain why hiding the negative part of the graph would conceal an important trade-off. QA still available at `docs/spring-overshoot-qa.png`; no video recorded. Manual camera inspection now jumps to the actual reversal at 1.5 seconds.
+
+November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.

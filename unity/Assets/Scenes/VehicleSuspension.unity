@@ -1653,6 +1653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881594682}
   - component: {fileID: 1881594681}
+  - component: {fileID: 1881594683}
   m_Layer: 0
   m_Name: "START HERE \u2014 VehicleSuspension"
   m_TagString: Untagged
@@ -1695,6 +1696,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1881594683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881594680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d22e94a3144625b17633261bae91d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineeringLab.Demonstrations.LabStage
+  tool: 1
+  study: 0
+  time: 0
+  playing: 0
 --- !u!1 &1952481859
 GameObject:
   m_ObjectHideFlags: 0

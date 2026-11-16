@@ -19,3 +19,5 @@ Voice-over and screen plan — Show the job first. Draw rows and columns, then s
 Evidence — Ten managed checks passed on November 16. Unity assembly compilation passed. Native Unity 6000.5.2f1 Editor validation subsequently passed all 15 checks, including collider raycast and slope alignment. Interaction QA remains pending. Capture status is planned. No recording paths exist. No browser or Unity footage is claimed.
 
 Assets — Original code and Unity primitives. Use a disposable portfolio scene without accounts or unrelated work. Narration method and release cadence remain undecided.
+
+November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.
