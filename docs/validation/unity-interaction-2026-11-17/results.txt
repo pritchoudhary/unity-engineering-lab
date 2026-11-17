@@ -1,0 +1,117 @@
+Unity 6000.5.2f1 — November 17, 2026
+Scripted native event-handler review. Hardware mouse input and player builds were not tested.
+Toolbar-button contrast was adjusted and compiled after these captures.
+
+INTERACTION_PASS: SceneHealth case 0 waits for user
+INTERACTION_PASS: SceneHealth live evidence
+INTERACTION_PASS: SceneHealth transport and results reserved
+INTERACTION_PASS: SceneHealth right-drag orbit
+INTERACTION_PASS: SceneHealth scroll zoom
+INTERACTION_PASS: SceneHealth reset view
+INTERACTION_PASS: SceneHealth fresh capture 0
+INTERACTION_PASS: SceneHealth case 1 waits for user
+INTERACTION_PASS: SceneHealth live evidence
+INTERACTION_PASS: SceneHealth transport and results reserved
+INTERACTION_PASS: SceneHealth right-drag orbit
+INTERACTION_PASS: SceneHealth scroll zoom
+INTERACTION_PASS: SceneHealth reset view
+INTERACTION_PASS: SceneHealth fresh capture 1
+INTERACTION_PASS: SceneHealth case 2 waits for user
+INTERACTION_PASS: SceneHealth live evidence
+INTERACTION_PASS: SceneHealth transport and results reserved
+INTERACTION_PASS: SceneHealth right-drag orbit
+INTERACTION_PASS: SceneHealth scroll zoom
+INTERACTION_PASS: SceneHealth reset view
+INTERACTION_PASS: SceneHealth fresh capture 2
+INTERACTION_PASS: VehicleSuspension case 0 waits for user
+INTERACTION_PASS: VehicleSuspension live evidence
+INTERACTION_PASS: VehicleSuspension transport and results reserved
+INTERACTION_PASS: VehicleSuspension right-drag orbit
+INTERACTION_PASS: VehicleSuspension scroll zoom
+INTERACTION_PASS: VehicleSuspension reset view
+INTERACTION_PASS: soft preset applies coupled settings
+INTERACTION_PASS: VehicleSuspension fresh capture 0
+INTERACTION_PASS: VehicleSuspension case 1 waits for user
+INTERACTION_PASS: VehicleSuspension live evidence
+INTERACTION_PASS: VehicleSuspension transport and results reserved
+INTERACTION_PASS: VehicleSuspension right-drag orbit
+INTERACTION_PASS: VehicleSuspension scroll zoom
+INTERACTION_PASS: VehicleSuspension reset view
+INTERACTION_PASS: soft preset applies coupled settings
+INTERACTION_PASS: VehicleSuspension fresh capture 1
+INTERACTION_PASS: VehicleSuspension case 2 waits for user
+INTERACTION_PASS: VehicleSuspension live evidence
+INTERACTION_PASS: VehicleSuspension transport and results reserved
+INTERACTION_PASS: VehicleSuspension right-drag orbit
+INTERACTION_PASS: VehicleSuspension scroll zoom
+INTERACTION_PASS: VehicleSuspension reset view
+INTERACTION_PASS: soft preset applies coupled settings
+INTERACTION_PASS: VehicleSuspension fresh capture 2
+INTERACTION_PASS: ModernSpline case 0 waits for user
+INTERACTION_PASS: ModernSpline live evidence
+INTERACTION_PASS: ModernSpline transport and results reserved
+INTERACTION_PASS: ModernSpline right-drag orbit
+INTERACTION_PASS: ModernSpline scroll zoom
+INTERACTION_PASS: ModernSpline reset view
+INTERACTION_PASS: native pointer drag changes spline handle and stays paused
+INTERACTION_PASS: ModernSpline fresh capture 0
+INTERACTION_PASS: ModernSpline case 1 waits for user
+INTERACTION_PASS: ModernSpline live evidence
+INTERACTION_PASS: ModernSpline transport and results reserved
+INTERACTION_PASS: ModernSpline right-drag orbit
+INTERACTION_PASS: ModernSpline scroll zoom
+INTERACTION_PASS: ModernSpline reset view
+INTERACTION_PASS: ModernSpline fresh capture 1
+INTERACTION_PASS: ModernSpline case 2 waits for user
+INTERACTION_PASS: ModernSpline live evidence
+INTERACTION_PASS: ModernSpline transport and results reserved
+INTERACTION_PASS: ModernSpline right-drag orbit
+INTERACTION_PASS: ModernSpline scroll zoom
+INTERACTION_PASS: ModernSpline reset view
+INTERACTION_PASS: ModernSpline fresh capture 2
+INTERACTION_PASS: ScenePlacement case 0 waits for user
+INTERACTION_PASS: ScenePlacement live evidence
+INTERACTION_PASS: ScenePlacement transport and results reserved
+INTERACTION_PASS: ScenePlacement right-drag orbit
+INTERACTION_PASS: ScenePlacement scroll zoom
+INTERACTION_PASS: ScenePlacement reset view
+INTERACTION_PASS: ScenePlacement fresh capture 0
+INTERACTION_PASS: ScenePlacement case 1 waits for user
+INTERACTION_PASS: ScenePlacement live evidence
+INTERACTION_PASS: ScenePlacement transport and results reserved
+INTERACTION_PASS: ScenePlacement right-drag orbit
+INTERACTION_PASS: ScenePlacement scroll zoom
+INTERACTION_PASS: ScenePlacement reset view
+INTERACTION_PASS: ScenePlacement fresh capture 1
+INTERACTION_PASS: ScenePlacement case 2 waits for user
+INTERACTION_PASS: ScenePlacement live evidence
+INTERACTION_PASS: ScenePlacement transport and results reserved
+INTERACTION_PASS: ScenePlacement right-drag orbit
+INTERACTION_PASS: ScenePlacement scroll zoom
+INTERACTION_PASS: ScenePlacement reset view
+INTERACTION_PASS: ScenePlacement fresh capture 2
+INTERACTION_PASS: SpringLab case 0 waits for user
+INTERACTION_PASS: SpringLab live evidence
+INTERACTION_PASS: SpringLab transport and results reserved
+INTERACTION_PASS: SpringLab right-drag orbit
+INTERACTION_PASS: SpringLab scroll zoom
+INTERACTION_PASS: SpringLab reset view
+INTERACTION_PASS: native pointer drag displaces spring mass and stays paused
+INTERACTION_PASS: SpringLab fresh capture 0
+INTERACTION_PASS: SpringLab case 1 waits for user
+INTERACTION_PASS: SpringLab live evidence
+INTERACTION_PASS: SpringLab transport and results reserved
+INTERACTION_PASS: SpringLab right-drag orbit
+INTERACTION_PASS: SpringLab scroll zoom
+INTERACTION_PASS: SpringLab reset view
+INTERACTION_PASS: SpringLab fresh capture 1
+INTERACTION_PASS: SpringLab case 2 waits for user
+INTERACTION_PASS: SpringLab live evidence
+INTERACTION_PASS: SpringLab transport and results reserved
+INTERACTION_PASS: SpringLab right-drag orbit
+INTERACTION_PASS: SpringLab scroll zoom
+INTERACTION_PASS: SpringLab reset view
+INTERACTION_PASS: SpringLab fresh capture 2
+NATIVE_INTERACTION_REVIEW: 110 checks, 0 failures
+
+Unity SearchDatabase emitted startup indexing errors outside the lab code.

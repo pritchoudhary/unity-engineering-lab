@@ -21,3 +21,5 @@ Evidence — Ten managed checks passed on November 16. Unity assembly compilatio
 Assets — Original code and Unity primitives. Use a disposable portfolio scene without accounts or unrelated work. Narration method and release cadence remain undecided.
 
 November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.
+
+November 17 update — Native interaction stills exist in docs/validation/unity-interaction-2026-11-17. The 110-check scripted review covers paused startup, fixed results, camera controls and direct pointer handlers. Spline and spring shots include dragging. Hardware-input recording and video footage remain pending.

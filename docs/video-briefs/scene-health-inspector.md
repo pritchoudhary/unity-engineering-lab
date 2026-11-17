@@ -28,3 +28,5 @@ Capture the eventual browser and Unity builds with their actual commit/build IDs
 Native capture recipe (planned; no footage yet): open the additive practice scene, scan all objects, and select the migration prefab's missing-script finding. Compare the full scan with inactive objects excluded. Assign the example's required target deliberately and re-scan. Keep the full-scene error count and coverage in frame: hiding a row and repairing a dependency have visibly different outcomes.
 
 November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.
+
+November 17 update — Native interaction stills exist in docs/validation/unity-interaction-2026-11-17. The 110-check scripted review covers paused startup, fixed results, camera controls and direct pointer handlers. Spline and spring shots include dragging. Hardware-input recording and video footage remain pending.

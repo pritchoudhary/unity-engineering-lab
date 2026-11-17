@@ -41,3 +41,15 @@ On November 16, Unity 6000.5.2f1 completed 63 scripted checks across all five sc
 To inspect the same setup, open one saved scene, enter Play mode, select each case and inspect at 1.2–1.4 seconds. Spring starts at rest time zero when choosing its preset, then advances for about 0.2 seconds. Defaults are Standard vehicle 22,000/1,800, bend 4 m, road width 1.5 m, patrol wait 0.5 s, placement spacing 2 m, scatter width 16 m and seed 42, slope limit 45 degrees. The final captures use a 787 × 590 Game view and demonstrate the scrollable narrow layout. The initial larger-view pass was also inspected.
 
 This was scripted case selection and state setup, with visual inspection of captures. Mouse-driven input and exported player validation remain pending. Unity SearchDatabase indexing exceptions occurred during review-project startup.
+
+## Direct interaction update — November 17
+
+Playback controls now stay above the viewport and results stay below it. Right-drag within the model area to orbit, scroll there to zoom, and use Reset view to restore framing.
+
+In ModernSpline, drag either small orange control point to reshape the path. The thin control polygon shows their relationship to the endpoints. Restore curve returns the original handles. The Bend slider sets both handles' depth while preserving their horizontal positions.
+
+In SpringLab, drag the orange mass to change its initial displacement. Dragging leaves playback paused. Press Play to release the simulation. Reset time restores the selected initial displacement and clears velocity.
+
+VehicleSuspension adds Soft, Standard and Firm settings. Each preset pauses the timeline while keeping the current inspection time. Grey remains the fixed Standard reference.
+
+Native event-handler checks and captures are recorded in [the November 17 results](validation/unity-interaction-2026-11-17/results.txt). All 110 checks passed. These were scripted native pointer events and entry-point checks. Physical mouse routing and exported players remain pending. Captures precede a final button-contrast adjustment that compiled successfully.
