@@ -1,0 +1,22 @@
+Native Unity Editor 6000.5.2f1, November 17, 2026
+Window pose generation and creation methods, prefab API and Undo/Redo were exercised in Edit mode.
+
+PASS: test prefab imports
+PASS: window produces nine grid poses
+PASS: created grid retains prefab links and transforms
+PASS: one Undo removes the entire grid
+PASS: Redo restores grid links and transforms
+PASS: repeat placement creates a second group
+PASS: Undo second group preserves first group
+PASS: Redo second group preserves both prefab layouts
+PASS: surface mode rejects a 30 degree slope at 15 degrees
+PASS: surface mode accepts all candidates and ignores the overhead trigger
+PASS: surface mode aligns up after applying local yaw
+PASS: surface prefab group matches preview poses
+PASS: surface group Undo preserves fixture
+PASS: surface group Redo restores orientation and links
+PASS: window scatter replays all candidates
+PASS: primitive scatter group matches preview
+PASS: primitive scatter group Undo
+PASS: primitive scatter group Redo
+PLACEMENT_WORKFLOW_PASSED: 18 checks

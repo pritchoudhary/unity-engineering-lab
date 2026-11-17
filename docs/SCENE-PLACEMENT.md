@@ -46,3 +46,9 @@ PASS: slope filter comparison
 PASS: raycast normal alignment
 PLACEMENT_VALIDATION_PASSED: 15 checks
 ```
+
+## Editor workflow verification
+
+On November 17, native Unity 6000.5.2f1 passed 18 checks through the PlacementWindow pose-generation and creation methods. Grid and surface prefab groups retained links, positions and rotations after Undo/Redo. Undo of a repeated placement preserved the preceding group. Surface mode rejected a 30-degree fixture at a 15-degree limit, accepted it at 45 degrees, ignored an overhead trigger and preserved local-yaw alignment. Primitive scatter was deterministic and survived Undo/Redo.
+
+[Individual results](validation/placement-workflow-2026-11-17.txt) are retained. To reproduce, use an isolated project copy, open the saved ScenePlacement scene, then choose Tools → Engineering Lab → Validate Placement Workflow. The checks create native Undo entries, restore the active scene/selection and remove their generated prefab asset and test scene afterward. Physical mouse interaction remains unverified.

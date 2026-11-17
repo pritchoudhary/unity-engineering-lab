@@ -139,3 +139,11 @@ All current scripts compiled with the installed Unity 6000.5.2f1 compiler/refere
 The review used a consumed one-shot arming token. Removed the capture driver and startup source/meta files from every November 17 review copy afterward. The previous November 16 runners were also removed after the user reported automatic scene cycling. No review runner is included in the repository scenes.
 
 These checks invoke the pointer handler with native events and use scripted study/preset entry points. Hardware mouse routing, player builds and placement prefab/Undo checks remain pending. Unity's SearchDatabase produced its own startup indexing errors. Source-control changes preserve the existing scenes and their GUIDs. Scene Placement browser work remains carryover; Ballistics stays planned for Thursday.
+
+## November 17 — Placement prefab and Undo verification
+
+Ran the new PlacementWorkflowValidation in an isolated native Unity 6000.5.2f1 Editor copy. All 18 checks passed. It exercised the existing PlacementWindow pose-generation and creation methods, real prefab instantiation, transform overrides, grouped Undo/Redo, repeated groups, 15/45-degree slope rejection/acceptance, overhead-trigger exclusion, local-yaw alignment and deterministic primitive scatter. Redo retained instance links and world transforms. The first review setup attempted an additive scene while the default untitled scene was open; corrected the isolated launcher to open the saved ScenePlacement demonstration first.
+
+Preserved the regression checks under Tools → Engineering Lab → Validate Placement Workflow. Use an isolated copy with a saved scene open because the checks create Undo history. Generated prefab assets and the disposable scene are cleaned in finally. Native results are retained in docs/validation/placement-workflow-2026-11-17.txt. Removed the temporary auto-run launcher sources and metadata from both review copies.
+
+The physical mouse-input check remains blocked because the desktop controller binds a different Unity instance. Window selection/navigation was tried without modifying that project. No hardware-input pass is claimed. Browser Scene Placement and player builds remain pending.
