@@ -147,3 +147,15 @@ Ran the new PlacementWorkflowValidation in an isolated native Unity 6000.5.2f1 E
 Preserved the regression checks under Tools → Engineering Lab → Validate Placement Workflow. Use an isolated copy with a saved scene open because the checks create Undo history. Generated prefab assets and the disposable scene are cleaned in finally. Native results are retained in docs/validation/placement-workflow-2026-11-17.txt. Removed the temporary auto-run launcher sources and metadata from both review copies.
 
 The physical mouse-input check remains blocked because the desktop controller binds a different Unity instance. Window selection/navigation was tried without modifying that project. No hardware-input pass is claimed. Browser Scene Placement and player builds remain pending.
+
+## November 19 — Scene Placement browser lesson
+
+Completed the pending browser lesson at /projects/scene-placement/ and added it to the portfolio index. Three working applications cover a 36-object exhibit grid, slope-filtered/aligned hillside signs, and minimum-spacing vegetation scatter. Each has useful tunables, a named fixed reference, manual reveal/reset, a reachable challenge, measurements, use/avoid guidance and native Unity mapping. Accepted coordinates can be inspected in a table. Kept the existing portfolio styling.
+
+Added an attributed MIT adaptation of .NET's seeded compatibility generator and single-precision scatter arithmetic. Independent execution of the C# PlacementLayout model under Mono against Unity 6000.5.2f1 reference assemblies produced the fixture in tests/fixtures/placement-csharp.json. Browser scatter matched every coordinate in four reference layouts and eight random samples for each of six signed/boundary seeds. This is C# parity evidence; no new native Editor or WebGL run is claimed.
+
+All 44 repository tests pass. Final production build and TypeScript pass on Next.js 16.4.6. Browser QA verified compact-grid challenge completion, keyboard range input, manual reveal, slope rejection/acceptance, alignment challenge, dense scatter shortfall (2/200 after 8,000 attempts), spaced-scatter challenge (36/36), seed change/replay and coordinate inspection. Fixed slider accessible names by assigning explicit label/input IDs. Checked 1280 px and 390 px layouts with no horizontal overflow and no browser console errors. Screenshots and the QA record are in docs/validation/placement-browser-2026-11-19.
+
+The build surfaced a security advisory for Next.js 16.4.3. Updated within the existing 16.4 line to the registry's latest patch, 16.4.6, and pinned it for reproducibility. Refreshed the lockfile and reinstalled through the Sites dependency helper using a temporary npm cache because the home cache was sandbox-restricted. The install audit reported zero vulnerabilities. Repeated tests and final build passed after the update.
+
+Native physical-mouse QA and exported players remain pending. Native placement prefab/Undo checks already passed on November 17. Ballistics is still planned and should be the next project after this carryover milestone. Browser screenshots are stills, with video recording pending.

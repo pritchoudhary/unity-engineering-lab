@@ -23,3 +23,9 @@ Assets — Original code and Unity primitives. Use a disposable portfolio scene 
 November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.
 
 November 17 update — Native interaction stills exist in docs/validation/unity-interaction-2026-11-17. The 110-check scripted review covers paused startup, fixed results, camera controls and direct pointer handlers. Spline and spring shots include dragging. Hardware-input recording and video footage remain pending.
+
+November 19 browser update — The three browser applications are working and their challenges were checked. Browser stills are stored under docs/validation/placement-browser-2026-11-19. These are separate from the native Unity captures. No browser video was recorded.
+
+Reproducible browser shots — Grid: 36 objects, 6 columns, compare 2 m and 1 m spacing (10 × 10 m versus 5 × 5 m pivot footprints). Signs: hold slope at 30°, compare 15° and 45° limits, then enable alignment (9 accepted, 0° up-axis error). Scatter: seed 42, 36 trees, width 16 m, compare 1 m and 2 m spacing; the latter accepts 36 in 148 attempts, with 2.02 m measured minimum separation. Failure shot: 200 requests, width 2 m, spacing 2 m, seed 42 (2 accepted after 8,000 attempts).
+
+Browser source attribution — The seeded compatibility stream adapts .NET Random under the MIT license. See docs/third-party-notices/dotnet-random.md. Original diagrams and native primitives supply the remaining visual assets.

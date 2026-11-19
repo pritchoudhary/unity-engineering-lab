@@ -52,3 +52,11 @@ PLACEMENT_VALIDATION_PASSED: 15 checks
 On November 17, native Unity 6000.5.2f1 passed 18 checks through the PlacementWindow pose-generation and creation methods. Grid and surface prefab groups retained links, positions and rotations after Undo/Redo. Undo of a repeated placement preserved the preceding group. Surface mode rejected a 30-degree fixture at a 15-degree limit, accepted it at 45 degrees, ignored an overhead trigger and preserved local-yaw alignment. Primitive scatter was deterministic and survived Undo/Redo.
 
 [Individual results](validation/placement-workflow-2026-11-17.txt) are retained. To reproduce, use an isolated project copy, open the saved ScenePlacement scene, then choose Tools → Engineering Lab → Validate Placement Workflow. The checks create native Undo entries, restore the active scene/selection and remove their generated prefab asset and test scene afterward. Physical mouse interaction remains unverified.
+
+## Browser lesson
+
+The browser lesson is available at /projects/scene-placement/. Grid compares the edited pivot footprint with 2 m spacing. Hillside signs separate slope acceptance from orientation on an ideal plane. Scatter compares the same seeded stream with a fixed 1 m spacing reference and exposes the bounded attempt count.
+
+Browser QA verified the three challenges, keyboard controls, manual reveal, reset, seed replay, and 1280/390 px layouts. The crowded preset accepts 2 of 200 candidates within its 8,000-attempt budget. The spaced preset accepts all 36 requested trees in a 16 m square. An independent C# model execution matched the JavaScript coordinate fixtures. The ideal-plane exercise illustrates surface rules; the native Editor uses collider raycasts.
+
+The compatibility generator's MIT attribution and license are retained in [the third-party notice](third-party-notices/dotnet-random.md). Browser evidence is in [the QA record](validation/placement-browser-2026-11-19/results.md).
