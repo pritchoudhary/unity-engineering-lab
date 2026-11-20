@@ -1,0 +1,75 @@
+#if UNITY_EDITOR
+using System;
+using System.Collections;
+using System.Reflection;
+using System.IO;
+using UnityEngine;
+using UnityEditor;
+using EngineeringLab.Ballistics;
+public class BallisticsReview : MonoBehaviour {
+ static readonly BindingFlags flags=BindingFlags.Instance|BindingFlags.NonPublic;
+ int checks;
+ BallisticsDemo demo;
+ static string Out => "ReviewCaptures";
+ [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+ static void Launch(){
+  if(!SessionState.GetBool("BallisticsCaptureArmed",false)) return;
+  SessionState.SetBool("BallisticsCaptureArmed",false);
+  new GameObject("Disposable review").AddComponent<BallisticsReview>();
+ }
+ void Set(string name,object value) => typeof(BallisticsDemo).GetField(name,flags).SetValue(demo,value);
+ T Get<T>(string name) => (T)typeof(BallisticsDemo).GetField(name,flags).GetValue(demo);
+ void Check(bool value,string message) {
+  if(!value) { EditorApplication.isPlaying=false; throw new Exception("BALLISTICS_PLAY_FAILED: "+message); }
+  checks++; Debug.Log("PLAY_PASS: "+message);
+ }
+ IEnumerator Capture(string name) {
+  yield return new WaitForEndOfFrame();
+  ScreenCapture.CaptureScreenshot(Path.Combine(Out,name+".png"));
+  for(int i=0;i<8;i++) yield return null;
+ }
+ IEnumerator Start() {
+  Directory.CreateDirectory(Out);
+  yield return null;
+  demo=FindFirstObjectByType<BallisticsDemo>();
+  Check(demo!=null && !demo.playing && demo.inspect==0,"paused startup");
+  Check(Get<BallisticModel.Shot>("shot").Found,"aiming solution available");
+  var reference=Get<BallisticModel.Shot>("reference");
+  Set("highArc",true); demo.Compute(); demo.inspect=.5f; yield return null;
+  Check(Get<BallisticModel.Shot>("shot").Time>reference.Time,"high arc differs from fixed low reference");
+  Check(Get<Camera>("view").rect.x>0 && Get<Camera>("view").rect.y>0,"viewport reserves controls and measurements");
+  yield return Capture("01-aim-high");
+  demo.application=1; demo.Compute(); yield return null;
+  Check(Get<double>("clearance")<0,"short fuse blocked by cover");
+  demo.inspect=.8f; yield return null;
+  Check(Get<Transform>("projectile").position.x<=18*.45+.001,"projectile stops at cover");
+  yield return Capture("02-grenade-blocked");
+  Set("fuse",2f); demo.Compute(); demo.inspect=1; yield return null;
+  Check(Get<double>("clearance")>0 && Get<BallisticModel.Shot>("shot").Found,"longer fuse clears cover within budget");
+  Check(Vector3.Distance(Get<Transform>("projectile").position,Get<Transform>("target").position)<.001,"timed throw lands on target");
+  yield return Capture("03-grenade-clear");
+  demo.application=2; demo.Compute(); demo.inspect=1; yield return null;
+  Check(Get<BallisticModel.Shot>("shot").Found,"interception solution available");
+  // Scrub the tuned shot's arrival; the common timeline also contains the fixed reference.
+  demo.inspect=(float)(Get<BallisticModel.Shot>("shot").Time/Get<float>("duration")); yield return null;
+  Check(Vector3.Distance(Get<Transform>("projectile").position,Get<Transform>("target").position)<.001,"moving target meets projectile");
+  Check(Get<BallisticModel.Shot>("reference").Time>0,"current-position reference visible");
+  yield return Capture("04-interception");
+  Set("speed",8f);Set("targetSpeed",8f);demo.Compute();yield return null;
+  Check(!Get<BallisticModel.Shot>("shot").Found && !Get<Transform>("projectile").gameObject.activeSelf,"impossible interception hides projectile");
+  yield return Capture("05-no-solution");
+  Set("speed",20f);Set("targetSpeed",-8f);demo.Compute();demo.inspect=1;yield return null;
+  var projected=Get<Camera>("view").WorldToViewportPoint(Get<Transform>("target").position);
+  Check(projected.x>=0 && projected.x<=1 && projected.y>=0 && projected.y<=1,"closing target remains framed");
+  demo.application=0;Set("highArc",false);demo.Compute();demo.playing=true;
+  float start=demo.inspect;yield return null;yield return null;
+  Check(demo.inspect>start,"manual play advances time");
+  demo.playing=false;float paused=demo.inspect;yield return null;yield return null;
+  Check(demo.inspect==paused,"pause holds time");
+  demo.Compute();Check(demo.inspect==0 && !demo.playing,"retuning rewinds and pauses");
+  File.WriteAllText(Path.Combine(Out,"result.txt"),"BALLISTICS_PLAY_PASSED: "+checks+" checks\nNative Unity "+Application.unityVersion+"; scripted controls; hardware input and player builds untested.\n");
+  Debug.Log("BALLISTICS_PLAY_PASSED: "+checks+" checks");
+  EditorApplication.isPlaying=false;
+ }
+}
+#endif

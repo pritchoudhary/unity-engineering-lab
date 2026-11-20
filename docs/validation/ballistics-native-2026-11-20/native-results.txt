@@ -1,0 +1,35 @@
+PASS: two fixed-speed arcs
+PASS: both arcs reach target
+PASS: fixed launch-speed constraint
+PASS: unreachable target reports failure
+PASS: maximum-range tangent root
+PASS: target behind launcher
+PASS: vertical target
+PASS: timed throw reaches blast point
+PASS: timed throw respects speed budget
+PASS: short fuse hits cover
+PASS: longer fuse clears cover
+PASS: moving target interception
+PASS: faster receding target cannot be caught
+PASS: interception horizon is enforced
+PASS: 162-case closed-form sweep; 86 feasible arcs preserve endpoint and speed
+PASS: invalid inputs rejected
+BALLISTICS_VALIDATION_PASSED: 16 checks
+BALLISTICS_SCENE_READY
+PLAY_PASS: paused startup
+PLAY_PASS: aiming solution available
+PLAY_PASS: high arc differs from fixed low reference
+PLAY_PASS: viewport reserves controls and measurements
+PLAY_PASS: short fuse blocked by cover
+PLAY_PASS: projectile stops at cover
+PLAY_PASS: longer fuse clears cover within budget
+PLAY_PASS: timed throw lands on target
+PLAY_PASS: interception solution available
+PLAY_PASS: moving target meets projectile
+PLAY_PASS: current-position reference visible
+PLAY_PASS: impossible interception hides projectile
+PLAY_PASS: closing target remains framed
+PLAY_PASS: manual play advances time
+PLAY_PASS: pause holds time
+PLAY_PASS: retuning rewinds and pauses
+BALLISTICS_PLAY_PASSED: 16 checks

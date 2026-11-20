@@ -35,6 +35,10 @@ Every project must satisfy [EXPERIMENT-STANDARD.md](EXPERIMENT-STANDARD.md): at 
 | 25 | Apr 19–25, 2027 | **Gameplay Telemetry Viewer** — movement heatmaps, failure hotspots, timing distributions | **Automated Playtest Harness** — scripted traversal, interaction regression, repeatable performance runs |
 | 26 | Apr 26–May 2, 2027 | **Physics Puzzle Assembly Kit** — lever puzzle, rope puzzle, buoyancy puzzle | **Interactive Systems Showcase** — physics exhibit, AI exhibit, editor-tool walkthrough |
 
+## November 20 checkpoint
+
+Week 3: Scene Placement browser and native workflow milestones are recorded in PROGRESS.md. Ballistics has its three-use-case native milestone and saved scene, with model and scripted Play checks. Carry its browser companion, physical control QA and player validation forward; keep its browser catalog label planned. Resolve this carryover before counting the week complete or adding Week 4 work.
+
 ## Scope boundaries and weekly workflow
 
 - Monday: review carryover, implement and validate the first project; establish the second project's shared core and demonstrations when feasible.

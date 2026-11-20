@@ -9,6 +9,7 @@ Open the repository's unity/ folder in Unity 6000.5.2f1. Choose Tools → Engine
 | Vehicle Suspension | Assets/Scenes/VehicleSuspension.unity | Rough-road comfort, braking pitch, tire unloading rigs |
 | Cubic Rail custom editor | Assets/Scenes/ModernSpline.unity | Camera rail and camera marker, road-width guides, patrol follower |
 | Scene Placement | Assets/Scenes/ScenePlacement.unity | Grid reference, 30-degree collider surface and aligned props, seeded scatter |
+| Ballistics Lab | Assets/Scenes/BallisticsLab.unity | Fixed-speed aiming, timed throw over cover, moving-target interception |
 
 Enable Scene-view Gizmos for rails and placement previews. In the vehicle scene, select one of the three rigs and scrub Inspect Time. Its chassis and wheels update in Edit Mode. In Play mode, enable Play on the rig to loop the input. The Measurements field reports the same solver metrics as the Editor workbench. Geometry exaggerates suspension displacement and pitch threefold. The schematic ground is a reference plane; input comes from the numerical model.
 
@@ -53,3 +54,5 @@ In SpringLab, drag the orange mass to change its initial displacement. Dragging 
 VehicleSuspension adds Soft, Standard and Firm settings. Each preset pauses the timeline while keeping the current inspection time. Grey remains the fixed Standard reference.
 
 Native event-handler checks and captures are recorded in [the November 17 results](validation/unity-interaction-2026-11-17/results.txt). All 110 checks passed. These were scripted native pointer events and entry-point checks. Physical mouse routing and exported players remain pending. Captures precede a final button-contrast adjustment that compiled successfully.
+
+Ballistics uses **Tools → Engineering Lab → Open Ballistics Lab** or its saved scene directly. Press Play to create the presentation, which starts paused. Its model checks are under Validate Ballistics. See [Ballistics native milestone](BALLISTICS.md) for three applications, settings and current validation limits. The older four-scene validation command does not include this new standalone lesson.
