@@ -1,8 +1,8 @@
-# Ballistics Lab — native milestone
+# Ballistics Lab
 
 Open `unity` in Unity 6000.5.2f1. Open `Assets/Scenes/BallisticsLab.unity` directly, or Tools → Engineering Lab → Open Ballistics Lab. Press Play to see the interactive lesson. It starts paused. The scene contains the lesson component; presentation objects are created when Play starts. Play, Pause, Rewind, the timeline and study reset belong to the user. Changing an input rewinds and pauses.
 
-This milestone implements three distinct constraints on the same constant-gravity model. Browser lesson, physical pointer QA and exported player validation remain pending. The portfolio entry must stay planned until its browser lesson works.
+The browser companion at `/projects/ballistics-lab/` implements the same three practical studies, with manual playback, fixed references, measured challenges and repeatable failure cases. Its catalog entry is now Unity + browser. Native physical pointer QA, Rigidbody comparison and exported player validation remain pending.
 
 | Application | Practical setting | What to change | Fixed comparison | Learning task |
 | --- | --- | --- | --- | --- |
@@ -28,4 +28,19 @@ For native gameplay, map the returned X/Y velocity to `Rigidbody.linearVelocity`
 
 Tools → Engineering Lab → Validate Ballistics runs 16 grouped checks, including two arcs, speed constraints, maximum-range tangent, unreachable/vertical/behind targets, timed budget and cover, interception and horizon, invalid input and a 162-case sweep. The sweep compares reachability with the independent closed-form discriminant; 86 feasible arcs must satisfy endpoint and speed tolerances. Repeat with an unmodified model to reproduce the same cases. This is correctness evidence, not a performance benchmark.
 
-Native Play review settings, actual stills and results are retained in `docs/validation/ballistics-native-2026-11-20`. Physical mouse routing, narrow-window ergonomics, browser parity, Rigidbody comparison, and standalone/WebGL builds remain follow-up work. Screen recordings have not been captured.
+Native Play review settings, actual stills and results are retained in `docs/validation/ballistics-native-2026-11-20`. Native physical mouse routing, native input ergonomics, Rigidbody comparison and standalone/WebGL builds remain follow-up work. Browser QA covered 1280 and 390 CSS-pixel viewports; screenshots and the actual check record are in `docs/validation/ballistics-browser-2026-11-20`. Screen recordings have not been captured.
+
+## Browser correctness and reproduction
+
+Run `npm test`, `npm run build` and `npm run typecheck` from the repository. The Ballistics suite adds eight tests to the existing 44. It checks 900 C# fixtures, the closed-form fixed-target sweep, 1,000 independently constructed feasible moving-target trajectories, cover/budget separation, challenge reachability, failure handling and exposed control corners. These are deterministic correctness checks, not performance measurements.
+
+Regenerate the C# fixture using the actual native model source:
+
+```sh
+mcs -langversion:latest -out:/tmp/ballistic-fixtures.exe unity/Assets/Ballistics/BallisticModel.cs tests/fixtures/generate-ballistics.cs
+mono /tmp/ballistic-fixtures.exe tests/fixtures/ballistics-csharp.json
+```
+
+This executes the pure C# model under Mono. It is independent implementation parity evidence for the browser and does not represent a new Unity Editor, PhysX or WebGL run. The JavaScript API also rejects target velocities above 1,000 m/s to bound polynomial coefficients; UI velocities are ±8 m/s, within the compared range.
+
+The browser has three controlled challenges. High arc at the default 18 m target exceeds 3.5 s. A 2 s fuse clears cover by 1.86 m while requiring 13.31 m/s. A +6 m/s moving target yields an ideal tuned residual below 1 mm, against a 5.54 m current-position miss. Each Reset restores the shared study inputs; each edit rewinds and pauses. Reduced-motion preference disables automatic playback, retaining manual inspection. Reduced-motion OS emulation was unavailable in this browser review, so the implemented preference listener was source-reviewed but an actual preference-transition test remains pending.

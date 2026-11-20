@@ -1,0 +1,12 @@
+export type Shot = { found: boolean; x: number; y: number; time: number; speed: number; angle: number };
+export type Parameters = { distance: number; height: number; speed: number; gravity: number; fuse: number; targetSpeed: number; high: boolean };
+export type StudyResult = { shot: Shot; reference: Shot; gap: number | null; blocked: boolean; impactTime: number; residual: number | null; duration: number; referenceMiss: number | null };
+export function aim(dx: number, dy: number, speed: number, gravity: number, high?: boolean): Shot;
+export function timed(dx: number, dy: number, limit: number, gravity: number, time: number): Shot;
+export function intercept(dx: number, dy: number, ux: number, uy: number, speed: number, gravity: number, horizon?: number): Shot;
+export function heightAt(shot: Shot, gravity: number, t: number): number;
+export function clearance(shot: Shot, gravity: number, wallX: number, wallHeight: number): number | null;
+export const defaults: Readonly<Parameters>;
+export function study(mode: number, p: Parameters): StudyResult;
+export function challengeMet(mode: number, p: Parameters): boolean;
+export function pointAt(result: StudyResult, p: Parameters, mode: number, time: number): { projectile: number[] | null; target: number[] };

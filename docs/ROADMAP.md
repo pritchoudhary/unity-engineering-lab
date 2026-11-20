@@ -37,7 +37,7 @@ Every project must satisfy [EXPERIMENT-STANDARD.md](EXPERIMENT-STANDARD.md): at 
 
 ## November 20 checkpoint
 
-Week 3: Scene Placement browser and native workflow milestones are recorded in PROGRESS.md. Ballistics has its three-use-case native milestone and saved scene, with model and scripted Play checks. Carry its browser companion, physical control QA and player validation forward; keep its browser catalog label planned. Resolve this carryover before counting the week complete or adding Week 4 work.
+Week 3: Scene Placement browser and native workflow milestones are recorded in PROGRESS.md. Ballistics now has its three-use-case native lesson and browser companion, with native model/Play checks, 900-case C# parity evidence and browser interaction QA. Both Week 3 implementation milestones are reviewable. Native physical control QA, Rigidbody comparison and player/export validation remain explicit carryover; complete the relevant quality gates before calling the projects release-ready. Week 4 remains Steering Behaviors and Flocking, subject to carryover capacity.
 
 ## Scope boundaries and weekly workflow
 

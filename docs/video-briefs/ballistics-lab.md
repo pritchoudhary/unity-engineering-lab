@@ -1,6 +1,6 @@
 # Ballistics Lab — video brief
 
-Status: native lesson milestone. Planned for the post-April 2027 faceless release; upload cadence and narration method remain undecided. No publication or upload is authorized.
+Status: native lesson and browser companion milestones. Planned for the post-April 2027 faceless release; upload cadence and narration method remain undecided. No publication or upload is authorized.
 
 Viewer question: How can one projectile model aim a cannon, throw over cover and lead a moving enemy?
 
@@ -22,6 +22,8 @@ Viewer challenge: keep the target at 18 m, height 0 m and gravity 9.81 m/s². Cl
 
 Diagrams planned: horizontal/vertical velocity arrows; arrival-time target marker; thin cover plane with signed clearance annotation. Use screen recordings and overlays, with no face camera. Optional voice-over should define each term before showing the equation.
 
-Actual assets: five native Unity Game-view stills in `docs/validation/ballistics-native-2026-11-20/`. These are native Editor Play captures. No video footage, browser recording, exported Unity player or WebGL capture exists for this project. Record exact capture paths only after recording. Keep mathematical animation distinct from future Rigidbody validation.
+Actual assets: five native Unity Game-view stills in `docs/validation/ballistics-native-2026-11-20/`. These are native Editor Play captures. Browser stills and interaction checks are in `docs/validation/ballistics-browser-2026-11-20/`. No video footage, browser recording, exported Unity player or WebGL capture exists for this project. Record exact capture paths only after recording. Keep mathematical animation distinct from future Rigidbody validation.
 
-Before recording: finish browser lesson, physical control QA and chosen export validation; enlarge the Game view for a readable capture; label the reference explicitly and rehearse pauses at the measured arrival time. Choose the May launch batch using completed projects at the final April review.
+Before recording: finish native physical control QA, Rigidbody comparison and chosen export validation; enlarge the Game view for a readable capture; label the reference explicitly and rehearse pauses at the measured arrival time. Choose the May launch batch using completed projects at the final April review.
+
+Browser rehearsal is available at `/projects/ballistics-lab/`. Each study starts paused, has explicit arrival/impact inspection and a reachable challenge. The browser moving-target challenge uses +6 m/s for a 5.54 m current-position miss; the native default comparison still uses +4 m/s. Keep these settings explicit when planning a controlled recording.
