@@ -90,9 +90,9 @@ function Lesson({mode}:{mode:number}) {
         <Trajectory mode={mode} p={p} result={result} time={time}/>
         <p className="chart-note">World metres. Both paths share one scale fitted to their combined extent.
           {mode===1?' Grey is an unobstructed ghost; the orange projectile stops at cover.':''}
-          {mode===2?' The teal outline marks the initial target position. Inspect arrival before the target continues moving.':''}</p>
+          {mode===2?' The teal outline marks the initial target position. Playback stops at the tuned impact, with the target and projectile together.':''}</p>
         <label className="scrubber" htmlFor={timeId}>Inspect time <output htmlFor={timeId}>{time.toFixed(2)} s</output>
-          <input id={timeId} type="range" min={0} max={result.duration} step={.01} value={time} onChange={e=>{setPlaying(false);setTime(Number(e.target.value));}}/></label>
+          <input id={timeId} type="range" min={0} max={result.duration} step="any" value={time} onChange={e=>{setPlaying(false);setTime(Number(e.target.value));}}/></label>
         <div className="scenario-actions">
           <button className="button dark" disabled={manual} onClick={()=>setPlaying(v=>!v)}>{playing?'Pause':time>=result.duration?'Replay':'Play'}</button>
           <button className="button outline" onClick={()=>{setPlaying(false);setTime(0);}}>Rewind</button>

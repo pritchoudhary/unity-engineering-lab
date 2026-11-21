@@ -58,6 +58,16 @@ namespace EngineeringLab.Ballistics.Editor
                                 solved++;
                             }
             Check(cases == 162 && solved > 0, $"162-case closed-form sweep; {solved} feasible arcs preserve endpoint and speed");
+            foreach (double targetSpeed in new[] { -8d, -4, 0, 4, 6 })
+            {
+                var interception = BallisticModel.Intercept(18, 0, targetSpeed, 0, 20, 9.81);
+                var baseline = BallisticModel.Aim(18, 0, 20, 9.81);
+                double end = BallisticModel.PlaybackDuration(interception, baseline, true);
+                Check(interception.Found && Math.Abs(end - interception.Time) < 1e-10 &&
+                    Math.Abs(interception.X * end - (18 + targetSpeed * BallisticModel.TargetTime(interception, end))) < 1e-5 &&
+                    Math.Abs(BallisticModel.TargetTime(interception, end + 1) - end) < 1e-10,
+                    $"interception playback ends and holds at impact for target {targetSpeed} m/s");
+            }
             bool invalid = false;
             try { BallisticModel.Aim(10, 0, double.NaN, 9.81); }
             catch (ArgumentOutOfRangeException) { invalid = true; }

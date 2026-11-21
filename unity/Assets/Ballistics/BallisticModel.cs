@@ -46,6 +46,13 @@ namespace EngineeringLab.Ballistics
             return Velocity(dx + targetX * time, dy + targetY * time, gravity, time, speed);
         }
 
+        // Successful interception ends at the collision, even if the reference arrives later.
+        public static double PlaybackDuration(Shot shot, Shot reference, bool interception) =>
+            interception && shot.Found ? shot.Time : Math.Max(1, Math.Max(shot.Time, reference.Time));
+
+        public static double TargetTime(Shot shot, double time) =>
+            shot.Found ? Math.Min(Math.Max(0, time), shot.Time) : Math.Max(0, time);
+
         public static double Height(Shot shot, double gravity, double time) =>
             shot.Y * time - .5 * gravity * time * time;
 

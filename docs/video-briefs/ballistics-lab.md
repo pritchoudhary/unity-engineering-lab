@@ -27,3 +27,5 @@ Actual assets: five native Unity Game-view stills in `docs/validation/ballistics
 Before recording: finish native physical control QA, Rigidbody comparison and chosen export validation; enlarge the Game view for a readable capture; label the reference explicitly and rehearse pauses at the measured arrival time. Choose the May launch batch using completed projects at the final April review.
 
 Browser rehearsal is available at `/projects/ballistics-lab/`. Each study starts paused, has explicit arrival/impact inspection and a reachable challenge. The browser moving-target challenge uses +6 m/s for a 5.54 m current-position miss; the native default comparison still uses +4 m/s. Keep these settings explicit when planning a controlled recording.
+
+Interception playback correction, November 21: successful closing/receding shots now stop at the collision and hold both objects together. The −8 m/s closing example meets at approximately 0.649 s and X = 12.810 m. Use this as the closing-target shot; reference miss still refers to its own arrival time. No new footage was recorded for the correction.

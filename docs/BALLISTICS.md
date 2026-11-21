@@ -10,7 +10,7 @@ The browser companion at `/projects/ballistics-lab/` implements the same three p
 | Timed grenade | Fuse-controlled throwable or timed launch | Fuse, speed budget, target position, gravity | 1 s fuse, same target/gravity/budget | At the default 18 m target, keep the 20 m/s budget and change fuse from 1 s to 2 s. Explain why a slower launch can clear the 3 m cover. |
 | Moving target | Leading a steadily moving enemy | Target velocity, launch speed, target position, gravity | Aim at the target's current position, same launch speed | Keep target velocity +4 m/s and inspect arrival. Compare with the current-position miss distance. Set target and projectile speeds to +8 and 8 m/s; explain the rejection. |
 
-Drag the teal target inside the diagram to reposition its initial location. Orange shows the tuned candidate trajectory and grey the named comparison. An infeasible timed candidate can still illustrate the required trajectory; its projectile stays hidden and measurements say no feasible shot. The reference is a geometric ghost and may pass through cover. Orange throws stop at the cover plane when blocked. The common timeline spans both flight durations; pause at the tuned flight time to inspect interception before the target continues moving. Scrubbing always pauses.
+Drag the teal target inside the diagram to reposition its initial location. Orange shows the tuned candidate trajectory and grey the named comparison. An infeasible timed candidate can still illustrate the required trajectory; its projectile stays hidden and measurements say no feasible shot. The reference is a geometric ghost and may pass through cover. Orange throws stop at the cover plane when blocked. Successful interception playback stops at the tuned impact time and holds the target and projectile together. The grey reference remains an unobstructed comparison; its miss is evaluated at its own arrival time. Other studies retain a timeline spanning their compared flight durations. Scrubbing always pauses.
 
 ## Measurements and model
 
@@ -26,13 +26,13 @@ For native gameplay, map the returned X/Y velocity to `Rigidbody.linearVelocity`
 
 ## Repeatable validation
 
-Tools → Engineering Lab → Validate Ballistics runs 16 grouped checks, including two arcs, speed constraints, maximum-range tangent, unreachable/vertical/behind targets, timed budget and cover, interception and horizon, invalid input and a 162-case sweep. The sweep compares reachability with the independent closed-form discriminant; 86 feasible arcs must satisfy endpoint and speed tolerances. Repeat with an unmodified model to reproduce the same cases. This is correctness evidence, not a performance benchmark.
+Tools → Engineering Lab → Validate Ballistics runs 21 grouped checks (the original 16 plus five interception playback regressions), including two arcs, speed constraints, maximum-range tangent, unreachable/vertical/behind targets, timed budget and cover, interception and horizon, invalid input and a 162-case sweep. The sweep compares reachability with the independent closed-form discriminant; 86 feasible arcs must satisfy endpoint and speed tolerances. Repeat with an unmodified model to reproduce the same cases. This is correctness evidence, not a performance benchmark.
 
 Native Play review settings, actual stills and results are retained in `docs/validation/ballistics-native-2026-11-20`. Native physical mouse routing, native input ergonomics, Rigidbody comparison and standalone/WebGL builds remain follow-up work. Browser QA covered 1280 and 390 CSS-pixel viewports; screenshots and the actual check record are in `docs/validation/ballistics-browser-2026-11-20`. Screen recordings have not been captured.
 
 ## Browser correctness and reproduction
 
-Run `npm test`, `npm run build` and `npm run typecheck` from the repository. The Ballistics suite adds eight tests to the existing 44. It checks 900 C# fixtures, the closed-form fixed-target sweep, 1,000 independently constructed feasible moving-target trajectories, cover/budget separation, challenge reachability, failure handling and exposed control corners. These are deterministic correctness checks, not performance measurements.
+Run `npm test`, `npm run build` and `npm run typecheck` from the repository. The Ballistics suite adds nine tests to the existing 44. It checks 900 C# fixtures, the closed-form fixed-target sweep, 1,000 independently constructed feasible moving-target trajectories, cover/budget separation, challenge reachability, failure handling and exposed control corners. These are deterministic correctness checks, not performance measurements.
 
 Regenerate the C# fixture using the actual native model source:
 
@@ -44,3 +44,5 @@ mono /tmp/ballistic-fixtures.exe tests/fixtures/ballistics-csharp.json
 This executes the pure C# model under Mono. It is independent implementation parity evidence for the browser and does not represent a new Unity Editor, PhysX or WebGL run. The JavaScript API also rejects target velocities above 1,000 m/s to bound polynomial coefficients; UI velocities are ±8 m/s, within the compared range.
 
 The browser has three controlled challenges. High arc at the default 18 m target exceeds 3.5 s. A 2 s fuse clears cover by 1.86 m while requiring 13.31 m/s. A +6 m/s moving target yields an ideal tuned residual below 1 mm, against a 5.54 m current-position miss. Each Reset restores the shared study inputs; each edit rewinds and pauses. Reduced-motion preference disables automatic playback, retaining manual inspection. Reduced-motion OS emulation was unavailable in this browser review, so the implemented preference listener was source-reviewed but an actual preference-transition test remains pending.
+
+November 21 correction: the closing-target study previously froze the projectile at its hit while letting the target continue to the one-second timeline minimum. Both browser and native source now end successful interception playback at impact. The browser time range uses an unrestricted step so the exact sub-second endpoint can be selected. See `docs/validation/ballistics-impact-2026-11-21.md` for actual checks and remaining visual verification.

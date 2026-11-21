@@ -83,3 +83,19 @@ test('invalid inputs fail explicitly before entering the root solver',()=>{
   assert.throws(()=>intercept(18,0,4,0,20,9.81,61),RangeError);
   assert.throws(()=>study(9,defaults),RangeError);
 });
+
+// Regression: closing-target playback used to run to 1 s after the shot stopped at .649 s.
+test('closing and receding playback ends at the hit and holds both objects together afterward',()=>{
+  for(const targetSpeed of [-8,-4,0,4,6]) {
+    const p={...defaults,targetSpeed},r=study(2,p);
+    assert.ok(r.shot.found);close(r.duration,r.shot.time,1e-12);
+    for(const t of [r.duration,r.duration+1]) {
+      const {projectile,target}=pointAt(r,p,2,t);
+      close(projectile[0],target[0]);close(projectile[1],target[1]);
+    }
+  }
+  const p={...defaults,targetSpeed:-8},r=study(2,p);
+  assert.ok(r.duration<1 && r.duration<r.reference.time);
+  const early=pointAt(r,p,2,r.duration/2);
+  assert.ok(Math.hypot(early.projectile[0]-early.target[0],early.projectile[1]-early.target[1])>1);
+});

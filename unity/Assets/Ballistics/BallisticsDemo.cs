@@ -92,7 +92,7 @@ namespace EngineeringLab.Ballistics
                     break;
             }
             clearance = application == 1 ? BallisticModel.Clearance(shot, gravity, distance * .45, 3) : double.NaN;
-            duration = (float)Math.Max(1, Math.Max(shot.Time, reference.Time));
+            duration = (float)BallisticModel.PlaybackDuration(shot, reference, application == 2);
             cover.gameObject.SetActive(application == 1);
             cover.position = new Vector3(distance * .45f, 1.5f, 0);
             cover.localScale = new Vector3(.35f, 3, .6f);
@@ -129,7 +129,8 @@ namespace EngineeringLab.Ballistics
             double sample = Math.Min(now, end);
             projectile.gameObject.SetActive(shot.Found);
             projectile.position = new Vector3((float)(shot.X * sample), (float)BallisticModel.Height(shot, gravity, sample), 0);
-            target.position = new Vector3(distance + (application == 2 ? targetSpeed * (float)now : 0), height, 0);
+            double targetTime = BallisticModel.TargetTime(shot, now);
+            target.position = new Vector3(distance + (application == 2 ? targetSpeed * (float)targetTime : 0), height, 0);
             float panel = Mathf.Min(350, Screen.width * .37f);
             view.rect = new Rect(panel / Screen.width, 135f / Screen.height, 1 - panel / Screen.width,
                 Mathf.Max(.1f, 1 - 225f / Screen.height));
