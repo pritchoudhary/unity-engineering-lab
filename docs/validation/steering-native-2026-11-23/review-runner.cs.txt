@@ -1,0 +1,45 @@
+#if UNITY_EDITOR
+using System;
+using System.IO;
+using System.Collections;
+using System.Reflection;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using EngineeringLab.Steering;
+using EngineeringLab.Ballistics;
+public class SteeringReview:MonoBehaviour
+{
+ static readonly BindingFlags Flags=BindingFlags.Instance|BindingFlags.NonPublic;
+ int checks;
+ [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+ static void Arm(){if(!SessionState.GetBool("SteeringReviewArmed",false))return;SessionState.SetBool("SteeringReviewArmed",false);var host=new GameObject("Disposable review");DontDestroyOnLoad(host);host.AddComponent<SteeringReview>();}
+ static T Get<T>(object target,string name)=>(T)target.GetType().GetField(name,Flags).GetValue(target);
+ static void Set(object target,string name,object value)=>target.GetType().GetField(name,Flags).SetValue(target,value);
+ void Check(bool value,string name){if(!value){EditorApplication.isPlaying=false;throw new Exception("STEERING_PLAY_FAILED: "+name);}checks++;Debug.Log("REVIEW_PASS: "+name);}
+ IEnumerator Capture(string name){yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot("ReviewCaptures/"+name+".png");for(int i=0;i<8;i++)yield return null;}
+ IEnumerator Start()
+ {
+  Directory.CreateDirectory("ReviewCaptures");yield return null;yield return null;
+  var demo=FindFirstObjectByType<SteeringDemo>();Check(demo&&!demo.playing&&demo.inspect==0,"steering starts paused");
+  for(int mode=0;mode<3;mode++)
+  {
+   demo.application=mode;Set(demo,"parameters",new SteeringParameters{SlowRadius=2,LookAhead=2,Prediction=2});demo.Compute();demo.inspect=1;yield return null;yield return null;
+   var run=Get<SteeringRun>(demo,"current");Check(run.Completed&&!run.Collision,"safe preset completes application "+mode);
+   var robot=Get<Transform>(demo,"robot");var target=Get<Transform>(demo,"target");
+   Check(Math.Abs(Vector3.Distance(robot.position,target.position)-(mode==2?.4:run.Error))<.001,"terminal geometry matches model "+mode);
+   var camera=Get<Camera>(demo,"view");Check(camera.rect.x>0&&camera.rect.y>0,"viewport reserves UI "+mode);
+   yield return Capture("steering-"+mode);
+  }
+  demo.Compute();demo.playing=true;yield return null;yield return null;Check(demo.inspect>0,"manual play advances steering");demo.playing=false;float time=demo.inspect;yield return null;yield return null;Check(demo.inspect==time,"pause holds steering");demo.Compute();Check(demo.inspect==0&&!demo.playing,"retuning resets and pauses steering");
+  EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/BallisticsLab.unity",new LoadSceneParameters(LoadSceneMode.Single));yield return null;yield return null;
+  var ballistics=FindFirstObjectByType<BallisticsDemo>();Check(ballistics&&!ballistics.playing,"Ballistics scene starts paused");
+  ballistics.application=2;Set(ballistics,"targetSpeed",-8f);ballistics.Compute();ballistics.inspect=1;yield return null;yield return null;
+  Check(Get<float>(ballistics,"duration")<1,"closing interception timeline ends before one second");
+  Check(Vector3.Distance(Get<Transform>(ballistics,"projectile").position,Get<Transform>(ballistics,"target").position)<.001,"native closing projectile and target coincide");
+  yield return Capture("ballistics-closing");
+  File.WriteAllText("ReviewCaptures/result.txt","NATIVE_REVIEW_PASSED: "+checks+" scripted Play checks\nUnity "+Application.unityVersion+"\nHardware input, Rigidbody and player builds untested.\n");Debug.Log("NATIVE_REVIEW_PASSED: "+checks+" scripted Play checks");EditorApplication.isPlaying=false;
+ }
+}
+#endif

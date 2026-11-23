@@ -1,0 +1,29 @@
+STEERING_PASS: arrival overshoot changes with slowing radius
+STEERING_PASS: balanced arrival settles sooner
+STEERING_PASS: late avoidance reaches swept contact
+STEERING_PASS: early avoidance clears drum
+STEERING_PASS: prediction captures sooner at edge contact
+STEERING_PASS: whole frame holds after capture
+STEERING_PASS: slow pursuer times out
+STEERING_PASS: swept contact prevents tunnelling
+STEERING_PASS: 96 control-corner runs remain bounded
+STEERING_PASS: invalid input rejected
+STEERING_VALIDATION_PASSED: 10 grouped checks
+BALLISTICS_VALIDATION_PASSED: 21 checks
+REVIEW_PASS: steering starts paused
+REVIEW_PASS: safe preset completes application 0
+REVIEW_PASS: terminal geometry matches model 0
+REVIEW_PASS: viewport reserves UI 0
+REVIEW_PASS: safe preset completes application 1
+REVIEW_PASS: terminal geometry matches model 1
+REVIEW_PASS: viewport reserves UI 1
+REVIEW_PASS: safe preset completes application 2
+REVIEW_PASS: terminal geometry matches model 2
+REVIEW_PASS: viewport reserves UI 2
+REVIEW_PASS: manual play advances steering
+REVIEW_PASS: pause holds steering
+REVIEW_PASS: retuning resets and pauses steering
+REVIEW_PASS: Ballistics scene starts paused
+REVIEW_PASS: closing interception timeline ends before one second
+REVIEW_PASS: native closing projectile and target coincide
+NATIVE_REVIEW_PASSED: 16 scripted Play checks

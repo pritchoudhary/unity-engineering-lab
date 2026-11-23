@@ -1,0 +1,11 @@
+export type SteeringParameters={speed:number;acceleration:number;slowRadius:number;lookAhead:number;prediction:number};
+export type SteeringFrame={time:number;position:number[];velocity:number[];target:number[];aim:number[]};
+export type SteeringRun={frames:SteeringFrame[];duration:number;completed:boolean;collision:boolean;eventTime:number|null;path:number;overshoot:number;closest:number|null;error:number;peakAcceleration:number;peakSpeed:number;parameters:SteeringParameters};
+export const defaults:Readonly<SteeringParameters>;
+export const agentRadius:number;
+export const obstacle:Readonly<number[]>;
+export function segmentDistance(a:number[],b:number[],c:number[]):number;
+export function segmentHit(a:number[],b:number[],radius:number):number|null;
+export function simulate(mode:number,p?:Partial<SteeringParameters>,dt?:number):SteeringRun;
+export function comparison(mode:number,p:SteeringParameters):{current:SteeringRun;reference:SteeringRun};
+export function inspect(run:SteeringRun,time:number):SteeringFrame;

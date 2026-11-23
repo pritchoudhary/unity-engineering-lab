@@ -39,6 +39,10 @@ Every project must satisfy [EXPERIMENT-STANDARD.md](EXPERIMENT-STANDARD.md): at 
 
 Week 3: Scene Placement browser and native workflow milestones are recorded in PROGRESS.md. Ballistics now has its three-use-case native lesson and browser companion, with native model/Play checks, 900-case C# parity evidence and browser interaction QA. Both Week 3 implementation milestones are reviewable. Native physical control QA, Rigidbody comparison and player/export validation remain explicit carryover; complete the relevant quality gates before calling the projects release-ready. Week 4 remains Steering Behaviors and Flocking, subject to carryover capacity.
 
+## November 23 checkpoint
+
+Monday’s Steering Behaviors milestone has working arrival, local avoidance and pursuit studies in the browser and the saved native SteeringLab scene. Native model and scripted Play checks plus browser interaction checks passed. Evasion remains future scope, and the bounded bypass rule is not general navigation. Ballistics closing-target visual verification is now complete in browser and native Play. Thursday’s next proposed project remains Flocking; hardware-input, physics/NavMesh and player/export checks remain tracked carryover.
+
 ## Scope boundaries and weekly workflow
 
 - Monday: review carryover, implement and validate the first project; establish the second project's shared core and demonstrations when feasible.
