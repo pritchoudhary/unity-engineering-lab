@@ -162,21 +162,32 @@ namespace EngineeringLab.Missions
    HUDStyles();
    float scale = HUDScale, w = CanvasWidth / scale, h = CanvasHeight / scale;
    var previous = GUI.matrix; GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1));
+   int previousDepth = GUI.depth; GUI.depth = -1000;
+   if (DrawNavigationMenu(w, h)) { GUI.matrix = previous; GUI.depth = previousDepth; return; }
    if (!missionMode) {
-    if (Action(new Rect(w - 250, 16, 234, 42), "Return to playable scene", true)) SetMissionMode(true);
-    GUI.matrix = previous; return;
+    if (Action(new Rect(w - 334, 16, 234, 42), "Return to playable scene", true)) SetMissionMode(true);
+    if (Action(new Rect(w - 94, 16, 78, 42), "Labs")) OpenNavigationMenu();
+    GUI.matrix = previous; GUI.depth = previousDepth; return;
    }
    if (w < 860 || h < 600) {
     Card(new Rect(0,0,w,h),Surface);
     GUI.Label(new Rect(24,24,Mathf.Max(120,w-48),80),"Give the scenario room to play",hudTitle);
-    GUI.Label(new Rect(24,120,Mathf.Max(120,w-48),140),"Use a Game view of at least 860 × 600. Maximize the Game tab or select a larger resolution. The scenario remains paused.",hudBody);
-    running=false;GUI.matrix=previous;return;
+    string roomMessage;
+#if UNITY_EDITOR
+    roomMessage = "Use a Game view of at least 860 × 600. Maximize the Game tab or select a larger resolution. The scenario remains paused.";
+#else
+    roomMessage = "This scenario needs at least 860 × 600 pixels. Enlarge the player or browser canvas, use full screen, or reduce browser zoom. The scenario remains paused.";
+#endif
+    GUI.Label(new Rect(24,120,Mathf.Max(120,w-48),140),roomMessage,hudBody);
+    if (Action(new Rect(24, Mathf.Min(300,h-60), 120, 42), "Labs")) OpenNavigationMenu();
+    running=false;ResetFieldInput();GUI.matrix=previous;GUI.depth=previousDepth;return;
    }
    float side = InspectorWidth(w), panelX = w - side - 16, stageWidth = panelX - 32;
    Card(new Rect(0, 0, w, 78), Surface);
    GUI.Label(new Rect(24, 12, stageWidth - 20, 18), "UNITY ENGINEERING LAB  /  PLAYABLE SCENARIO", hudKicker);
    GUI.Label(new Rect(24, 34, stageWidth - 20, 36), Titles[kind], hudTitle);
-   if (Action(new Rect(panelX, 21, side, 40), "Explore application studies")) SetMissionMode(false);
+   if (Action(new Rect(panelX, 21, side - 86, 40), "Application studies")) SetMissionMode(false);
+   if (Action(new Rect(panelX + side - 78, 21, 78, 40), "Labs")) OpenNavigationMenu();
    GUI.Label(new Rect(24, 94, stageWidth, 64), Questions[kind], hudNumber);
    string state = complete ? "TASK VERIFIED" : kind==1||kind==4 ? "DIRECT EDITING" : running ? "RUNNING" : elapsed > 0 ? "PAUSED" : "SET UP YOUR SCENE";
    GUI.Label(new Rect(24, h - 162, stageWidth - 20, 22), state + "    /    " + elapsed.ToString("F2") + " s" + (kind == 2 ? "    /    MOTION ×5" : ""), hudKicker);
@@ -237,6 +248,7 @@ namespace EngineeringLab.Missions
    DrawSceneLabels(scale, h);
    DrawWorkspaceLabels(scale);DrawNavigationLabels(scale);DrawRangeLabels(scale);DrawFieldOverlays(scale);
    GUI.matrix = previous;
+   GUI.depth = previousDepth;
    editingTuning = GUI.GetNameOfFocusedControl() == "Scenario tuning";
    HandleScenePointer();
   }
