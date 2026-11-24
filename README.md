@@ -8,6 +8,10 @@ Visit **[pritishchoudhary.com](https://www.pritishchoudhary.com/)** to explore a
 
 Portfoliobox hosts the main site and embeds the published browser app served by GitHub Pages. The live website stays available independently of the developer's computer. Native Unity scenes are separate and require the Unity Editor; the browser lessons are JavaScript experiences, not Unity WebGL builds.
 
+## Contributing and approvals
+
+Changes to `main` go through a pull request and Pritish’s review. See [the contribution workflow](CONTRIBUTING.md). Public access lets you read and fork the source; it does not grant push access.
+
 ## Develop and preview locally
 
 This section is only for contributors who want to edit or test the source. Visitors should use the live website above.
