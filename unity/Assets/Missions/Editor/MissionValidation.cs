@@ -26,7 +26,12 @@ namespace EngineeringLab.Missions.Editor
                 if(k!=5){var expected=new Vector3(2,0,1);var vp=m.MissionCamera.WorldToViewportPoint(expected);var vr=m.ScenarioViewport;var projected=new Vector2((vr.x+vp.x*vr.width)*Screen.width,(vr.y+vp.y*vr.height)*Screen.height);Check(m.TryFloorPoint(projected,out var actual)&&Vector3.Distance(actual,expected)<.002f,"viewport pointer round-trip "+k);}m.Step(Vector2.one,1);Check(m.elapsed==0,"paused holds "+k);
                 if(k==0){m.SetTuning(11);m.StartMission();Run(m,800);}
                 if(k==1){for(int i=0;i<3;i++){m.Point(new Vector3(-4+i*4,0,0));m.Scan();m.Repair(i);}}
-                if(k==2){m.SetTuning(1000);m.StartMission();Run(m,220);}
+                if(k==2){
+                    m.SetTuning(1000);m.StartMission();Run(m,20);m.SetTuning(1200);
+                    Check(!m.running&&!m.complete&&m.elapsed==0,"changing damper pauses and rewinds same-input comparison");
+                    Check(Math.Abs(m.Avatar.position.y-.75f)<.0001,"damper edit restores actual initial rig pose");
+                    m.SetTuning(1000);m.StartMission();Run(m,220);
+                }
                 if(k==3){m.Rail.handle1=new Vector2(2,4);m.Rail.handle2=new Vector2(8,4);m.StartMission();Run(m,220);}
                 if(k==4){for(int z=-2;z<=2;z+=2)for(int x=-2;x<=2;x+=2)m.Point(new Vector3(x,0,z));Check(m.PlacedCount==9,"unique placement");m.Point(new Vector3(-2,0,-2));Check(m.PlacedCount==9,"duplicate rejected");m.UndoPlacement();Check(!m.complete&&m.PlacedCount==8,"undo");m.Point(new Vector3(2,0,2));}
                 if(k==5){for(int t=0;t<3;t++){m.StartMission();if(t==0){m.Step(Vector2.zero,.02f);m.running=false;float before=m.elapsed;m.Step(Vector2.zero,.02f);Check(m.elapsed==before,"shot pause");m.StartMission();}Run(m,250);Check(m.progress==t+1,"ballistic hit "+t);if(t<2)m.NextTrial();}}

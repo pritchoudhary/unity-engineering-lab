@@ -50,7 +50,7 @@ namespace EngineeringLab.Missions
    "Drag the orange cargo to set its position. Run releases it.", "Select a station in the scene, then inspect its faults.",
    "Choose a damper setting, then run the road test.", "Drag either orange handle. The rail updates as you move it.",
    "Click an empty ring to place an exhibit. Undo stays available.", "Set the shot, then launch. The next trial waits for you.",
-   "Click the floor to set the delivery destination.", "Click to move the guide; right-click to move the repulsor.",
+   "Click the floor to set the delivery destination.", "Choose Guide or Repulsor, then click the field. Right-click always moves the repulsor.",
    "Press Run, then use WASD or arrow keys to move the actor.", "Press Run. Walk around cover; activate a nearby relay with E."
   };
 
@@ -113,8 +113,9 @@ namespace EngineeringLab.Missions
    if (kind == 0) return "Offset   " + springX.ToString("F3") + " m\nSpeed   " + springV.ToString("F3") + " m/s\nHold   " + stable.ToString("F2") + " / 0.50 s";
    if (kind == 2) return "Body RMS   " + vehicle.Rms.ToString("F2") + " m/s²\nFixed reference   " + weakVehicle.Rms.ToString("F2") + " m/s²\nLost contact   " + vehicle.UnloadedSeconds.ToString("F3") + " s";
    if (kind == 7) return inside + " / 24 drones in the zone\nGoal: at least 18 together";
-   if (kind == 8) return "In frame   " + (VisibleFraction * 100).ToString("F1") + "%\nGoal: 95% across three marks";
-   return progress + " / " + (kind == 3 ? 2 : kind == 4 ? 9 : 3) + (kind == 1 ? " stations healthy" : kind == 5 ? " shots confirmed" : " checkpoints reached");
+   if (kind == 8 && samples == 0) return "No movement samples yet.\nRun and move to measure framing.";
+   if (kind == 8) return "Pivot in frame   " + (VisibleFraction * 100).ToString("F1") + "%\nGoal: 95% across three marks";
+   return progress + " / " + (kind == 3 ? 2 : kind == 4 ? 9 : 3) + (kind == 1 ? " stations healthy" : kind == 5 ? " shots confirmed" : kind == 4 ? " exhibits placed" : " checkpoints reached");
   }
   string TuningLabel => kind == 0 || kind == 2 ? "Damping" : kind == 5 ? (trial == 1 ? "Fuse time" : "Launch speed") : kind == 6 ? "Braking distance" : "Camera dead zone";
   string TuningUnit => kind == 0 || kind == 2 ? "N·s/m" : kind == 5 ? (trial == 1 ? "s" : "m/s") : "m";
@@ -156,6 +157,7 @@ namespace EngineeringLab.Missions
    y += 52; GUI.Label(new Rect(x, y, width, 85), TuningEffect, hudSmall); y += 96;
   }
   void OnGUI() {
+   ClearFieldCaptureIfRequested();
    // Use dimensions captured in the runtime Update, not the Editor GUI event context.
    HUDStyles();
    float scale = HUDScale, w = CanvasWidth / scale, h = CanvasHeight / scale;
@@ -174,14 +176,15 @@ namespace EngineeringLab.Missions
    Card(new Rect(0, 0, w, 78), Surface);
    GUI.Label(new Rect(24, 12, stageWidth - 20, 18), "UNITY ENGINEERING LAB  /  PLAYABLE SCENARIO", hudKicker);
    GUI.Label(new Rect(24, 34, stageWidth - 20, 36), Titles[kind], hudTitle);
-   if (Action(new Rect(panelX, 21, side, 40), "Explore the three application studies")) SetMissionMode(false);
-   GUI.Label(new Rect(24, 94, stageWidth, 38), Questions[kind], hudNumber);
-   string state = complete ? "TASK VERIFIED" : running ? "RUNNING" : elapsed > 0 ? "PAUSED" : "SET UP YOUR SCENE";
+   if (Action(new Rect(panelX, 21, side, 40), "Explore application studies")) SetMissionMode(false);
+   GUI.Label(new Rect(24, 94, stageWidth, 64), Questions[kind], hudNumber);
+   string state = complete ? "TASK VERIFIED" : kind==1||kind==4 ? "DIRECT EDITING" : running ? "RUNNING" : elapsed > 0 ? "PAUSED" : "SET UP YOUR SCENE";
    GUI.Label(new Rect(24, h - 162, stageWidth - 20, 22), state + "    /    " + elapsed.ToString("F2") + " s" + (kind == 2 ? "    /    MOTION ×5" : ""), hudKicker);
    Card(new Rect(16, h - 132, stageWidth + 16, 116), Surface);
    bool previousEnabled = GUI.enabled; GUI.enabled = !complete;
    string runLabel = running ? "Pause" : kind == 5 ? (shotActive ? "Resume" : "Launch shot") : elapsed > 0 ? "Resume" : kind == 2 ? "Run road test" : "Run scenario";
-   if (Action(new Rect(30, h - 116, 164, 44), runLabel, true)) { if (running) running = false; else StartMission(); }
+   if(kind!=1&&kind!=4){if (Action(new Rect(30, h - 116, 164, 44), runLabel, true)) { if (running) running = false; else StartMission(); }}
+   else GUI.Label(new Rect(30,h-116,164,44),kind==1?"Inspect and repair":"Place and undo",hudBody);
    GUI.enabled = previousEnabled;
    if (Action(new Rect(204, h - 116, 112, 44), "Start over")) ResetMission();
    GUI.Label(new Rect(30, h - 62, stageWidth - 20, 40), feedback, hudSmall);
@@ -194,6 +197,10 @@ namespace EngineeringLab.Missions
    float y = 0;
    GUI.Label(new Rect(0, y, contentWidth, 22), "NEXT ACTION", hudKicker); y += 28;
    GUI.Label(new Rect(0, y, contentWidth, 78), NextActions[kind], hudBody); y += 90;
+   DrawFieldControls(0,ref y,contentWidth);
+   DrawRangeControls(0,ref y,contentWidth);
+   DrawWorkspaceControls(0,ref y,contentWidth);
+   DrawNavigationControls(0,ref y,contentWidth);
    if (kind == 0 || kind == 2 || kind == 5 || kind == 6 || kind == 8) { GUI.enabled = previousEnabled && !(kind == 5 && shotActive); TuningControls(0, ref y, contentWidth); GUI.enabled = previousEnabled; }
    if (kind == 1) {
     GUI.Label(new Rect(0, y, contentWidth, 24), "Station " + (selected + 1), hudNumber); y += 34;
@@ -218,7 +225,7 @@ namespace EngineeringLab.Missions
     if (trial == 0) { if (Action(new Rect(0, y, contentWidth, 42), highArc ? "High arc selected" : "Low arc selected")) ToggleArc(); y += 54; }
     if (shotHit && trial < 2) { if (Action(new Rect(0, y, contentWidth, 42), "Continue to next trial", true)) NextTrial(); y += 54; }
    }
-   if (kind == 9) { if (Action(new Rect(0, y, contentWidth, 42), "Activate relay  [E]", true)) Interact(); y += 54; }
+
    GUI.Label(new Rect(0, y, contentWidth, 22), kind == 2 ? "PREDICTED RUN MEASUREMENTS" : "LIVE MEASUREMENTS", hudKicker); y += 30;
    GUI.Label(new Rect(0, y, contentWidth, 88), Evidence(), hudBody); y += 100;
    GUI.Label(new Rect(0, y, contentWidth, 22), "WHAT COUNTS", hudKicker); y += 28;
@@ -228,6 +235,7 @@ namespace EngineeringLab.Missions
    inspectorContentHeight=y+(showMethod?164:12);
    GUI.EndScrollView();
    DrawSceneLabels(scale, h);
+   DrawWorkspaceLabels(scale);DrawNavigationLabels(scale);DrawRangeLabels(scale);DrawFieldOverlays(scale);
    GUI.matrix = previous;
    editingTuning = GUI.GetNameOfFocusedControl() == "Scenario tuning";
    HandleScenePointer();
@@ -243,11 +251,11 @@ namespace EngineeringLab.Missions
    GUI.Label(new Rect(rect.x + 10, rect.y + 5, rect.width - 20, 22), text, hudSmall);
   }
   void DrawSceneLabels(float scale, float height) {
-   if (kind == 5) { SceneTag(actor.position + Vector3.up * .7f, "Launcher", scale); SceneTag(target.position + Vector3.up * .7f, trial == 2 ? "Moving target" : "Target", scale, true); }
+   if (kind == 5) { SceneTag(new Vector3(-7, 1.2f, 0), "Launcher", scale); SceneTag(target.position + Vector3.up * .7f, trial == 2 ? "Moving target" : "Target", scale, true); }
    if (kind == 0) { SceneTag(actor.position + Vector3.up * 1.5f, "Drag cargo", scale, true); SceneTag(Vector3.up * .3f, "Dock · ±0.03 m", scale); }
-   if (kind == 3) for (int i = 0; i < 2; i++) SceneTag(handles[i].position + Vector3.up * .5f, "Handle " + (i + 1) + " · drag", scale, selected == i);
-   if (kind == 7) { SceneTag(beacon.position, "Guide · left click", scale, true); SceneTag(repulsor.position, "Repulsor · right click", scale); SceneTag(target.position, "Collection zone", scale); }
-   for (int i = 0; i < markers.Count; i++) SceneTag(markers[i].position + Vector3.up * 1.1f,
+   if (kind == 3) for (int i = 0; i < 2; i++) SceneTag(handles[i].position + Vector3.up * 1.6f, "Handle " + (i + 1) + " · drag", scale, selected == i);
+
+   for (int i = 0; i < markers.Count && kind!=4 && kind!=6; i++) SceneTag(markers[i].position + Vector3.up * 1.1f,
     (kind == 1 ? "Station " : kind == 3 ? "Gate " : kind == 4 ? "Slot " : kind == 9 ? "Relay " : "Mark ") + (i + 1), scale, selected == i && kind == 1);
   }
   void DisposeHUD() { foreach (var texture in surfaces.Values) if (texture) Destroy(texture); surfaces.Clear(); cardStyles.Clear(); }

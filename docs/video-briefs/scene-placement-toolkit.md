@@ -29,3 +29,22 @@ November 19 browser update — The three browser applications are working and th
 Reproducible browser shots — Grid: 36 objects, 6 columns, compare 2 m and 1 m spacing (10 × 10 m versus 5 × 5 m pivot footprints). Signs: hold slope at 30°, compare 15° and 45° limits, then enable alignment (9 accepted, 0° up-axis error). Scatter: seed 42, 36 trees, width 16 m, compare 1 m and 2 m spacing; the latter accepts 36 in 148 attempts, with 2.02 m measured minimum separation. Failure shot: 200 requests, width 2 m, spacing 2 m, seed 42 (2 accepted after 8,000 attempts).
 
 Browser source attribution — The seeded compatibility stream adapts .NET Random under the MIT license. See docs/third-party-notices/dotnet-random.md. Original diagrams and native primitives supply the remaining visual assets.
+
+
+## Planned native gallery recording — November 24 revision
+
+The playable gallery is a direct-editing companion to the three placement applications, not a replacement for grid generation, surface alignment and constrained scatter. Open `unity/Assets/Scenes/ScenePlacement.unity` with Unity 6000.5.2f1. Use one active Game view at 1280 × 960 or larger and enter Play. There is no Run button: placing, rotating the next brush and Undo are immediate. Record the approved PR #1 commit and the actual Editor/capture settings when footage is created. No new video recording is claimed.
+
+**Hook and simple explanation.** Choose a recognisable seat, turn it 90 degrees and place a second one beside it. “The slot chooses where an object goes; the brush and orientation choose what goes there and how it faces.” The seating-chart analogy explains this regular grid, while the other studies explain the additional rules needed on uneven ground or in a forest.
+
+**Reproducible gallery setup and shots.** The gallery has **nine slots, three columns and 2 m spacing**, at X/Z coordinates −2, 0 and 2 m.
+
+1. Press **Start over**. Choose **Sculpture**, orientation **0°**, then click the front-left slot (X −2 m, Z −2 m). Keep the hover ring/action label and placed object in the shot.
+2. Choose **Seat**, leave orientation at **0°**, and place one at the front-middle slot (0, −2). Change only **Orientation** to **90°** and place a second seat at front-right (2, −2). Overlay the two orientations; avoid suggesting that orientation changed the already-placed seat.
+3. Choose **Display** and place it at the centre (0, 0). Toggle **Hide placement rings** and **Show placement rings** to show that guide visibility does not create or delete objects.
+4. Click the occupied centre again. The count must stay unchanged and the occupied-slot feedback should explain the rejected placement. Choose **Undo last placement**, then place the display again in the freed centre slot.
+5. Fill the remaining slots deliberately, keeping the uniqueness count visible. This demonstrates an editing workflow, not a performance or batching benchmark.
+
+**Controlled lesson and failure case.** The paired seat shot changes only orientation. The occupied-slot/Undo shot changes occupancy and shows the accepted/rejected result. Grid occupancy protects pivots; it does not certify that arbitrary large meshes never overlap. For placement density, slope rejection and bounded scatter failure, record the separate analytical cases with the exact existing settings above.
+
+**Viewer challenge.** Ask viewers to predict which objects change when they select another brush or orientation: existing objects, future placements, or both? Let them demonstrate the answer and use Undo to replace one item. Use an overhead grid diagram, large labels and optional voice-over; no face camera. Planned footage paths remain unset, and narration method/upload cadence remain undecided.

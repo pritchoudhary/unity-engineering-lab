@@ -25,3 +25,6 @@ A temporary diagnostic helper initially used Unity's removed GetInstanceID API; 
 After the last HUD cleanup, computer use could no longer obtain the Unity window (cgWindowNotFound), including after reconnect/reset. The final source compilation passed, but a new exact-final visual/Play check could not be completed. Play had been stopped after the successful spline input review. All temporary diagnostic/capture helper sources, metadata and pending autorun flags were removed from the review copy. No helper ships in Assets.
 
 Remaining: final visual/Play confirmation of the cleanup, narrower Game-view/input ergonomics, direct hardware checks for the other eight scenarios, and project-specific environments, deeper playable decisions and failure/retry feedback. The original analytical interfaces still need their own visual redesign. No standalone player, WebGL build or video capture is claimed. No website publication or main-branch merge occurred.
+
+
+Follow-up: the exact-final native visual/input gap recorded above was addressed by the distinct-scene continuation. See [the later validation report](../native-distinct-scenes-2026-11-24/results.md) for actual101-check execution, compact captures and hardware-input observations; the earlier report remains historical.

@@ -1,0 +1,9 @@
+Unity 6000.5.2f1 bundled Roslyn exact-source compilation
+Configuration: runtime
+Source files: 25
+All-source SHA-256 manifest digest: 64369388336bdd66479452fde5de1490a60160380035b66840628246f6be0c57
+UNITY_EDITOR defined: False
+UnityEditor references allowed: False
+Exit code: 0
+No compiler diagnostics.
+Source unchanged during check: True

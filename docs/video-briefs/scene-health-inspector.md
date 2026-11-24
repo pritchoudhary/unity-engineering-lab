@@ -1,6 +1,6 @@
 # Scene Health Inspector — faceless video brief
 
-Status: planned shots and narration outline only. Rule-engine fixtures are tested and the interactive browser UI is integrated. Browser visual verification is blocked by localhost permissions. No Unity recording or voice-over exists yet.
+Status: planned shots and narration outline. Browser lessons and native Editor stills exist; the newer service-bay scenario is under review in PR #1. No screen-recorded video or voice-over exists yet. Historical validation notes below describe their original checkpoints.
 
 **Viewer question:** Why can a scene look correct but fail when you press Play?
 
@@ -30,3 +30,21 @@ Native capture recipe (planned; no footage yet): open the additive practice scen
 November 16 capture update — Native Unity 6000.5.2f1 Play-mode stills now exist under docs/validation/unity-play-mode-2026-11-16. The 15 views were captured during a 63-check scripted review. These are still images. Native screen-recorded video remains pending. Use the repeatable defaults in docs/UNITY-DEMONSTRATIONS.md for planned recording.
 
 November 17 update — Native interaction stills exist in docs/validation/unity-interaction-2026-11-17. The 110-check scripted review covers paused startup, fixed results, camera controls and direct pointer handlers. Spline and spring shots include dragging. Hardware-input recording and video footage remain pending.
+
+
+## Planned native service-bay recording — November 24 revision
+
+This is a recording recipe, not a footage claim. Open `unity/Assets/Scenes/SceneHealth.unity` in Unity 6000.5.2f1 and enter Play with one active Game view. Use a readable 1280 × 960 or larger view. The playable service bay uses immediate inspection/repair; there is no Run step. Capture the final approved PR #1 source commit and actual Editor/Game-view settings when recording. Narration method and upload cadence remain undecided; no upload is authorized.
+
+**Hook and explanation.** Frame the lift, conveyor and scanner as three different machines with three different missing prerequisites. “An object can be present while the connection, its power unit or its sensor is not ready.” The selected bay ring and the three lamps connect the inspector to the equipment. Lamp order is required reference, active power unit, enabled sensor. Amber means not inspected; after inspection the lights reflect actual object states.
+
+**Repeatable input sequence.**
+
+1. Press **Start over**. Choose **Bay 1**, then **Inspect station**. Read the missing power reference; choose **Connect power reference**. Hold the shot on the restored cable, state row and lamp.
+2. Choose **Bay 2**, inspect it and activate its power unit. Keep the existing valid reference visible: repeating the first repair would not solve this fault.
+3. Choose **Bay 3**, inspect it and enable its sensor. Keep the active power unit visible while explaining why sensor state is a separate requirement.
+4. End with all three stations healthy. Reset and replay Bay 1 before/after its single reference repair for a controlled comparison. Keep selection and camera framing fixed.
+
+**Failure/limit shot.** Before inspection, show the disabled repair controls. After inspection, show that already-healthy rows do not offer irrelevant repairs. Explain that this deliberately seeded service bay cannot establish that every inactive object or optional empty field in a production scene is a defect. Use the separate application studies for prefab migration, dependency handoff and inactive hierarchy; the three service stations supplement those cases.
+
+**Viewer challenge.** Before inspecting Bay 2, ask which evidence would distinguish a missing connection from an inactive power unit. Let the viewer inspect and justify the one repair they choose. Pair a simple connection diagram with captions; a face camera is unnecessary. Planned video paths remain unset because no footage has been recorded.

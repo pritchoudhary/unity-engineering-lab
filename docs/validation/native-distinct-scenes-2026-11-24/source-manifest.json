@@ -1,0 +1,11 @@
+{
+  "NativeMission.cs": "45ebd7924e564a90755a0bde301b01ac44278f8920f1e3f0fecc43ce7ef0ac6e",
+  "NativeMission.FieldScenarios.cs": "3fa14289224d7d347f5188197ffdb6fed05bd1b72dcc18b4a00617137dd077da",
+  "NativeMission.Range.cs": "982f50977dd0ce0b5bcb7288ccdee4c1712dfec4a40ea7987283a887466e58f5",
+  "NativeMission.Navigation.cs": "2195ddf76d0d11678e6022d0bee3d593b77baf4297109adac78eef75118780ce",
+  "NativeMission.Workspaces.cs": "0af2ac60ecd196fd6ee41d471e33c586b3f73c0b10485c19b4ec8b52940dbe9e",
+  "NativeMission.HUD.cs": "34e03beda1591ca9376eb02f74ac42640e3509e8b4cc8965590b5f9eb3d1e5b9",
+  "NativeMission.Presentation.cs": "90abd06711f1592a11663132fbd8242615c09067659871d3617706e7b201157d",
+  "Editor/MissionValidation.cs": "5cb3a0bdeb5a4a22b1dd034a3e0369b34c2c182af5fce7bee2c1409abb4e054b",
+  "Editor/MissionScenes.cs": "62bff6e7d074cfa0c9ecd6346f0cbbb1801efa1522dece2d264596a53722cdfa"
+}

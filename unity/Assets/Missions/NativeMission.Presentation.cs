@@ -80,7 +80,11 @@ namespace EngineeringLab.Missions
        GUIUtility.hotControl=dragControl;e.Use();
       }
      }else feedback=kind==0?"Grab the orange cargo to set its position.":"Grab an orange handle to bend the route.";
-    }else if(TryFloorPoint(screen,out var point)){Point(point,e.button==1);e.Use();}
+    }else if(kind==1&&e.button==0){
+     float best=80*HUDScale;int station=-1;var viewport=ScenarioViewport;
+     for(int i=0;i<markers.Count;i++){var projected=view.WorldToViewportPoint(markers[i].position);var painted=new Vector2((viewport.x+projected.x*viewport.width)*CanvasWidth,(viewport.y+projected.y*viewport.height)*CanvasHeight);float distance=Vector2.Distance(screen,painted);if(projected.z>0&&distance<best){best=distance;station=i;}}
+     if(station>=0)Point(markers[station].position);else feedback="Select one of the three service cabinets.";e.Use();
+    }else if(TryFloorPoint(screen,out var point)){Point(point,e.button==1||(kind==7&&navigationRepulsorSelected));e.Use();}
    }
    if(draggingObject&&GUIUtility.hotControl==dragControl&&e.type==EventType.MouseDrag){
     var item=kind==0?actor:handles[selected];
@@ -98,7 +102,7 @@ namespace EngineeringLab.Missions
    }
    if(draggingObject&&e.type==EventType.MouseUp){draggingObject=false;GUIUtility.hotControl=0;if(kind==0&&resumeAfterDrag)running=true;resumeAfterDrag=false;e.Use();}
   }
-  void OnApplicationFocus(bool focused){if(!focused){running=false;draggingObject=false;resumeAfterDrag=false;}}
-  void DisposePresentation(){if(bevelMesh)Destroy(bevelMesh);if(ringMesh)Destroy(ringMesh);DisposeHUD();}
+  void OnApplicationFocus(bool focused){if(!focused){running=false;draggingObject=false;resumeAfterDrag=false;ResetFieldInput();}}
+  void DisposePresentation(){DisposeWorkspaceVisuals();if(bevelMesh)Destroy(bevelMesh);if(ringMesh)Destroy(ringMesh);DisposeHUD();}
  }
 }

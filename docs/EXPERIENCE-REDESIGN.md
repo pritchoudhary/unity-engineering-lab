@@ -57,6 +57,43 @@ The user rejected the studio missions as unintuitive and visually amateurish, in
 
 The review branch replaces the dominant objective sidebar with a scenario question, scene-attached action labels and a right-hand inspector. Controls keep readable text, useful presets with trade-off explanations, precise numeric entry and +/- adjustment. Spring cargo and spline handles use direct dragging. Scene Health exposes inspected state and enables only relevant repairs. A trajectory preview makes ballistic tuning visible before launch. A more closely framed cargo loading bay is the first contextual art slice.
 
-This remains a bounded interaction/presentation revision across the ten scenes, not ten finished games. Next: review the actual Spring/Spline interaction and art with Pritish, then develop distinct playable environments, richer practical choices and failure/retry feedback per project. Do not repeat the same board and task counter as the final treatment. Keep the analytical three-application lessons accessible; do not claim the shared HUD change completes the full creative redesign.
+The next continuation adds distinct playable environments and scene-specific feedback across the ten projects, described below. This remains a review milestone rather than ten user-approved finished games. Review actual scene input, visual hierarchy and useful failure/retry feedback with Pritish. Keep the analytical application studies accessible; a shared HUD does not complete their separate visual redesign.
 
 Future implementation and website releases must follow AGENTS.md: feature branches and reviewable PRs, with explicit approval before merge or publication.
+
+
+## Distinct-scene continuation under review
+
+The user explicitly requested continuing the remaining Unity scenes and finishing native visual validation in the same PR. Parallel implementation divides the service bay/garage/gallery, warehouse/drone field, and rehearsal/relay yard; the primary agent integrates those changes with the range and rail work. PR #1 stays unmerged while fixes and QA continue. Any later auto-merge step must follow the user's approval for that concrete final revision; it is not enabled by this design document.
+
+| Scene identity | What makes it a practical scenario | Feedback tied to actual state |
+| --- | --- | --- |
+| Cargo loading dock | Pull a restrained carriage on a marked rail, then release it with chosen damping | Cargo geometry, offset/speed and stable docking hold |
+| Service islands | Inspect and restore three different pieces of bay equipment | Required reference, active power and sensor state; inspected lamps and power-link visibility |
+| Suspension garage | Run a front/rear proving rig on one repeatable road | Frame-driven struts/actuators and same-scale body-height comparison with a fixed weak damper |
+| Rail delivery route | Shape a physical-looking courier rail through gates | Direct handle editing, actual rail/sleeper geometry and tangent-following courier |
+| Exhibition gallery | Choose a prop type and orientation, then build an editable layout | Empty/occupied cursor, unique placements, visible object silhouettes and Undo |
+| Instrumented range | Compare trajectory choices, cover timing and interception | Predicted path/flight time, actual model clearance and future interception marker |
+| Delivery warehouse | Dispatch a robot to sequential docks and tune its arrival | Destination link, braking-distance ring, speed/distance and live dock status |
+| Drone collection field | Place an attracting guide and local repulsor deliberately | Explicit pointer tool, true repulsor radius, measured group spacing/speed and collection count |
+| Director rehearsal stage | Move a recognizable actor through blocking marks while controlling camera response | Pivot safe margin, actual world-unit dead zone, measured sample fraction and next-mark bearing |
+| Communications yard | Navigate solid cover and satisfy two interaction conditions | Actual hit-clipped sight ray, 1.5 m reach ring, distance and relay activation state |
+
+The environments use original generated geometry and the existing material/lifecycle helpers. Decorative props do not silently become collision or navigation constraints. Differences in color, architecture and silhouette support each scene's task; they are not counted as additional experiment applications.
+
+### Native acceptance checkpoint
+
+The combined revision has now passed **101 controlled native Play checks across ten projects**, with exact-source compact captures of all ten scenes at **1043 × 782**. Physical checks confirmed camera keyboard movement, an East-button hold of approximately 1.1 s producing about 3.3 m displacement, release/paused hold without drift and resume without residual movement. Relay QA rejected an out-of-range E press, activated one relay by keyboard and two by button, and showed the actual blocked query clearing after a detour around cover.
+
+The final compact Camera/Relay review found readable relay labels/range/sight and expected inspector scrolling. The camera's safe-frame caption was repositioned to the bottom-right after its initial collision with the shared status; the replacement 1043 × 782 capture was inspected and the overlap is resolved. The direction card, safe/dead-zone guides and tuning controls remain readable. The camera's dark off-stage area retains the honest stage boundary. Exact-final native scene execution, the physical-input matrix and compact visual review now have evidence in [the distinct-scene validation report](validation/native-distinct-scenes-2026-11-24/results.md). Execution success does not establish user aesthetic approval or validate a player/WebGL export.
+
+Retain these checks when changing the revision:
+
+- Load every saved scene in native Play. Check deliberate start, pause, reset, completion and analytical-mode return; exclude automatic cycling or hidden movement.
+- At full and narrower Game-view sizes, inspect scene framing, overlays, selected states, readable type, inspector scrolling, labels and absence of clipped controls. Keep a single active Game view for the review and record its actual resolution.
+- Exercise actual keyboard, mouse, direct dragging and typed controls. Held cardinal buttons must continue moving for the full hold, stop on release/outside/focus/pause, and not inherit movement from text fields. Two RepeatButton-derived attempts failed physical QA; the explicit capture replacement has the displacement/release/resume evidence above. Preserve that distinction in the report.
+- Verify gallery brush/rotation/Undo, service-bay selection/inspection/repair, suspension tuning/trace identity, manual ballistic trial advance, robot dispatch and explicit flock tool selection.
+- Check that safe-frame percentages describe the camera's sampled pivot. Relay rays/range must match the interaction's real query and threshold. Scene art must not hide or falsify these constraints.
+- Separate scripted native checks, actual physical inputs, final visual stills, model comparisons and any future player/WebGL tests. Remove temporary review helpers and capture flags when finished. No video footage or export is implied by a still.
+
+The Camera and Visibility video briefs now contain planned native recording settings/routes, controlled comparisons, failure cases and viewer challenges. No new footage, publication or upload is claimed. Broader gameplay depth, final aesthetic approval and the analytical interfaces' own visual redesign remain distinct from this acceptance gate.
