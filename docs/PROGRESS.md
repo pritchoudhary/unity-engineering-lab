@@ -256,3 +256,8 @@ Production static build, TypeScript and all 73 repository tests pass. These incl
 ### November 24 — Public source and live playable introduction verified
 
 Made the existing source repository public on the user's explicit request and pushed implementation commit 097d3ec; GitHub validation passed. Published generated artifact 65a61f4 and verified GitHub Pages built it successfully. Actual custom-domain checks confirmed the new intro, worker-backed balanced Flocking challenge and public source Contact link. Embedded mobile widths were 390/390 px outside and 382/382 px inside, without horizontal overflow. Saved actual live desktop/mobile stills and results in validation/public-experience-2026-11-24/results.md. All 73 web tests, production build and TypeScript passed; this milestone adds no new native execution claim. Stopped the owned temporary preview server and confirmed port 3081 closed. The broader project-specific creative redesign and native visual polish remain carryover.
+
+
+### November 24 — Straightened the interactive homepage card
+
+Removed the decorative one-degree rotation from the homepage experiment card and legacy field-guide card after the user flagged the crooked controls/text. Production static build passed; inspected exported CSS confirms spring-intro has transform:none and no one-degree rotation remains. No new behavioral or native validation is claimed for this CSS-only correction.
