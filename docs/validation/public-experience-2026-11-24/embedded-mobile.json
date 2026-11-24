@@ -1,0 +1,13 @@
+{
+  "outer": {
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "inner": {
+    "scrollWidth": 382,
+    "width": 382
+  },
+  "result": [
+    "0.0% peak beyond the target.More damping removes the bounce but slows the approach. More is not always better."
+  ]
+}

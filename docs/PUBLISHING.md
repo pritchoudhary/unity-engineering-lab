@@ -30,7 +30,7 @@ The native style uses the Wide → Left menu layout, a plain #f7f6f0 background,
 
 ## Reproducing a browser release
 
-From the private source checkout, run:
+From the source checkout, run:
 
 ```sh
 SITE_ORIGIN=https://pritchoudhary.github.io LAB_EMBED_MIRROR=1 npm run build
@@ -38,7 +38,7 @@ npm run typecheck
 npm test
 ```
 
-Audit `out/` before copying it to the generated-artifact repository. Keep that repository's `.git`, replace generated files from `out/`, retain `.nojekyll`, commit and push. Never copy the entire private source checkout. Confirm the GitHub Pages build is `built` at the pushed commit, then check the actual Portfoliobox routes and at least one live experiment.
+Audit `out/` before copying it to the generated-artifact repository. Keep that repository's `.git`, replace generated files from `out/`, retain `.nojekyll`, commit and push. Never copy the entire source checkout. Confirm the GitHub Pages build is `built` at the pushed commit, then check the actual Portfoliobox routes and at least one live experiment.
 
 The mirror build uses its own origin for metadata and `noindex, follow`; the Portfoliobox domain is the public entry point. Portfoliobox controls the outer page metadata and sharing appearance. The app social-preview image does not establish that Portfoliobox's own Open Graph image has been updated. Four LinkedIn drafts are prepared for manual copy/paste in docs/linkedin; none has been posted or scheduled.
 
@@ -59,3 +59,8 @@ The source now contains ten browser projects, the revised Lumos/TIMS career fact
 The ten-project content update is now published: generated-artifact commit c48fab4 reports built, source commit 2c1c62c passed GitHub validation. Portfoliobox's native count and About/Experience descriptions were updated. Live custom-domain checks verified the new lesson, current role and private source-repository Contact destination. See validation/ten-project-release-2026-11-24. The source repository is still private; making it public was not performed.
 
 The user subsequently authorized changing unity-engineering-lab itself to public, and GitHub reported isPrivate=false. Source visibility now differs from the earlier publishing checkpoints. The compiled-artifact repository remains the browser deployment source. Contact/footer copy identifies the source as public. No Portfoliobox/domain migration or paid service was added.
+
+
+## Current playable introduction release — November 24
+
+Source implementation 097d3ec passed GitHub validation. Generated artifact 65a61f4 was confirmed built by GitHub Pages, then checked on the actual Portfoliobox domain. The homepage now includes the playable spring introduction; the full spring suite opens on request and the three system studies calculate in a worker. The Contact source link and public-source copy were checked live. See validation/public-experience-2026-11-24/results.md for actual desktop/mobile results and screenshots. Temporary local preview servers were stopped. Earlier private-source statements above describe historical checkpoints; the source is now public.
