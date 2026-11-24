@@ -1,0 +1,19 @@
+{
+  "artifactCommit": "c48fab42ab44fa82c036a4a2139a438219ac4301",
+  "tenCardsVerified": true,
+  "flockBalancedChallengePassed": true,
+  "contactHref": "https://github.com/pritchoudhary/unity-engineering-lab",
+  "lumosRoleVerified": true,
+  "mobileEvidence": {
+    "outer": {
+      "description": "Unity development experience across games, immersive learning, mobile systems and tools. Lead Unity Developer (SDE 4) at Lumos Labs, Bangalore.",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "inner": {
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  "console": []
+}

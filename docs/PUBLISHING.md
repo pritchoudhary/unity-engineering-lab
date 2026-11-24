@@ -55,3 +55,5 @@ An earlier private, unpublished Sites draft and separate source checkout exist, 
 ## November 24 accelerated content batch
 
 The source now contains ten browser projects, the revised Lumos/TIMS career facts, and the Contact source-repository destination. The current native studio work is separate from the browser release. The planned creative teaching/performance redesign is described in EXPERIENCE-REDESIGN.md; do not report planned budgets as measured embedded-site performance. Actual artifact commit and live checks are recorded in PROGRESS.md when the release completes.
+
+The ten-project content update is now published: generated-artifact commit c48fab4 reports built, source commit 2c1c62c passed GitHub validation. Portfoliobox's native count and About/Experience descriptions were updated. Live custom-domain checks verified the new lesson, current role and private source-repository Contact destination. See validation/ten-project-release-2026-11-24. The source repository is still private; making it public was not performed.
