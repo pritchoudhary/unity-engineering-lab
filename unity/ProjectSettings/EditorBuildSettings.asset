@@ -8,4 +8,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpringLab.unity
     guid: 0ff3e17a328c64681abf5dc51bebb57f
+  - enabled: 1
+    path: Assets/Scenes/SceneHealth.unity
+    guid: 1f4018e0752f54bb09716446c8a75323
+  - enabled: 1
+    path: Assets/Scenes/VehicleSuspension.unity
+    guid: d736c2a2c5ddd446b991d960d70ad516
+  - enabled: 1
+    path: Assets/Scenes/ModernSpline.unity
+    guid: 708c899b8a51348f1b1c9ce9bd18fe76
+  - enabled: 1
+    path: Assets/Scenes/ScenePlacement.unity
+    guid: 3439f1726fc794225adb54f03fc65eec
+  - enabled: 1
+    path: Assets/Scenes/BallisticsLab.unity
+    guid: bbf1a25b60fd54439b39ce7b34e8af08
+  - enabled: 1
+    path: Assets/Scenes/SteeringLab.unity
+    guid: 9011c2ea14dc9465d9f50cdf40ac9419
+  - enabled: 1
+    path: Assets/Scenes/FlockingLab.unity
+    guid: ae5be34403f74e4aaf6e009cf71f1f9b
+  - enabled: 1
+    path: Assets/Scenes/CameraCompositionLab.unity
+    guid: 48d92f8e04a94bb29e65e259b6af129a
+  - enabled: 1
+    path: Assets/Scenes/VisibilityLab.unity
+    guid: 5edd16239f82425fa7cbcf40e88696f0
   m_configObjects: {}

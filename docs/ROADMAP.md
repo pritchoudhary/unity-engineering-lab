@@ -43,6 +43,12 @@ Week 3: Scene Placement browser and native workflow milestones are recorded in P
 
 Monday’s Steering Behaviors milestone has working arrival, local avoidance and pursuit studies in the browser and the saved native SteeringLab scene. Native model and scripted Play checks plus browser interaction checks passed. Evasion remains future scope, and the bounded bypass rule is not general navigation. Ballistics closing-target visual verification is now complete in browser and native Play. Thursday’s next proposed project remains Flocking; hardware-input, physics/NavMesh and player/export checks remain tracked carryover.
 
+## November 24 accelerated batch and presentation work
+
+At the user’s request, Flocking, Camera Composition and Visibility were brought forward to make ten implemented browser projects. Each new project has three analytical applications, saved native scenes and a separate input-driven mission. The new native models passed 98 checks; mission completion/control checks and visual review are recorded separately in PROGRESS.md. This acceleration does not complete the remaining release checks or the new presentation standard.
+
+The user rejected the prototype Unity appearance and requested a professional visual pass across all ten. The shared studio presentation is being validated. The Portfoliobox creativity/performance plan is in EXPERIENCE-REDESIGN.md; planned responsiveness targets are not measured results. Resolve the visual/input review and publishing milestone before starting Week 6. Retain hardware/player/export carryover and later roadmap dependencies.
+
 ## Scope boundaries and weekly workflow
 
 - Monday: review carryover, implement and validate the first project; establish the second project's shared core and demonstrations when feasible.

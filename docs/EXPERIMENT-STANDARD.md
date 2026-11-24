@@ -23,3 +23,7 @@ For each project, create a short video brief following [YOUTUBE-PLAN.md](YOUTUBE
 User requirement, November 16, 2026: every native Editor tool needs a corresponding saved Unity scene that makes its purpose understandable inside Unity. Ship working example objects, useful initial settings, in-Unity instructions and a learning task. Link to the scene from the tool. Validation/build helper scripts use the scene of the tool they support. Check scene import and required component references. Keep Play mode, visual interaction and build validation claims tied to actual checks.
 
 Play mode must communicate the experiment clearly in the Game view. Provide framed visuals, readable labels, on-screen controls and evidence. Important paths and comparisons must render in Game view. Verify the presentation with actual native Play-mode checks and captures. Check narrow Game views and keep long instructions scrollable.
+
+## November 24 — native play and presentation
+
+All ten native projects also need a distinct player-controlled mission: a clear goal, direct interaction, meaningful failure/retry and state-based completion. Start paused; do not auto-cycle content. Preserve the analytical application suite. Native presentation must use deliberate framing, readable custom controls and coherent scene art. Check actual Game-view sizes and pointer/keyboard mapping; a passing model test alone does not certify player experience. Website flair and performance must follow EXPERIENCE-REDESIGN.md, with observed results kept distinct from targets.

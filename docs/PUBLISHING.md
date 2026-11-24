@@ -51,3 +51,7 @@ Portfoliobox embeds have their own scrolling and an explicit full-window fallbac
 No new native Unity, player or WebGL validation occurred during this publishing work. These remain JavaScript browser lessons with separately documented native Unity implementations. No YouTube footage was recorded, and no content was uploaded or posted externally beyond the authorized portfolio publication.
 
 An earlier private, unpublished Sites draft and separate source checkout exist, but they were not deployed or connected to this domain. Continue on Portfoliobox unless the user changes this preference.
+
+## November 24 accelerated content batch
+
+The source now contains ten browser projects, the revised Lumos/TIMS career facts, and the Contact source-repository destination. The current native studio work is separate from the browser release. The planned creative teaching/performance redesign is described in EXPERIENCE-REDESIGN.md; do not report planned budgets as measured embedded-site performance. Actual artifact commit and live checks are recorded in PROGRESS.md when the release completes.

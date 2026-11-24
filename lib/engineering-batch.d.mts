@@ -1,0 +1,9 @@
+export const duration:number;
+export function inspectRun(run:any,t:number):any;
+export function runFlock(mode:number,p?:any):any;
+export function runCamera(mode:number,p?:any):any;
+export function runVisibility(mode:number,p?:any):any;
+export function projectPoint(x:number,y:number,z:number,yaw:number,distance:number,fov:number):any;
+export function segmentDisk(ax:number,ay:number,bx:number,by:number,cx:number,cy:number,r:number):number|null;
+export function clearSegment(a:any,b:any,obstacles:any[],radius?:number):boolean;
+export function validateInput(mode:number,p:any):void;

@@ -1,6 +1,6 @@
 # Unity Engineering Lab
 
-Pritish Choudhary's local portfolio rebuild. This is a review draft, not a published replacement for pritishchoudhary.com.
+Pritish Choudhary's Unity Engineering Lab. The browser portfolio is embedded in the existing Portfoliobox site at pritishchoudhary.com. Native Unity scenes are a separate experience; browser lessons are not Unity WebGL builds.
 
 ## Run the portfolio
 
@@ -42,7 +42,7 @@ The browser companion is JavaScript, not a Unity WebGL build. Planned project pa
 
 ## Publication
 
-Keep the original site live. Domain migration and public publishing require approval. Search indexing is disabled in the draft metadata. Remote repository setup, preview hosting and Unity/WebGL validation remain tracked in `docs/PROGRESS.md`.
+The authorized portfolio publication keeps Portfoliobox and the existing domain. A separate public repository contains generated static browser artifacts; this repository contains the source. See `docs/PUBLISHING.md`. Further domain migration or repository visibility changes require explicit approval. Actual native/player/WebGL validation is tracked in `docs/PROGRESS.md`.
 
 ### Guided suspension lesson
 The featured browser lesson now uses a separate SI-unit, one-mass base-excitation model (`lib/suspension.mjs`). Visitors predict the effect of damping, compare against a fixed weak-damper reference, inspect displacement/acceleration traces, and meet two competing design briefs. RK4 integrates at 240 Hz. Tests cover timestep convergence, bump continuity, settling criteria, and achievable brief targets. The targets are teaching constraints, not safety criteria. Wheel/tire dynamics and contact are omitted. This new model is browser-only and has not been ported to the Unity project.
@@ -75,3 +75,11 @@ Every Editor tool has a saved demonstration scene. In Unity, choose **Tools → 
 Ballistics now has a native lesson at `unity/Assets/Scenes/BallisticsLab.unity`, with three practical applications and manual playback. Open it directly or choose **Tools → Engineering Lab → Open Ballistics Lab**, then press Play. See [Ballistics](docs/BALLISTICS.md). Its browser companion at `/projects/ballistics-lab/` now covers the same three studies. Native physical input, Rigidbody comparison and exported player validation remain pending.
 
 Steering Behaviors adds docking, local obstacle avoidance and courier pursuit at `/projects/steering-behaviors/`. Open `unity/Assets/Scenes/SteeringLab.unity` or **Tools → Engineering Lab → Open Steering Behaviors** for the paused native lesson. See [Steering studies](docs/STEERING.md) for controls, comparisons and verified limits.
+
+## Ten projects and native missions
+
+The three new projects are [Flocking](docs/flocking-lab.md), [Camera Composition](docs/camera-composition.md) and [Visibility & Occlusion](docs/visibility-occlusion.md), each with three practical analytical applications. Their C# models ran 98 native Unity checks. The source includes an exported 27-run Unity fixture for browser parity.
+
+All ten saved scenes include a separate mission layer. In Unity choose **Tools → Engineering Lab → Open Native Mission Selector**, open a scene and press Play. Missions start paused. Use **Open analytical lab** to inspect the original fixed-reference studies. See [native mission controls and scope](docs/NATIVE-MISSIONS.md) and [the visual/teaching/performance plan](docs/EXPERIENCE-REDESIGN.md). Mission validation runs in Play mode through **Validate Ten Native Missions**; it creates a temporary runtime test world and stops Play after success. Use an isolated review project.
+
+The native mission layer is not a production game or an exported player. Keep visual review, physical input, model checks and export validation distinct. Source geometry, studio shader and HUD assets are original; no third-party asset pack or music is bundled.
