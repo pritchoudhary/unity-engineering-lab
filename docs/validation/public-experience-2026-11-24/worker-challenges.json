@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "flocking-lab",
+    "name": "Migrating flock",
+    "workerMs": "5.199999999254942",
+    "challenge": "passed"
+  },
+  {
+    "slug": "flocking-lab",
+    "name": "School under threat",
+    "workerMs": "2.300000000745058",
+    "challenge": "passed"
+  },
+  {
+    "slug": "flocking-lab",
+    "name": "Gate transfer",
+    "workerMs": "2.599999997764826",
+    "challenge": "passed"
+  },
+  {
+    "slug": "camera-composition",
+    "name": "Platformer framing",
+    "workerMs": "0.30000000074505806",
+    "challenge": "passed"
+  },
+  {
+    "slug": "camera-composition",
+    "name": "Racing look-ahead",
+    "workerMs": "0.10000000149011612",
+    "challenge": "passed"
+  },
+  {
+    "slug": "camera-composition",
+    "name": "Inspection orbit",
+    "workerMs": "0.5",
+    "challenge": "passed"
+  },
+  {
+    "slug": "visibility-occlusion",
+    "name": "Camera obstruction",
+    "workerMs": "0.19999999925494194",
+    "challenge": "passed"
+  },
+  {
+    "slug": "visibility-occlusion",
+    "name": "Enemy sight memory",
+    "workerMs": "0.30000000074505806",
+    "challenge": "passed"
+  },
+  {
+    "slug": "visibility-occlusion",
+    "name": "Interaction eligibility",
+    "workerMs": "0.5",
+    "challenge": "passed"
+  }
+]

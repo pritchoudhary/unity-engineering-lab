@@ -34,7 +34,7 @@ These are targets, not measured guarantees. Zero lag cannot be promised across a
 - Use compressed, appropriately sized stills, deliberate font loading and minimal third-party scripts. Do not add trackers or large animation libraries for decoration.
 - Check 390/768/1280 px layouts, keyboard/touch controls, no horizontal overflow, readable focus states and contrast.
 - Measure the real pritishchoudhary.com Portfoliobox iframe, as well as the standalone compiled app: parent scripts and nested scrolling can affect responsiveness.
-- Resolve the currently observed production hydration warning before publishing the three new projects. Development server file-watch failures are tooling issues and must not be described as a passing browser review.
+- The fragmented SVG-title hydration warning was resolved and the three-project batch published. Keep the browser console check as a regression gate. Development server file-watch failures are tooling issues and must not be described as a passing browser review.
 
 ## Delivery order
 
@@ -45,3 +45,7 @@ These are targets, not measured guarantees. Zero lag cannot be promised across a
 5. Publish the verified website update, update resume/contact/native metadata, then prepare manual LinkedIn drafts using only completed claims.
 
 Keep unfinished work in PROGRESS.md. No LinkedIn/YouTube publication or source-repository visibility change is authorized by this plan.
+
+## November 24 continuation
+
+The user explicitly authorized making the existing source repository public; GitHub now reports isPrivate=false. Current Contact/footer copy is being updated accordingly. The first website slice implements the playable spring hook and request-only full lesson, route-level client splitting, worker-backed Flocking/Camera/Visibility calculations with bounded caching/latest-input handling, and offscreen/hidden-tab pause for the shared timeline. Remaining projects retain their established analytical flows; this does not complete the planned creative redesign across all ten. Verify and record this slice before extending it.

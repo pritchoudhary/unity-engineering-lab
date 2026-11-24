@@ -8,3 +8,7 @@ unity/Logs/
 unity/obj/
 unity/UserSettings/
 .DS_Store
+
+# Local credentials never belong in the public source tree.
+.env*
+!.env.example

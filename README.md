@@ -42,7 +42,7 @@ The browser companion is JavaScript, not a Unity WebGL build. Planned project pa
 
 ## Publication
 
-The authorized portfolio publication keeps Portfoliobox and the existing domain. A separate public repository contains generated static browser artifacts; this repository contains the source. See `docs/PUBLISHING.md`. Further domain migration or repository visibility changes require explicit approval. Actual native/player/WebGL validation is tracked in `docs/PROGRESS.md`.
+The authorized portfolio publication keeps Portfoliobox and the existing domain. A separate repository contains generated static browser artifacts; this public repository contains the source. See `docs/PUBLISHING.md`. Further domain migration or repository visibility changes require explicit approval. Actual native/player/WebGL validation is tracked in `docs/PROGRESS.md`.
 
 ### Guided suspension lesson
 The featured browser lesson now uses a separate SI-unit, one-mass base-excitation model (`lib/suspension.mjs`). Visitors predict the effect of damping, compare against a fixed weak-damper reference, inspect displacement/acceleration traces, and meet two competing design briefs. RK4 integrates at 240 Hz. Tests cover timestep convergence, bump continuity, settling criteria, and achievable brief targets. The targets are teaching constraints, not safety criteria. Wheel/tire dynamics and contact are omitted. This new model is browser-only and has not been ported to the Unity project.
@@ -83,3 +83,11 @@ The three new projects are [Flocking](docs/flocking-lab.md), [Camera Composition
 All ten saved scenes include a separate mission layer. In Unity choose **Tools → Engineering Lab → Open Native Mission Selector**, open a scene and press Play. Missions start paused. Use **Open analytical lab** to inspect the original fixed-reference studies. See [native mission controls and scope](docs/NATIVE-MISSIONS.md) and [the visual/teaching/performance plan](docs/EXPERIENCE-REDESIGN.md). Mission validation runs in Play mode through **Validate Ten Native Missions**; it creates a temporary runtime test world and stops Play after success. Use an isolated review project.
 
 The native mission layer is not a production game or an exported player. Keep visual review, physical input, model checks and export validation distinct. Source geometry, studio shader and HUD assets are original; no third-party asset pack or music is bundled.
+
+## Public source and responsive website
+
+As explicitly requested on November 24, this repository is now public: https://github.com/pritchoudhary/unity-engineering-lab. The current/history credential-pattern review examined 847 Git objects / 549 blobs and found no candidate credentials or resume contact details. This is a scoped automated review, not a guarantee against every possible sensitive detail. Historic progress entries describe the visibility at their original dates.
+
+The homepage starts with a lightweight analytic spring comparison; visitors predict, test and inspect the result. It starts paused and respects reduced motion. The full four-application lesson opens on request. Each experiment's main component loads separately. Flocking/Camera/Visibility calculations run in a worker, cache bounded deterministic results, and accept only the latest requested comparison. Controls remain available during calculation; stale measurements are hidden.
+
+For local performance review, append `?labPerf=1` to a route. The hidden `#lab-performance-report` output samples visible requestAnimationFrame cadence, supported Event Timing entries (16 ms threshold), long tasks and observed JavaScript resource sizes. Normal visits do not run this sampler. These are diagnostic samples on the review browser, not universal device or frame-rendering guarantees. No telemetry is sent.
