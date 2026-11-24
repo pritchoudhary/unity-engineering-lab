@@ -1,0 +1,45 @@
+{
+  "paths": [
+    {
+      "active": [
+        "Experience"
+      ],
+      "overflow": false,
+      "url": "/experience"
+    },
+    {
+      "active": [
+        "Skills"
+      ],
+      "overflow": false,
+      "url": "/capabilities"
+    },
+    {
+      "active": [
+        "Contact"
+      ],
+      "overflow": false,
+      "url": "/connect"
+    },
+    {
+      "active": [
+        "Engineering Lab"
+      ],
+      "overflow": false,
+      "url": "/engineeringlab"
+    }
+  ],
+  "mobileAbout": {
+    "url": "/about",
+    "width": 390,
+    "overflow": false
+  },
+  "steering": {
+    "slowingRadius": 2,
+    "overshoot": 0.02,
+    "settlingTime": 5.27,
+    "challenge": "met",
+    "parentUrl": "https://www.pritishchoudhary.com/engineeringlab"
+  },
+  "console": []
+}

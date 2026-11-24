@@ -1,0 +1,17 @@
+I’m rebuilding my Unity portfolio as a collection of small, interactive engineering labs.
+
+Each experiment starts with a practical use case. You can change a few inputs, compare a fixed reference and see the trade-offs for yourself.
+
+The current collection includes:
+• Spring dynamics for suspension, interface motion, camera tracking and impacts
+• Tools for scene health, curves and object placement
+• Ballistics for aiming, timed throws and moving targets
+• Steering for docking, obstacle avoidance and pursuit
+
+The goal is to make the learning visible: where a system helps, what changes between applications, and where the simplified model stops being useful.
+
+The browser studies have matching native Unity implementations. This is a growing lab, with validation notes and limitations kept alongside the work.
+
+Explore it here: https://pritishchoudhary.com
+
+#Unity #GameDevelopment #InteractiveLearning

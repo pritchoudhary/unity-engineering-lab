@@ -1,0 +1,17 @@
+A robot that starts slowing down too late can overshoot its destination even when its top speed seems reasonable.
+
+In my Steering Behaviors study, I kept the speed limit at 3 m/s and acceleration at 4 m/s², then changed only the slowing radius:
+
+• 0.5 m radius: 0.71 m overshoot, settling in 6.59 s
+• 2 m radius: 0.02 m overshoot, settling in 5.27 s
+• 6 m radius: no overshoot, but settling takes 9.86 s
+
+That last comparison is useful: removing overshoot can still make arrival unnecessarily slow.
+
+The lab transfers the same desired-velocity idea to avoiding a storage drum and pursuing a moving courier. Each study has a fixed comparison, a small challenge and a repeatable stress case.
+
+Try it: https://pritishchoudhary.com/engineeringlab
+
+The avoidance example uses one known obstacle and a fixed free-lane marker. It’s a bounded learning model; global navigation and production collision handling remain separate work.
+
+#Unity #GameAI #GameDevelopment

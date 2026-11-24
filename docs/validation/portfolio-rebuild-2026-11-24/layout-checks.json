@@ -1,0 +1,56 @@
+[
+  {
+    "h1": "I like to makethe mechanism visible.",
+    "overflow": false,
+    "url": "/about/",
+    "width": 1280
+  },
+  {
+    "h1": "Systems builtwith real constraints.",
+    "overflow": false,
+    "url": "/experience/",
+    "width": 1280
+  },
+  {
+    "h1": "Capabilities,with something to inspect.",
+    "overflow": false,
+    "url": "/skills/",
+    "width": 1280
+  },
+  {
+    "h1": "Have a systemworth exploring?",
+    "overflow": false,
+    "url": "/contact/",
+    "width": 1280
+  },
+  {
+    "h1": "Unity engineering.Made explorable.",
+    "overflow": false,
+    "url": "/",
+    "width": 390
+  },
+  {
+    "h1": "I like to makethe mechanism visible.",
+    "overflow": false,
+    "url": "/about/",
+    "width": 390
+  },
+  {
+    "h1": "Systems builtwith real constraints.",
+    "overflow": false,
+    "url": "/experience/",
+    "width": 390
+  },
+  {
+    "h1": "Capabilities,with something to inspect.",
+    "overflow": false,
+    "url": "/skills/",
+    "width": 390
+  },
+  {
+    "h1": "Have a systemworth exploring?",
+    "overflow": false,
+    "url": "/contact/",
+    "width": 390
+  }
+]

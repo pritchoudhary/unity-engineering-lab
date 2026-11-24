@@ -1,0 +1,19 @@
+Aiming at a moving target means accounting for where it will be when the projectile arrives.
+
+My Ballistics Lab explores three different constraints on the same constant-gravity model:
+
+• Choose a launch speed and compare low and high arcs
+• Choose a fuse time, then check the launch-speed budget and cover clearance
+• Predict a moving target’s position at arrival
+
+One comparison makes the difference clear: with an 18 m starting distance and a target moving away at 6 m/s, aiming at its current position misses by 5.54 m in the model.
+
+The interception solve leads the target instead.
+
+You can change the inputs, inspect the arrival frame and deliberately try an impossible shot.
+
+Explore: https://pritishchoudhary.com/engineeringlab
+
+The assumptions matter: constant gravity, no drag and constant target velocity. The browser animation and native mathematical lesson are distinct from a validated PhysX projectile controller.
+
+#Unity #GamePhysics #GameDevelopment

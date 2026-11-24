@@ -1,0 +1,15 @@
+The same spring model can become a suspension, an interface transition, a camera follow system or an impact reaction.
+
+The equation is shared. The job changes.
+
+A suspension follows a road input. An interface may be interrupted before its motion finishes. A camera must respond when its target reverses direction. An impact reaction has to recover after repeated impulses.
+
+That’s the idea behind my Spring Physics Lab: several practical applications, useful tunables and comparisons you can inspect rather than just watch.
+
+Changing damping can reduce oscillation, but the best setting depends on what the system needs to do. The lesson is in that trade-off.
+
+Try the studies: https://pritishchoudhary.com/engineeringlab
+
+These are controlled teaching models. Production vehicle, camera and UI systems still need their own constraints and validation.
+
+#Unity #GamePhysics #GameDevelopment
