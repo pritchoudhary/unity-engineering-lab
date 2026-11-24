@@ -28,3 +28,12 @@ The shared studio foundation adds original beveled meshes, an intentionally boun
 Native Unity 6000.5.2f1 passed 76 mission checks after the visual changes, including all ten reachable goals, paused holds, reset, Lab toggles, duplicate-placement/Undo, shot pause/resume and nine viewport-to-floor round trips. The side-on Ballistics camera uses buttons rather than floor picking. These are controlled Play-mode inputs, not a full hardware-input certification.
 
 A physical mouse review of Flocking placed the guide at the collection zone and completed 18/24 in 3.36 s. The initial pointer offset was corrected with explicit viewport coordinates. Actual review capture: validation/native-missions-2026-11-24/flocking-studio-pointer-completion.png. This is a still, not footage. Other projects still need comprehensive physical-control/ergonomic review. Player/WebGL exports remain unvalidated.
+
+
+## Playable scenario revision under review
+
+The preferred direction is polished playable scenarios. The review branch removes the large mission-objective panel, adds scene action labels and moves controls/measurements to a compact inspector. Tuning supports presets, a visible filled rail, numeric entry and +/- steps with units and trade-off guidance. Game views below 860 × 600 logical pixels show an enlargement prompt rather than tiny controls; maximize the Game tab for the composed layout.
+
+Drag cargo directly to set its paused starting position; Run releases it. Drag either orange spline handle to edit the route; edits rewind the courier and Run tests the new route. Spring dragging temporarily pauses a running carriage and resumes it on release. Scene Health requires inspection before a repair and disables repairs for already-healthy states. Ballistics shows a predicted trajectory before launch and freezes tuning during an active shot. Switching away from Unity pauses the scenario. The application studies remain available from the top-right action.
+
+The new interaction slice does not mean every environment has reached final art quality. Comprehensive physical-input review and player/WebGL export validation remain separate requirements. See the current revision's validation report for executed checks and captures.

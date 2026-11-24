@@ -261,3 +261,10 @@ Made the existing source repository public on the user's explicit request and pu
 ### November 24 — Straightened the interactive homepage card
 
 Removed the decorative one-degree rotation from the homepage experiment card and legacy field-guide card after the user flagged the crooked controls/text. Production static build passed; inspected exported CSS confirms spring-intro has transform:none and no one-degree rotation remains. No new behavioral or native validation is claimed for this CSS-only correction.
+
+
+## November 24 — Native playable scenario interaction revision under review
+
+The user rejected the previous native missions and selected polished playable scenarios. On refine/native-workbench-interaction, replaced the large objective sidebar with a scenario question, in-scene action labels and a readable right inspector. Added presets with trade-off explanations, numeric/step controls, meaningful state-based repairs, ballistic path preview, cargo/rail direct dragging and a closer loading-bay art slice. This is the first interaction revision across ten saved scenes; neither the broader environments nor original analytical interfaces are considered visually finished.
+
+Native Unity passed 99 scenario checks before final HUD cleanup. Actual physical Spring tuning/drag and both spline handles passed after removing a duplicate floating Game view in the isolated review project. Final Editor and runtime source configurations compiled with Unity's Roslyn compiler and installed assemblies. Subsequent computer-use window access failed with cgWindowNotFound, so an exact-final visual/Play rerun remains pending. Actual evidence, failed attempts and validation boundaries are in validation/native-scenarios-2026-11-24/results.md. Temporary review helpers/autorun flags were removed. No server was started, no website release was made and changes await PR review before merge.

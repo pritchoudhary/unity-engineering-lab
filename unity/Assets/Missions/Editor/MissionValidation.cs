@@ -17,7 +17,13 @@ namespace EngineeringLab.Missions.Editor
             foreach(var root in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())root.SetActive(false);
             for(int k=0;k<10;k++){
                 var go=new GameObject("Mission validation "+k);var m=go.AddComponent<NativeMission>();m.enabled=false;m.kind=k;m.Build();
-                Check(!m.running&&!m.complete,"manual start "+k);if(k!=5){var expected=new Vector3(2,0,1);var projected=m.MissionCamera.WorldToScreenPoint(expected);Check(m.TryFloorPoint(projected,out var actual)&&Vector3.Distance(actual,expected)<.002f,"viewport pointer round-trip "+k);}m.Step(Vector2.one,1);Check(m.elapsed==0,"paused holds "+k);
+                Check(!m.running&&!m.complete,"manual start "+k);
+                var viewport=m.ScenarioViewport;
+                Check(viewport.x>=0&&viewport.y>=0&&viewport.xMax<=1&&viewport.yMax<=1,"scene viewport bounded "+k);
+                float initial=m.tuning;m.SetTuning(float.NaN);m.SetTuning(float.PositiveInfinity);Check(m.tuning==initial,"invalid tuning ignored "+k);
+                if(k==0){m.Point(new Vector3(-2,0,0));Check(Math.Abs(m.Avatar.position.x+2)<.001&&!m.running,"cargo position updates while paused");m.Point(new Vector3(3,0,0));}
+                if(k==2){m.SetTuning(-100);Check(m.tuning==600,"damper lower bound");m.SetTuning(10000);Check(m.tuning==4000,"damper upper bound");}
+                if(k!=5){var expected=new Vector3(2,0,1);var vp=m.MissionCamera.WorldToViewportPoint(expected);var vr=m.ScenarioViewport;var projected=new Vector2((vr.x+vp.x*vr.width)*Screen.width,(vr.y+vp.y*vr.height)*Screen.height);Check(m.TryFloorPoint(projected,out var actual)&&Vector3.Distance(actual,expected)<.002f,"viewport pointer round-trip "+k);}m.Step(Vector2.one,1);Check(m.elapsed==0,"paused holds "+k);
                 if(k==0){m.SetTuning(11);m.StartMission();Run(m,800);}
                 if(k==1){for(int i=0;i<3;i++){m.Point(new Vector3(-4+i*4,0,0));m.Scan();m.Repair(i);}}
                 if(k==2){m.SetTuning(1000);m.StartMission();Run(m,220);}

@@ -49,3 +49,14 @@ Keep unfinished work in PROGRESS.md. No LinkedIn/YouTube publication or source-r
 ## November 24 continuation
 
 The user explicitly authorized making the existing source repository public; GitHub now reports isPrivate=false. Current Contact/footer copy is being updated accordingly. The first website slice implements the playable spring hook and request-only full lesson, route-level client splitting, worker-backed Flocking/Camera/Visibility calculations with bounded caching/latest-input handling, and offscreen/hidden-tab pause for the shared timeline. Remaining projects retain their established analytical flows; this does not complete the planned creative redesign across all ten. Verify and record this slice before extending it.
+
+
+## Native feedback revision — November 24
+
+The user rejected the studio missions as unintuitive and visually amateurish, including their typography and sliders. Their chosen direction is **polished playable scenarios**, not an engineering workbench or mostly passive visual lessons. Treat this as a product-direction correction, not approval of the current art.
+
+The review branch replaces the dominant objective sidebar with a scenario question, scene-attached action labels and a right-hand inspector. Controls keep readable text, useful presets with trade-off explanations, precise numeric entry and +/- adjustment. Spring cargo and spline handles use direct dragging. Scene Health exposes inspected state and enables only relevant repairs. A trajectory preview makes ballistic tuning visible before launch. A more closely framed cargo loading bay is the first contextual art slice.
+
+This remains a bounded interaction/presentation revision across the ten scenes, not ten finished games. Next: review the actual Spring/Spline interaction and art with Pritish, then develop distinct playable environments, richer practical choices and failure/retry feedback per project. Do not repeat the same board and task counter as the final treatment. Keep the analytical three-application lessons accessible; do not claim the shared HUD change completes the full creative redesign.
+
+Future implementation and website releases must follow AGENTS.md: feature branches and reviewable PRs, with explicit approval before merge or publication.
