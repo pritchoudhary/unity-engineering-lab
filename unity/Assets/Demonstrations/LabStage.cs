@@ -321,6 +321,14 @@ namespace EngineeringLab.Demonstrations
                     new Vector3(1.5f, 1.5f, 1.5f), i == study ? orange : reference);
                 if (i == 2) block.GetComponent<Renderer>().sharedMaterial = includeInactive ? teal : reference;
             }
+#if !UNITY_EDITOR
+            if (study == 0)
+            {
+                repaired = false;
+                evidence = "EDITOR-ONLY STUDY\nMissing-script inspection and repair require the Unity Editor.\n\nOpen the source project for this exercise. Required-target and pooled-dependency studies work in this player.";
+                return;
+            }
+#endif
             int errors = 0;
             foreach (var item in originalObjects)
             {
@@ -345,6 +353,9 @@ namespace EngineeringLab.Demonstrations
 
         void ResolveHealth()
         {
+#if !UNITY_EDITOR
+            if (study == 0) return;
+#endif
             var target = originalObjects.FirstOrDefault(item => item && item.name.StartsWith("Handoff target"));
             foreach (var item in originalObjects)
             {
@@ -469,13 +480,27 @@ namespace EngineeringLab.Demonstrations
             if (tool == DemoLesson.Tool.SceneHealth)
             {
                 includeInactive = GUILayout.Toggle(includeInactive, "Include inactive pool");
+#if UNITY_EDITOR
                 if (GUILayout.Button("Resolve selected exercise")) { ResolveHealth(); GUI.changed = true; }
+#else
+                bool canRepair = GUI.enabled;
+                GUI.enabled = canRepair && study != 0;
+                if (GUILayout.Button(study == 0 ? "Missing-script repair · Editor only" : "Resolve selected exercise")) { ResolveHealth(); GUI.changed = true; }
+                GUI.enabled = canRepair;
+#endif
             }
             if (GUI.changed && (tool == DemoLesson.Tool.Placement || tool == DemoLesson.Tool.SceneHealth || tool == DemoLesson.Tool.Spline)) Rebuild();
             GUILayout.Space(18); GUILayout.Label("TRY IT", small);
             GUILayout.Label(Challenge(), body);
             if (tool == DemoLesson.Tool.Vehicle) GUILayout.Label("Orange = tuned · grey = standard\nMotion and pitch exaggerated 3×", small);
-            if (tool == DemoLesson.Tool.SceneHealth) GUILayout.Label("Repairs affect the loaded fixtures during Play mode. Stop Play mode to restore the saved exercise. Review serialized findings with the Editor inspector.", small);
+            if (tool == DemoLesson.Tool.SceneHealth)
+            {
+#if UNITY_EDITOR
+                GUILayout.Label("Repairs affect the loaded fixtures during Play mode. Stop Play mode to restore the saved exercise. Review serialized findings with the Editor inspector.", small);
+#else
+                GUILayout.Label("Repairs affect this loaded scene only. Reopen the lab from Labs to restore its fixtures. Missing-script repair requires the Unity Editor source project.", small);
+#endif
+            }
             GUILayout.EndScrollView(); GUILayout.EndArea();
             DrawTransport(panel);
             DrawResults(panel);

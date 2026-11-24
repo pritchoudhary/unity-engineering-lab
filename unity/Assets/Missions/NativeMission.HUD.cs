@@ -1,51 +1,275 @@
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+
 namespace EngineeringLab.Missions
 {
  public sealed partial class NativeMission
  {
-  readonly Dictionary<Color,GUIStyle> cardStyles=new Dictionary<Color,GUIStyle>();
-  readonly Dictionary<Color,Texture2D> surfaces=new Dictionary<Color,Texture2D>();
-  GUIStyle hudTitle,hudBody,hudSmall,hudKicker,hudNumber,hudButton,hudSlider,hudThumb;
-  static Color Paper=>new Color(.88f,.92f,.92f);
-  static Color Muted=>new Color(.53f,.63f,.67f);
-  static Color Surface=>new Color(.085f,.12f,.145f,.98f);
-  static readonly string[] ShortGoals={"Settle the cargo inside the docking tolerance.","Diagnose and repair three service stations.","Find a smoother ride without losing wheel contact.","Shape a track through both courier gates.","Build a nine-piece exhibit without duplicates.","Land three shots with three different constraints.","Deliver to the three numbered pads in order.","Shepherd 18 drones into the collection zone.","Hit three marks while keeping the actor in frame.","Reach and activate three relays around cover."};
-  Texture2D SurfaceTexture(Color color){if(surfaces.TryGetValue(color,out var t))return t;t=new Texture2D(48,48,TextureFormat.RGBA32,false){name="Runtime HUD surface",filterMode=FilterMode.Bilinear};for(int y=0;y<48;y++)for(int x=0;x<48;x++){float dx=Mathf.Max(8.5f-x,x-38.5f),dy=Mathf.Max(8.5f-y,y-38.5f);float alpha=1-Mathf.Clamp01(Mathf.Sqrt(Mathf.Pow(Mathf.Max(0,dx),2)+Mathf.Pow(Mathf.Max(0,dy),2))-8);t.SetPixel(x,y,new Color(color.r,color.g,color.b,color.a*alpha));}t.Apply();surfaces[color]=t;return t;}
-  GUIStyle LabelStyle(int size,Color color,bool bold=false){var s=new GUIStyle(GUI.skin.label){fontSize=size,fontStyle=bold?FontStyle.Bold:FontStyle.Normal,wordWrap=true,padding=new RectOffset(0,0,0,0)};s.normal.textColor=color;return s;}
-  void HUDStyles(){if(hudTitle!=null)return;hudTitle=LabelStyle(25,Paper,true);hudBody=LabelStyle(16,Paper);hudSmall=LabelStyle(13,Muted);hudKicker=LabelStyle(11,Teal,true);hudNumber=LabelStyle(21,Paper,true);hudButton=new GUIStyle(GUI.skin.button){fontSize=14,fontStyle=FontStyle.Bold,padding=new RectOffset(12,12,8,8),border=new RectOffset(12,12,12,12),wordWrap=true};hudButton.normal.background=SurfaceTexture(new Color(.15f,.21f,.245f));hudButton.hover.background=SurfaceTexture(new Color(.23f,.31f,.34f));hudButton.active.background=SurfaceTexture(new Color(.29f,.38f,.40f));hudButton.normal.textColor=hudButton.hover.textColor=hudButton.active.textColor=Paper;hudSlider=new GUIStyle(){fixedHeight=6,normal={background=SurfaceTexture(new Color(.23f,.30f,.33f))},border=new RectOffset(8,8,8,8)};hudThumb=new GUIStyle(){fixedWidth=18,fixedHeight=18,normal={background=SurfaceTexture(Teal)},hover={background=SurfaceTexture(Paper)},active={background=SurfaceTexture(Orange)},border=new RectOffset(8,8,8,8)};}
-  void Card(Rect r,Color color){if(Event.current.type!=EventType.Repaint)return;if(r.height<24){var old=GUI.color;GUI.color=color;GUI.DrawTexture(r,Texture2D.whiteTexture);GUI.color=old;return;}if(!cardStyles.TryGetValue(color,out var style)){style=new GUIStyle(){border=new RectOffset(12,12,12,12)};style.normal.background=SurfaceTexture(color);cardStyles[color]=style;}style.Draw(r,false,false,false,false);}
-  bool Action(Rect r,string label,bool primary=false){Color old=GUI.backgroundColor;if(primary)GUI.backgroundColor=Teal;bool hit=GUI.Button(r,label,hudButton);GUI.backgroundColor=old;return hit;}
-  float HUDScale=>Mathf.Max(.55f,Mathf.Min(Screen.width/1440f,Screen.height/900f));
-  bool PointerOverHUD(Vector3 p){return p.x<Screen.width*.22f||p.y<Screen.height*.15f||p.y>Screen.height*.9f;}
-  float CompletionFraction(){if(kind==0)return Mathf.Clamp01(stable/.5f);if(kind==2)return Mathf.Clamp01(elapsed/4);return Mathf.Clamp01(progress/(kind==3?2f:kind==4?9f:kind==7?18f:3f));}
-  string Evidence(){if(kind==0)return "Position  "+springX.ToString("F3")+" m\nVelocity  "+springV.ToString("F3")+" m/s";if(kind==2)return "Body acceleration  "+vehicle.Rms.ToString("F2")+" m/s²\nReference  "+weakVehicle.Rms.ToString("F2")+" m/s²";if(kind==7)return inside+" / 24 drones collected";if(kind==8)return "Viewport containment  "+(VisibleFraction*100).ToString("F1")+"%";return progress+" / "+(kind==3?2:kind==4?9:3)+" objectives complete";}
-  void OnGUI(){
-   if(missionMode&&Event.current.type==EventType.MouseDown&&Event.current.button<=1){Vector3 mouse=new Vector3(Event.current.mousePosition.x,Screen.height-Event.current.mousePosition.y,0);if(!PointerOverHUD(mouse)&&TryFloorPoint(mouse,out var point)){Point(point,Event.current.button==1);Event.current.Use();}}
-
-   HUDStyles();float scale=HUDScale,w=Screen.width/scale,h=Screen.height/scale;Matrix4x4 previous=GUI.matrix;GUI.matrix=Matrix4x4.Scale(new Vector3(scale,scale,1));
-   if(!missionMode){if(Action(new Rect(w-248,18,230,40),"← Return to mission",true))SetMissionMode(true);GUI.matrix=previous;return;}
-   // A quiet instrument-panel layout reserves the centre for the actual 3D scene.
-   Card(new Rect(16,16,w-32,68),Surface);Card(new Rect(30,29,42,42),new Color(.13f,.28f,.29f));GUI.Label(new Rect(40,39,30,22),"UL",hudKicker);GUI.Label(new Rect(88,30,360,18),"UNITY ENGINEERING LAB  /  MISSION "+(kind+1).ToString("00"),hudKicker);GUI.Label(new Rect(88,49,400,24),Titles[kind],hudNumber);
-   string state=complete?"COMPLETED":running?"IN PROGRESS":"READY · PAUSED";GUI.Label(new Rect(w-436,40,180,22),state,complete?LabelStyle(13,Teal,true):hudSmall);if(Action(new Rect(w-232,30,198,40),"Open analytical lab  ↗"))SetMissionMode(false);
-   float left=20,side=Mathf.Max(230,w*.205f-26),cardTop=110,cardHeight=h-318;
-   Card(new Rect(left,cardTop,side,cardHeight),Surface);GUI.Label(new Rect(left+18,cardTop+18,side-36,18),"YOUR OBJECTIVE",hudKicker);GUI.Label(new Rect(left+18,cardTop+47,side-36,105),ShortGoals[kind],hudTitle);
-   Rect clip=new Rect(left+18,cardTop+165,side-30,Mathf.Max(90,cardHeight-181));float contentHeight=kind==1?400:kind==5?325:285;scroll=GUI.BeginScrollView(clip,scroll,new Rect(0,0,clip.width-16,contentHeight),false,false);float cw=clip.width-16,y=0;
-   GUI.Label(new Rect(0,y,cw,100),Controls[kind],hudBody);y+=112;
-   if(kind==0||kind==2||kind==5||kind==6||kind==8){string label=kind==0?"DAMPING  ·  N·s/m":kind==2?"DAMPER  ·  N·s/m":kind==5?(trial==1?"FUSE  ·  SECONDS":"LAUNCH SPEED  ·  m/s"):kind==6?"SLOWING RADIUS  ·  m":"DEAD ZONE  ·  m";GUI.Label(new Rect(0,y,cw,20),label,hudKicker);y+=25;GUI.Label(new Rect(0,y,cw,32),tuning.ToString(kind==2?"F0":"F2"),hudNumber);y+=44;float min=kind==2?600:kind==5?(trial==1?.7f:8):kind==6?.3f:0,max=kind==2?4000:kind==5?(trial==1?3:22):kind==6?6:kind==8?5:25;float value=GUI.HorizontalSlider(new Rect(0,y,cw,22),tuning,min,max,hudSlider,hudThumb);if(value!=tuning)SetTuning(value);y+=36;}
-   if(kind==1){GUI.Label(new Rect(0,y,cw,22),"SELECTED: STATION "+(selected+1),hudKicker);y+=30;if(Action(new Rect(0,y,cw,38),"Scan station"))Scan();y+=45;if(Action(new Rect(0,y,cw,38),"Connect power reference"))Repair(0);y+=45;if(Action(new Rect(0,y,cw,38),"Activate power unit"))Repair(1);y+=45;if(Action(new Rect(0,y,cw,38),"Enable sensor"))Repair(2);}
-   if(kind==3)GUI.Label(new Rect(0,y,cw,50),"HANDLE "+(selected+1)+" SELECTED\nRight-click switches handles.",hudSmall);
-   if(kind==4&&Action(new Rect(0,y,cw,40),"Undo last placement"))UndoPlacement();
-   if(kind==5){GUI.Label(new Rect(0,y,cw,22),"SHOT "+(trial+1)+" / 3",hudKicker);y+=30;if(trial==0&&Action(new Rect(0,y,cw,38),highArc?"Arc: high  →  use low":"Arc: low  →  use high"))ToggleArc();if(shotHit&&trial<2&&Action(new Rect(0,y,cw,38),"Next trial  →",true))NextTrial();}
-   if(kind==9&&Action(new Rect(0,y,cw,40),"Activate relay  [E]",true))Interact();GUI.EndScrollView();
-   Card(new Rect(left,h-190,side,164),Surface);GUI.Label(new Rect(left+18,h-171,side-36,18),"LIVE EVIDENCE",hudKicker);GUI.Label(new Rect(left+18,h-142,side-36,66),Evidence(),hudBody);Card(new Rect(left+18,h-58,side-36,5),new Color(.20f,.28f,.30f));float fraction=CompletionFraction();if(fraction>0)Card(new Rect(left+18,h-58,(side-36)*fraction,5),complete?Orange:Teal);GUI.Label(new Rect(left+18,h-44,side-36,18),complete?"OBJECTIVE VERIFIED":(fraction*100).ToString("F0")+"%  /  MISSION PROGRESS",hudSmall);
-   float stageX=w*.235f,dockY=h-112;Card(new Rect(stageX,dockY,w-stageX-20,86),Surface);float primaryWidth=160;
-   if(Action(new Rect(stageX+16,dockY+20,primaryWidth,44),running?"Ⅱ  Pause":kind==5?(shotActive?"Resume shot":"Launch shot  →"):"Start / resume  →",true)){if(running)running=false;else StartMission();}
-   if(Action(new Rect(stageX+188,dockY+20,92,44),"Reset"))ResetMission();GUI.Label(new Rect(stageX+300,dockY+17,w-stageX-340,50),feedback,hudBody);GUI.Label(new Rect(stageX+16,96,600,20),(kind==2?"HALF-CAR MODEL  /  MOTION ×5  /  ":"LIVE UNITY SCENE  /  ")+elapsed.ToString("F2")+" s   ·   PLAYER-CONTROLLED",hudSmall);
-   if((kind==8||kind==9)&&progress<markers.Count){var delta=markers[progress].position-actor.position;string direction=(delta.z>.7f?"N ":delta.z<-.7f?"S ":"")+(delta.x>.7f?"E":delta.x<-.7f?"W":"");GUI.Label(new Rect(w-405,96,365,22),"NEXT PAD "+(progress+1)+"  /  "+direction+"  /  "+new Vector2(delta.x,delta.z).magnitude.ToString("F1")+" m",hudKicker);}
-   for(int i=0;i<markers.Count;i++){if(!markers[i])continue;Vector3 point=view.WorldToScreenPoint(markers[i].position+Vector3.up*1.15f);if(point.z<=0)continue;float px=point.x/scale,py=(Screen.height-point.y)/scale;if(px<w*.225f||py<105||py>dockY-24)continue;Card(new Rect(px-30,py-10,60,23),Surface);GUI.Label(new Rect(px-22,py-6,52,18),(kind==1?"BAY ":kind==3?"GATE ":kind==4?"SLOT ":"PAD ")+(i+1),hudKicker);}
-   GUI.matrix=previous;
+  readonly Dictionary<Color, GUIStyle> cardStyles = new Dictionary<Color, GUIStyle>();
+  readonly Dictionary<Color, Texture2D> surfaces = new Dictionary<Color, Texture2D>();
+  GUIStyle hudTitle, hudBody, hudSmall, hudKicker, hudNumber, hudButton, hudField, hudPreset, hudSlider, hudThumb;
+  string tuningText = "";
+  float lastDisplayedTuning = float.NaN;
+  bool showMethod;
+  float inspectorContentHeight=900;
+  bool editingTuning;
+  int canvasWidth, canvasHeight;
+  void UpdateCanvasSize(){
+#if UNITY_EDITOR
+   var size=UnityEditor.Handles.GetMainGameViewSize();canvasWidth=Mathf.RoundToInt(size.x);canvasHeight=Mathf.RoundToInt(size.y);
+#else
+   canvasWidth=Screen.width;canvasHeight=Screen.height;
+#endif
   }
-  void DisposeHUD(){foreach(var t in surfaces.Values)if(t)Destroy(t);surfaces.Clear();cardStyles.Clear();}
+  float CanvasWidth => canvasWidth > 0 ? canvasWidth : Mathf.Max(1,Screen.width);
+  float CanvasHeight => canvasHeight > 0 ? canvasHeight : Mathf.Max(1,Screen.height);
+  static Color Paper => new Color(.94f, .95f, .94f);
+  static Color Muted => new Color(.68f, .74f, .76f);
+  static Color Surface => new Color(.10f, .13f, .16f);
+  static readonly string[] Questions = {
+   "Can you stop the cargo without a bounce?", "Why has the service bay stopped working?",
+   "Can a softer ride keep its wheels on the road?", "Can you thread a rail through both gates?",
+   "Can you build a clean, editable exhibit?", "Which trajectory actually reaches the target?",
+   "Can the robot arrive without overshooting?", "Can one guide move a whole group?",
+   "Can the camera follow without chasing every step?", "Can you reach a relay that you can actually see?"
+  };
+  static readonly string[] Contexts = {
+   "A spring-mounted loading carriage. Pull the cargo, release it, and watch the trade-off between bounce and delay.",
+   "Three broken service stations. Inspect their real object states and make a specific repair.",
+   "A front/rear suspension test rig. Compare the same four-second road input against a fixed weak damper.",
+   "A delivery rail with two checkpoints. Drag its orange control points to shape the route before launch.",
+   "A small exhibition layout. Place one object per slot, then undo a placement to inspect the workflow.",
+   "A range with three different constraints: a clear shot, timed cover clearance and a moving target.",
+   "A delivery robot with limited acceleration. Choose a destination and change how early it brakes.",
+   "A drone collection task. Place the guide and repulsor; the group responds through local neighbor forces.",
+   "A tracking camera on a rehearsal stage. Move the actor and compare tight following with a wider dead zone.",
+   "A relay route with solid cover. Both interaction distance and a real sight query must pass."
+  };
+  static readonly string[] NextActions = {
+   "Drag the orange cargo to set its position. Run releases it.", "Select a station in the scene, then inspect its faults.",
+   "Choose a damper setting, then run the road test.", "Drag either orange handle. The rail updates as you move it.",
+   "Click an empty ring to place an exhibit. Undo stays available.", "Set the shot, then launch. The next trial waits for you.",
+   "Click the floor to set the delivery destination.", "Choose Guide or Repulsor, then click the field. Right-click always moves the repulsor.",
+   "Press Run, then use WASD or arrow keys to move the actor.", "Press Run. Walk around cover; activate a nearby relay with E."
+  };
+
+  Texture2D SurfaceTexture(Color color) {
+   if (surfaces.TryGetValue(color, out var existing)) return existing;
+   var texture = new Texture2D(1, 1, TextureFormat.RGBA32, false) { name = "Scenario UI surface" };
+   texture.SetPixel(0, 0, color); texture.Apply(); surfaces[color] = texture; return texture;
+  }
+  GUIStyle LabelStyle(int size, Color color, bool bold = false) {
+   var style = new GUIStyle(GUI.skin.label) { fontSize = size, fontStyle = bold ? FontStyle.Bold : FontStyle.Normal,
+    wordWrap = true, padding = new RectOffset(0, 0, 0, 0) };
+   style.normal.textColor = color; return style;
+  }
+  void HUDStyles() {
+   if (hudTitle != null) return;
+   hudTitle = LabelStyle(27, Paper, true); hudBody = LabelStyle(16, Paper);
+   hudSmall = LabelStyle(14, Muted); hudKicker = LabelStyle(12, Muted, true); hudNumber = LabelStyle(22, Paper, true);
+   hudButton = new GUIStyle(GUI.skin.button) { fontSize = 15, fontStyle = FontStyle.Bold,
+    padding = new RectOffset(10, 10, 8, 8), border = new RectOffset(), wordWrap = true };
+   hudButton.normal.background = SurfaceTexture(new Color(.19f, .24f, .28f));
+   hudButton.hover.background = SurfaceTexture(new Color(.27f, .34f, .38f));
+   hudButton.active.background = SurfaceTexture(new Color(.34f, .43f, .46f));
+   hudButton.focused.background = SurfaceTexture(new Color(.27f, .38f, .41f));
+   hudButton.normal.textColor = hudButton.hover.textColor = hudButton.active.textColor = hudButton.focused.textColor = Paper;
+   hudField = new GUIStyle(GUI.skin.textField) { fontSize = 20, padding = new RectOffset(10, 10, 8, 8) };
+   hudField.normal.background = hudField.focused.background = SurfaceTexture(new Color(.055f, .08f, .10f));
+   hudField.normal.textColor = hudField.focused.textColor = Paper;
+   hudPreset=new GUIStyle(hudButton){fontSize=14,padding=new RectOffset(3,3,8,8),wordWrap=false};
+   hudSlider=new GUIStyle{fixedHeight=32};
+   hudThumb=new GUIStyle(GUI.skin.horizontalSliderThumb){fixedWidth=22,fixedHeight=28};
+   hudThumb.normal.background=hudThumb.hover.background=hudThumb.active.background=SurfaceTexture(Paper);
+  }
+  void Card(Rect r, Color color) {
+   if (Event.current.type != EventType.Repaint) return;
+   var old = GUI.color; GUI.color = color; GUI.DrawTexture(r, Texture2D.whiteTexture); GUI.color = old;
+  }
+  bool Action(Rect r, string label, bool primary = false, bool selected = false, GUIStyle style = null) {
+   var old = GUI.backgroundColor; if (primary || selected) GUI.backgroundColor = new Color(.39f, .95f, .84f);
+   bool hit = GUI.Button(r, label, style ?? hudButton); GUI.backgroundColor = old; if(hit)GUI.FocusControl(null); return hit;
+  }
+  // Text never shrinks to the old 0.55 scale; short Game views scroll the inspector instead.
+  float HUDScale => Mathf.Clamp(CanvasHeight / 960f, 1, 1.45f);
+  float InspectorWidth(float width) => width < 1100 ? 300 : 338;
+  public Rect ScenarioViewport {
+   get {
+    float s = HUDScale, w = Mathf.Max(1, CanvasWidth / s), h = Mathf.Max(1, CanvasHeight / s);
+    float x = Mathf.Min(16, w * .04f), bottom = Mathf.Min(112, h * .20f);
+    float width = Mathf.Clamp(w - InspectorWidth(w) - 48, w * .20f, w - x);
+    float height = Mathf.Clamp(h - 282, h * .20f, h - bottom);
+    return new Rect(x / w, bottom / h, width / w, height / h);
+   }
+  }
+  bool PointerOverHUD(Vector3 point) => !view || !ScenarioViewport.Contains(new Vector2(point.x / CanvasWidth,point.y / CanvasHeight));
+  float CompletionFraction() {
+   if (kind == 0) return Mathf.Clamp01(stable / .5f);
+   if (kind == 2) return Mathf.Clamp01(elapsed / 4);
+   return Mathf.Clamp01(progress / (kind == 3 ? 2f : kind == 4 ? 9f : kind == 7 ? 18f : 3f));
+  }
+  string Evidence() {
+   if (kind == 0) return "Offset   " + springX.ToString("F3") + " m\nSpeed   " + springV.ToString("F3") + " m/s\nHold   " + stable.ToString("F2") + " / 0.50 s";
+   if (kind == 2) return "Body RMS   " + vehicle.Rms.ToString("F2") + " m/s²\nFixed reference   " + weakVehicle.Rms.ToString("F2") + " m/s²\nLost contact   " + vehicle.UnloadedSeconds.ToString("F3") + " s";
+   if (kind == 7) return inside + " / 24 drones in the zone\nGoal: at least 18 together";
+   if (kind == 8 && samples == 0) return "No movement samples yet.\nRun and move to measure framing.";
+   if (kind == 8) return "Pivot in frame   " + (VisibleFraction * 100).ToString("F1") + "%\nGoal: 95% across three marks";
+   return progress + " / " + (kind == 3 ? 2 : kind == 4 ? 9 : 3) + (kind == 1 ? " stations healthy" : kind == 5 ? " shots confirmed" : kind == 4 ? " exhibits placed" : " checkpoints reached");
+  }
+  string TuningLabel => kind == 0 || kind == 2 ? "Damping" : kind == 5 ? (trial == 1 ? "Fuse time" : "Launch speed") : kind == 6 ? "Braking distance" : "Camera dead zone";
+  string TuningUnit => kind == 0 || kind == 2 ? "N·s/m" : kind == 5 ? (trial == 1 ? "s" : "m/s") : "m";
+  float TuningMin => kind == 2 ? 600 : kind == 5 ? (trial == 1 ? .7f : 8) : kind == 6 ? .3f : 0;
+  float TuningMax => kind == 2 ? 4000 : kind == 5 ? (trial == 1 ? 3 : 22) : kind == 6 ? 6 : kind == 8 ? 5 : 25;
+  float TuningStep => kind == 2 ? 100 : kind == 5 && trial != 1 ? .5f : .1f;
+  string TuningEffect => kind == 0 ? "Less damping bounces. More damping resists motion, but too much slows the return."
+   : kind == 2 ? "More damping is not always smoother. Compare acceleration AND wheel contact on the same road."
+   : kind == 5 ? (trial == 1 ? "Changing the fuse changes the flight path needed to meet the target on time." : "Speed changes which trajectories are feasible. A hit still has to clear the cover.")
+   : kind == 6 ? "A short braking distance stops late. A wide one approaches slowly. Watch the final arrival."
+   : "A small dead zone follows each step. A wider one lets the actor move before the camera catches up.";
+  void TuningControls(float x, ref float y, float width) {
+   GUI.Label(new Rect(x, y, width, 22), TuningLabel, hudBody); y += 30;
+   if (lastDisplayedTuning != tuning || (GUI.GetNameOfFocusedControl() != "Scenario tuning" && tuningText != tuning.ToString(kind == 2 ? "F0" : "F2", CultureInfo.InvariantCulture))) { tuningText = tuning.ToString(kind == 2 ? "F0" : "F2", CultureInfo.InvariantCulture); lastDisplayedTuning = tuning; }
+   if (Action(new Rect(x, y, 38, 42), "−")) SetTuning(tuning - TuningStep);
+   GUI.SetNextControlName("Scenario tuning");
+   string entered = GUI.TextField(new Rect(x + 46, y, width - 92, 42), tuningText, hudField);
+   if (entered != tuningText) {
+    tuningText = entered;
+    if (float.TryParse(entered, NumberStyles.Float, CultureInfo.InvariantCulture, out float parsed) && !float.IsNaN(parsed) && !float.IsInfinity(parsed)) {
+     SetTuning(parsed); lastDisplayedTuning = tuning;
+    }
+   }
+   if (Action(new Rect(x + width - 38, y, 38, 42), "+")) SetTuning(tuning + TuningStep);
+   y += 47; GUI.Label(new Rect(x, y, width, 20), TuningUnit + "   ·   " + TuningMin + " to " + TuningMax, hudSmall); y += 28;
+   // Full-height hit area, a visible filled rail and keyboard-accessible native slider control.
+   var track = new Rect(x + 9, y + 13, width - 18, 6);
+   Card(track, new Color(.25f, .32f, .36f));
+   float fraction = Mathf.InverseLerp(TuningMin, TuningMax, tuning);
+   Card(new Rect(track.x, track.y, track.width * fraction, 6), Teal);
+   float changed = GUI.HorizontalSlider(new Rect(x, y, width, 32), tuning, TuningMin, TuningMax, hudSlider, hudThumb);
+   if (changed != tuning) SetTuning(changed); y += 44;
+   string[] names = kind == 0 ? new[] { "Bouncy", "Critical", "Heavy" } : kind == 2 ? new[] { "Weak", "Moderate", "Firm" }
+    : kind == 5 ? new[] { "Low", "Medium", "High" } : kind == 6 ? new[] { "Late", "Balanced", "Early" } : new[] { "Tight", "Balanced", "Wide" };
+   float[] values = kind == 0 ? new[] { 2f, Mathf.Sqrt(120), 22f } : kind == 2 ? new[] { 600f, 1000f, 2200f }
+    : kind == 5 ? (trial == 1 ? new[] { 1f, 2f, 2.8f } : new[] { 11f, 14f, 20f }) : kind == 6 ? new[] { .5f, 2f, 5f } : new[] { 0f, 1.5f, 4f };
+   float cell = (width - 12) / 3;
+   for (int i = 0; i < 3; i++) if (Action(new Rect(x + i * (cell + 6), y, cell, 38), names[i], false, Mathf.Abs(tuning - values[i]) < .001f, hudPreset)) SetTuning(values[i]);
+   y += 52; GUI.Label(new Rect(x, y, width, 85), TuningEffect, hudSmall); y += 96;
+  }
+  void OnGUI() {
+   ClearFieldCaptureIfRequested();
+   // Use dimensions captured in the runtime Update, not the Editor GUI event context.
+   HUDStyles();
+   float scale = HUDScale, w = CanvasWidth / scale, h = CanvasHeight / scale;
+   var previous = GUI.matrix; GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1));
+   int previousDepth = GUI.depth; GUI.depth = -1000;
+   if (DrawNavigationMenu(w, h)) { GUI.matrix = previous; GUI.depth = previousDepth; return; }
+   if (!missionMode) {
+    if (Action(new Rect(w - 334, 16, 234, 42), "Return to playable scene", true)) SetMissionMode(true);
+    if (Action(new Rect(w - 94, 16, 78, 42), "Labs")) OpenNavigationMenu();
+    GUI.matrix = previous; GUI.depth = previousDepth; return;
+   }
+   if (w < 860 || h < 600) {
+    Card(new Rect(0,0,w,h),Surface);
+    GUI.Label(new Rect(24,24,Mathf.Max(120,w-48),80),"Give the scenario room to play",hudTitle);
+    string roomMessage;
+#if UNITY_EDITOR
+    roomMessage = "Use a Game view of at least 860 × 600. Maximize the Game tab or select a larger resolution. The scenario remains paused.";
+#else
+    roomMessage = "This scenario needs at least 860 × 600 pixels. Enlarge the player or browser canvas, use full screen, or reduce browser zoom. The scenario remains paused.";
+#endif
+    GUI.Label(new Rect(24,120,Mathf.Max(120,w-48),140),roomMessage,hudBody);
+    if (Action(new Rect(24, Mathf.Min(300,h-60), 120, 42), "Labs")) OpenNavigationMenu();
+    running=false;ResetFieldInput();GUI.matrix=previous;GUI.depth=previousDepth;return;
+   }
+   float side = InspectorWidth(w), panelX = w - side - 16, stageWidth = panelX - 32;
+   Card(new Rect(0, 0, w, 78), Surface);
+   GUI.Label(new Rect(24, 12, stageWidth - 20, 18), "UNITY ENGINEERING LAB  /  PLAYABLE SCENARIO", hudKicker);
+   GUI.Label(new Rect(24, 34, stageWidth - 20, 36), Titles[kind], hudTitle);
+   if (Action(new Rect(panelX, 21, side - 86, 40), "Application studies")) SetMissionMode(false);
+   if (Action(new Rect(panelX + side - 78, 21, 78, 40), "Labs")) OpenNavigationMenu();
+   GUI.Label(new Rect(24, 94, stageWidth, 64), Questions[kind], hudNumber);
+   string state = complete ? "TASK VERIFIED" : kind==1||kind==4 ? "DIRECT EDITING" : running ? "RUNNING" : elapsed > 0 ? "PAUSED" : "SET UP YOUR SCENE";
+   GUI.Label(new Rect(24, h - 162, stageWidth - 20, 22), state + "    /    " + elapsed.ToString("F2") + " s" + (kind == 2 ? "    /    MOTION ×5" : ""), hudKicker);
+   Card(new Rect(16, h - 132, stageWidth + 16, 116), Surface);
+   bool previousEnabled = GUI.enabled; GUI.enabled = !complete;
+   string runLabel = running ? "Pause" : kind == 5 ? (shotActive ? "Resume" : "Launch shot") : elapsed > 0 ? "Resume" : kind == 2 ? "Run road test" : "Run scenario";
+   if(kind!=1&&kind!=4){if (Action(new Rect(30, h - 116, 164, 44), runLabel, true)) { if (running) running = false; else StartMission(); }}
+   else GUI.Label(new Rect(30,h-116,164,44),kind==1?"Inspect and repair":"Place and undo",hudBody);
+   GUI.enabled = previousEnabled;
+   if (Action(new Rect(204, h - 116, 112, 44), "Start over")) ResetMission();
+   GUI.Label(new Rect(30, h - 62, stageWidth - 20, 40), feedback, hudSmall);
+   // Inspector stays readable: no giant objective or tiny scaled type, with content scrolling only when needed.
+   Card(new Rect(panelX, 94, side, h - 110), Surface);
+   var clip = new Rect(panelX + 20, 110, side - 32, h - 138);
+   float contentWidth = clip.width - 18;
+   float contentHeight = Mathf.Max(clip.height-1,inspectorContentHeight);
+   scroll = GUI.BeginScrollView(clip, scroll, new Rect(0, 0, contentWidth, contentHeight), false, false);
+   float y = 0;
+   GUI.Label(new Rect(0, y, contentWidth, 22), "NEXT ACTION", hudKicker); y += 28;
+   GUI.Label(new Rect(0, y, contentWidth, 78), NextActions[kind], hudBody); y += 90;
+   DrawFieldControls(0,ref y,contentWidth);
+   DrawRangeControls(0,ref y,contentWidth);
+   DrawWorkspaceControls(0,ref y,contentWidth);
+   DrawNavigationControls(0,ref y,contentWidth);
+   if (kind == 0 || kind == 2 || kind == 5 || kind == 6 || kind == 8) { GUI.enabled = previousEnabled && !(kind == 5 && shotActive); TuningControls(0, ref y, contentWidth); GUI.enabled = previousEnabled; }
+   if (kind == 1) {
+    GUI.Label(new Rect(0, y, contentWidth, 24), "Station " + (selected + 1), hudNumber); y += 34;
+    if (Action(new Rect(0, y, contentWidth, 42), "Inspect station", true)) Scan(); y += 52;
+    string[] labels = { "Power reference", "Power unit active", "Sensor enabled" };
+    bool[] states = { stations[selected].RequiredTarget != null, machines[selected].activeSelf, sensors[selected].enabled };
+    for (int i = 0; i < 3; i++) {
+     GUI.Label(new Rect(0, y, contentWidth, 24), labels[i] + (scanned ? (states[i] ? "  ·  OK" : "  ·  FAULT") : "  ·  inspect first"), hudSmall); y += 30;
+     GUI.enabled = scanned && !states[i];
+     if (Action(new Rect(0, y, contentWidth, 38), i == 0 ? "Connect power reference" : i == 1 ? "Activate power unit" : "Enable sensor")) Repair(i);
+     GUI.enabled = previousEnabled; y += 48;
+    }
+   }
+   if (kind == 3) {
+    GUI.Label(new Rect(0, y, contentWidth, 26), "Control point " + (selected + 1), hudNumber); y += 36;
+    for (int i = 0; i < 2; i++) if (Action(new Rect(i * (contentWidth + 8) / 2, y, (contentWidth - 8) / 2, 40), "Handle " + (i + 1), false, selected == i)) selected = i;
+    y += 54; GUI.Label(new Rect(0, y, contentWidth, 72), "Orange handles bend the teal rail. The faint lines show how each handle influences the curve.", hudSmall); y += 84;
+   }
+   if (kind == 4) { GUI.enabled = placed.Count > 0; if (Action(new Rect(0, y, contentWidth, 42), "Undo last placement")) UndoPlacement(); GUI.enabled = previousEnabled; y += 54; }
+   if (kind == 5) {
+    GUI.Label(new Rect(0, y, contentWidth, 26), "Trial " + (trial + 1) + " of 3", hudNumber); y += 38;
+    if (trial == 0) { if (Action(new Rect(0, y, contentWidth, 42), highArc ? "High arc selected" : "Low arc selected")) ToggleArc(); y += 54; }
+    if (shotHit && trial < 2) { if (Action(new Rect(0, y, contentWidth, 42), "Continue to next trial", true)) NextTrial(); y += 54; }
+   }
+
+   GUI.Label(new Rect(0, y, contentWidth, 22), kind == 2 ? "PREDICTED RUN MEASUREMENTS" : "LIVE MEASUREMENTS", hudKicker); y += 30;
+   GUI.Label(new Rect(0, y, contentWidth, 88), Evidence(), hudBody); y += 100;
+   GUI.Label(new Rect(0, y, contentWidth, 22), "WHAT COUNTS", hudKicker); y += 28;
+   GUI.Label(new Rect(0, y, contentWidth, 116), Goals[kind], hudSmall); y += 128;
+   if (Action(new Rect(0, y, contentWidth, 38), showMethod ? "Hide context and controls" : "Context and controls")) showMethod = !showMethod; y += 48;
+   if (showMethod) { GUI.Label(new Rect(0, y, contentWidth, 150), Contexts[kind] + "\n\n" + Controls[kind], hudSmall); }
+   inspectorContentHeight=y+(showMethod?164:12);
+   GUI.EndScrollView();
+   DrawSceneLabels(scale, h);
+   DrawWorkspaceLabels(scale);DrawNavigationLabels(scale);DrawRangeLabels(scale);DrawFieldOverlays(scale);
+   GUI.matrix = previous;
+   GUI.depth = previousDepth;
+   editingTuning = GUI.GetNameOfFocusedControl() == "Scenario tuning";
+   HandleScenePointer();
+  }
+  void SceneTag(Vector3 position, string text, float scale, bool active = false) {
+   Vector3 point=view.WorldToViewportPoint(position);if(point.z<=0||point.x<0||point.x>1||point.y<0||point.y>1)return;
+   var viewport=ScenarioViewport;
+   float x=(viewport.x+point.x*viewport.width)*CanvasWidth/scale;
+   float y=(1-viewport.y-point.y*viewport.height)*CanvasHeight/scale;
+   float width = Mathf.Max(80, hudSmall.CalcSize(new GUIContent(text)).x + 24);
+   var rect = new Rect(x - width / 2, y - 32, width, 28);
+   Card(rect, active ? new Color(.14f, .32f, .30f) : Surface);
+   GUI.Label(new Rect(rect.x + 10, rect.y + 5, rect.width - 20, 22), text, hudSmall);
+  }
+  void DrawSceneLabels(float scale, float height) {
+   if (kind == 5) { SceneTag(new Vector3(-7, 1.2f, 0), "Launcher", scale); SceneTag(target.position + Vector3.up * .7f, trial == 2 ? "Moving target" : "Target", scale, true); }
+   if (kind == 0) { SceneTag(actor.position + Vector3.up * 1.5f, "Drag cargo", scale, true); SceneTag(Vector3.up * .3f, "Dock · ±0.03 m", scale); }
+   if (kind == 3) for (int i = 0; i < 2; i++) SceneTag(handles[i].position + Vector3.up * 1.6f, "Handle " + (i + 1) + " · drag", scale, selected == i);
+
+   for (int i = 0; i < markers.Count && kind!=4 && kind!=6; i++) SceneTag(markers[i].position + Vector3.up * 1.1f,
+    (kind == 1 ? "Station " : kind == 3 ? "Gate " : kind == 4 ? "Slot " : kind == 9 ? "Relay " : "Mark ") + (i + 1), scale, selected == i && kind == 1);
+  }
+  void DisposeHUD() { foreach (var texture in surfaces.Values) if (texture) Destroy(texture); surfaces.Clear(); cardStyles.Clear(); }
  }
 }

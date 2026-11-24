@@ -27,16 +27,13 @@ python3 -m http.server 3080 --bind 127.0.0.1 --directory out
 
 Open [the local preview](http://127.0.0.1:3080/). Stop it with Ctrl+C when finished; this does not affect the published website. The static preview avoids a macOS sandbox FSEvent failure observed with Turbopack's development watcher. Production builds use the supported Webpack option because Turbopack's CSS worker also encountered a sandbox port-binding failure. `npm run dev` is available in an ordinary supported development environment. The build produces `out/`; the Python server is for local review only.
 
-## Unity CLI
+## Native Unity players and validation
 
-The Unity project is `unity/`, authored for the locally installed 6000.5.2f1 editor. It includes a pure C# spring integrator, IMGUI experiment controls, a scene generator, eight validation checks and a WebGL build entry point.
+Open `unity/` with Unity 6000.5.2f1 to inspect the saved scenes. The player build pipeline exports all ten existing scenes to a separate macOS application or WebGL directory. It does not regenerate scenes or replace the Editor’s scene list.
 
-```sh
-unity run ./unity --editor-version 6000.5.2f1 --timeout 180 -- -executeMethod LabValidation.Run -nographics -logFile /tmp/spring-validation.log
-unity build ./unity --target WebGL --execute-method WebBuild.Run --output-path "$PWD/public/unity/spring-lab" --timeout 900
-```
+Use `EngineeringLab.Missions.Editor.LabPlayerBuild.BuildMacOS` or `BuildWebGL` for normal players. `BuildMacOSValidation` and `BuildWebGLValidation` compile the opt-in test harness; tests start only with the explicit launch argument or URL query described in [Player testing](docs/PLAYER-TESTING.md). Normal players compile the harness out.
 
-The first command compiles and validates the model, then generates `Assets/Scenes/SpringLab.unity`. It is an Editor execute-method validation suite, not a Unity Test Framework/NUnit suite. Open that scene to inspect the native UI. WebBuild also runs the validation before building. Compression is disabled for a straightforward local static preview. After a successful WebGL build, rebuild the website and open `/unity/spring-lab/` on the preview server. No WebGL artifact is claimed until that build succeeds.
+The guide includes complete installed-Editor commands, explicit output paths, architecture choices, local WebGL serving, result collection and validation limits. A desktop application runs directly; a local WebGL export needs HTTP serving. These exports do not replace the published browser studies at pritishchoudhary.com. Build instructions alone are not evidence of a successful export or player test; actual results belong in [Progress](docs/PROGRESS.md).
 
 ## Structure
 

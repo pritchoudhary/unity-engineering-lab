@@ -1,0 +1,14 @@
+<linker>
+  <!-- CreatePrimitive adds these engine components dynamically. Retain only
+       the types required by the runtime Cube, Sphere and Cylinder factories;
+       cylinders use CapsuleCollider even when the lesson disables collisions. -->
+  <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule">
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.SphereCollider" preserve="all" />
+    <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
+  </assembly>
+</linker>

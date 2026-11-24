@@ -1,0 +1,452 @@
+
+> unity-engineering-lab@1.0.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: browser ballistics matches 900 independently executed C\# cases
+ok 1 - browser ballistics matches 900 independently executed C\# cases
+  ---
+  duration_ms: 10.52075
+  type: 'test'
+  ...
+# Subtest: fixed-target reachability agrees with closed form, including tangent and vertical roots
+ok 2 - fixed-target reachability agrees with closed form, including tangent and vertical roots
+  ---
+  duration_ms: 3.098459
+  type: 'test'
+  ...
+# Subtest: timed fuse, budget, and cover remain different constraints
+ok 3 - timed fuse, budget, and cover remain different constraints
+  ---
+  duration_ms: 0.223542
+  type: 'test'
+  ...
+# Subtest: moving interception beats current-position aiming; impossible and horizon cases reject
+ok 4 - moving interception beats current-position aiming; impossible and horizon cases reject
+  ---
+  duration_ms: 0.137875
+  type: 'test'
+  ...
+# Subtest: constructed moving-target trajectories provide 1000 independent feasible interception checks
+ok 5 - constructed moving-target trajectories provide 1000 independent feasible interception checks
+  ---
+  duration_ms: 14.818833
+  type: 'test'
+  ...
+# Subtest: each learning challenge requires a meaningful change and keeps its controlled inputs fixed
+ok 6 - each learning challenge requires a meaningful change and keeps its controlled inputs fixed
+  ---
+  duration_ms: 0.404333
+  type: 'test'
+  ...
+# Subtest: supported control corners produce finite measurements and bounded inspection positions
+ok 7 - supported control corners produce finite measurements and bounded inspection positions
+  ---
+  duration_ms: 3.381875
+  type: 'test'
+  ...
+# Subtest: invalid inputs fail explicitly before entering the root solver
+ok 8 - invalid inputs fail explicitly before entering the root solver
+  ---
+  duration_ms: 0.3625
+  type: 'test'
+  ...
+# Subtest: closing and receding playback ends at the hit and holds both objects together afterward
+ok 9 - closing and receding playback ends at the hit and holds both objects together afterward
+  ---
+  duration_ms: 0.303209
+  type: 'test'
+  ...
+# Subtest: intro exact response matches an independently integrated ODE across all feels
+ok 10 - intro exact response matches an independently integrated ODE across all feels
+  ---
+  duration_ms: 5.69125
+  type: 'test'
+  ...
+# Subtest: worker calculations preserve all nine briefs and reuse fixed reference when only the tunable changes
+ok 11 - worker calculations preserve all nine briefs and reuse fixed reference when only the tunable changes
+  ---
+  duration_ms: 149.306125
+  type: 'test'
+  ...
+# Subtest: rapid inputs keep only the latest pending job and never accept stale results or late disposal messages
+ok 12 - rapid inputs keep only the latest pending job and never accept stale results or late disposal messages
+  ---
+  duration_ms: 0.150666
+  type: 'test'
+  ...
+# Subtest: frame timestamps before the registration time hold the initial pose, with bounded resume and terminal hold
+ok 13 - frame timestamps before the registration time hold the initial pose, with bounded resume and terminal hold
+  ---
+  duration_ms: 0.079416
+  type: 'test'
+  ...
+# Subtest: every slider combination keeps full response and stage geometry in view
+ok 14 - every slider combination keeps full response and stage geometry in view
+  ---
+  duration_ms: 1496.865417
+  type: 'test'
+  ...
+# Subtest: manual inspection selects the actual reversal or second impact
+ok 15 - manual inspection selects the actual reversal or second impact
+  ---
+  duration_ms: 0.349125
+  type: 'test'
+  ...
+# Subtest: seeded browser streams match independent C\# execution, including signed seed boundaries
+ok 16 - seeded browser streams match independent C\# execution, including signed seed boundaries
+  ---
+  duration_ms: 1.47775
+  type: 'test'
+  ...
+# Subtest: scatter points match the actual C\# placement model for regular, crowded and negative-seed requests
+ok 17 - scatter points match the actual C\# placement model for regular, crowded and negative-seed requests
+  ---
+  duration_ms: 4.805
+  type: 'test'
+  ...
+# Subtest: grid challenge is reachable and partial rows preserve the requested count
+ok 18 - grid challenge is reachable and partial rows preserve the requested count
+  ---
+  duration_ms: 0.312208
+  type: 'test'
+  ...
+# Subtest: scatter preserves bounds, useful spacing and a bounded attempt budget across exposed controls
+ok 19 - scatter preserves bounds, useful spacing and a bounded attempt budget across exposed controls
+  ---
+  duration_ms: 39.945334
+  type: 'test'
+  ...
+# Subtest: crowded stress case reports a shortfall and the spaced-tree challenge remains reachable
+ok 20 - crowded stress case reports a shortfall and the spaced-tree challenge remains reachable
+  ---
+  duration_ms: 0.405584
+  type: 'test'
+  ...
+# Subtest: surface acceptance and orientation can be changed independently on the same slope
+ok 21 - surface acceptance and orientation can be changed independently on the same slope
+  ---
+  duration_ms: 0.861875
+  type: 'test'
+  ...
+# Subtest: invalid or unrepresentable placement inputs fail before generating a layout
+ok 22 - invalid or unrepresentable placement inputs fail before generating a layout
+  ---
+  duration_ms: 1.023209
+  type: 'test'
+  ...
+# Subtest: migration identifies one missing slot; optional null is not an error
+ok 23 - migration identifies one missing slot; optional null is not an error
+  ---
+  duration_ms: 0.708667
+  type: 'test'
+  ...
+# Subtest: handoff distinguishes required stale links, optional stale links and runtime assignment
+ok 24 - handoff distinguishes required stale links, optional stale links and runtime assignment
+  ---
+  duration_ms: 0.535583
+  type: 'test'
+  ...
+# Subtest: required empty reference is an error; inactive hierarchy is only informational
+ok 25 - required empty reference is an error; inactive hierarchy is only informational
+  ---
+  duration_ms: 0.139334
+  type: 'test'
+  ...
+# Subtest: active-only scan reports reduced coverage rather than implying no issues exist
+ok 26 - active-only scan reports reduced coverage rather than implying no issues exist
+  ---
+  duration_ms: 0.064416
+  type: 'test'
+  ...
+# Subtest: disabling inactive review still scans inactive scripts and references
+ok 27 - disabling inactive review still scans inactive scripts and references
+  ---
+  duration_ms: 0.11825
+  type: 'test'
+  ...
+# Subtest: severity filter does not hide total detected counts
+ok 28 - severity filter does not hide total detected counts
+  ---
+  duration_ms: 0.064417
+  type: 'test'
+  ...
+# Subtest: subtree references resolve against the full manifest, not just scanned objects
+ok 29 - subtree references resolve against the full manifest, not just scanned objects
+  ---
+  duration_ms: 0.136792
+  type: 'test'
+  ...
+# Subtest: selected subtree inherits inactive state from parents outside the scope
+ok 30 - selected subtree inherits inactive state from parents outside the scope
+  ---
+  duration_ms: 0.0515
+  type: 'test'
+  ...
+# Subtest: restoring the modeled script removes its finding without modifying other objects
+ok 31 - restoring the modeled script removes its finding without modifying other objects
+  ---
+  duration_ms: 0.25625
+  type: 'test'
+  ...
+# Subtest: reordering input preserves finding identity and order; scanning never mutates input
+ok 32 - reordering input preserves finding identity and order; scanning never mutates input
+  ---
+  duration_ms: 0.783875
+  type: 'test'
+  ...
+# Subtest: ambiguous or malformed hierarchy is rejected instead of producing misleading findings
+ok 33 - ambiguous or malformed hierarchy is rejected instead of producing misleading findings
+  ---
+  duration_ms: 0.372417
+  type: 'test'
+  ...
+# Subtest: object and asset ID spaces remain distinct
+ok 34 - object and asset ID spaces remain distinct
+  ---
+  duration_ms: 0.0645
+  type: 'test'
+  ...
+# Subtest: equilibrium remains at rest
+ok 35 - equilibrium remains at rest
+  ---
+  duration_ms: 4.018834
+  type: 'test'
+  ...
+# Subtest: undamped motion matches analytic cosine within integration error
+ok 36 - undamped motion matches analytic cosine within integration error
+  ---
+  duration_ms: 0.1935
+  type: 'test'
+  ...
+# Subtest: halving timestep reduces analytic error
+ok 37 - halving timestep reduces analytic error
+  ---
+  duration_ms: 0.441583
+  type: 'test'
+  ...
+# Subtest: damped energy decays toward equilibrium
+ok 38 - damped energy decays toward equilibrium
+  ---
+  duration_ms: 0.890167
+  type: 'test'
+  ...
+# Subtest: critical damping matches analytic response and has no overshoot
+ok 39 - critical damping matches analytic response and has no overshoot
+  ---
+  duration_ms: 0.928083
+  type: 'test'
+  ...
+# Subtest: overdamping settles slower than critical response
+ok 40 - overdamping settles slower than critical response
+  ---
+  duration_ms: 0.518208
+  type: 'test'
+  ...
+# Subtest: all UI parameter corners remain finite and bounded for 30 seconds
+ok 41 - all UI parameter corners remain finite and bounded for 30 seconds
+  ---
+  duration_ms: 7.627334
+  type: 'test'
+  ...
+# Subtest: reject invalid parameters, states and timesteps
+ok 42 - reject invalid parameters, states and timesteps
+  ---
+  duration_ms: 0.398542
+  type: 'test'
+  ...
+# Subtest: target following converges without snapping at a target change
+ok 43 - target following converges without snapping at a target change
+  ---
+  duration_ms: 1.685917
+  type: 'test'
+  ...
+# Subtest: retargeting preserves inertial continuity
+ok 44 - retargeting preserves inertial continuity
+  ---
+  duration_ms: 0.52325
+  type: 'test'
+  ...
+# Subtest: cosmetic impulse moves away from rest and then recovers
+ok 45 - cosmetic impulse moves away from rest and then recovers
+  ---
+  duration_ms: 0.876125
+  type: 'test'
+  ...
+# Subtest: application sequences preserve their distinct inputs and achieve briefs
+ok 46 - application sequences preserve their distinct inputs and achieve briefs
+  ---
+  duration_ms: 6.083042
+  type: 'test'
+  ...
+# Subtest: steering runs and 864 inspected frames agree with independently executed C\#
+ok 47 - steering runs and 864 inspected frames agree with independently executed C\#
+  ---
+  duration_ms: 101.581
+  type: 'test'
+  ...
+# Subtest: arrival radius changes overshoot and settling instead of only changing the drawing
+ok 48 - arrival radius changes overshoot and settling instead of only changing the drawing
+  ---
+  duration_ms: 7.6075
+  type: 'test'
+  ...
+# Subtest: earlier obstacle detection clears the obstacle while a short lookahead collides
+ok 49 - earlier obstacle detection clears the obstacle while a short lookahead collides
+  ---
+  duration_ms: 0.786708
+  type: 'test'
+  ...
+# Subtest: prediction reduces pursuit time and contact stays fixed after capture
+ok 50 - prediction reduces pursuit time and contact stays fixed after capture
+  ---
+  duration_ms: 0.952916
+  type: 'test'
+  ...
+# Subtest: swept circle checks detect tunnelling, tangency and initial overlap
+ok 51 - swept circle checks detect tunnelling, tangency and initial overlap
+  ---
+  duration_ms: 0.095167
+  type: 'test'
+  ...
+# Subtest: halving the timestep preserves the practical conclusions and metrics
+ok 52 - halving the timestep preserves the practical conclusions and metrics
+  ---
+  duration_ms: 5.263958
+  type: 'test'
+  ...
+# Subtest: control corners respect acceleration/speed caps and terminal holds with finite bounded runs
+ok 53 - control corners respect acceleration/speed caps and terminal holds with finite bounded runs
+  ---
+  duration_ms: 81.140792
+  type: 'test'
+  ...
+# Subtest: invalid parameters fail before simulation
+ok 54 - invalid parameters fail before simulation
+  ---
+  duration_ms: 2.102
+  type: 'test'
+  ...
+# Subtest: smooth bump endpoints and peak
+ok 55 - smooth bump endpoints and peak
+  ---
+  duration_ms: 0.699875
+  type: 'test'
+  ...
+# Subtest: rest before bump; finite and converged across allowed damping range
+ok 56 - rest before bump; finite and converged across allowed damping range
+  ---
+  duration_ms: 24.390625
+  type: 'test'
+  ...
+# Subtest: both design briefs are achievable and have different trade-offs
+ok 57 - both design briefs are achievable and have different trade-offs
+  ---
+  duration_ms: 2.051
+  type: 'test'
+  ...
+# Subtest: settling means every subsequent sample satisfies both tolerances
+ok 58 - settling means every subsequent sample satisfies both tolerances
+  ---
+  duration_ms: 2.10375
+  type: 'test'
+  ...
+# Subtest: invalid parameters rejected
+ok 59 - invalid parameters rejected
+  ---
+  duration_ms: 0.381875
+  type: 'test'
+  ...
+# Subtest: 27 actual Unity model runs match browser metrics and inspected coordinates
+ok 60 - 27 actual Unity model runs match browser metrics and inspected coordinates
+  ---
+  duration_ms: 190.798541
+  type: 'test'
+  ...
+# Subtest: finite segment/disk intersections respect tangent, behind, beyond, start-inside and zero-length cases
+ok 61 - finite segment/disk intersections respect tangent, behind, beyond, start-inside and zero-length cases
+  ---
+  duration_ms: 1.048417
+  type: 'test'
+  ...
+# Subtest: perspective projection preserves center and rejects points behind the camera
+ok 62 - perspective projection preserves center and rejects points behind the camera
+  ---
+  duration_ms: 0.402625
+  type: 'test'
+  ...
+# Subtest: snapshot flock is deterministic, bounded and respects speed/acceleration caps in all three jobs
+ok 63 - snapshot flock is deterministic, bounded and respects speed/acceleration caps in all three jobs
+  ---
+  duration_ms: 124.635709
+  type: 'test'
+  ...
+# Subtest: flock use cases have distinct, reachable measured compromises and reveal density failure
+ok 64 - flock use cases have distinct, reachable measured compromises and reveal density failure
+  ---
+  duration_ms: 47.18575
+  type: 'test'
+  ...
+# Subtest: camera controls change composition, not the underlying actor input
+ok 65 - camera controls change composition, not the underlying actor input
+  ---
+  duration_ms: 2.878291
+  type: 'test'
+  ...
+# Subtest: visibility applications expose volume clearance, stale state and candidate eligibility separately
+ok 66 - visibility applications expose volume clearance, stale state and candidate eligibility separately
+  ---
+  duration_ms: 4.561042
+  type: 'test'
+  ...
+# Subtest: all nine studies hold initial/final frames and reject non-finite or out-of-range parameters
+ok 67 - all nine studies hold initial/final frames and reject non-finite or out-of-range parameters
+  ---
+  duration_ms: 6.346125
+  type: 'test'
+  ...
+# Subtest: loaded chassis stays at rest on flat ground and braking drives nose-down pitch without net heave
+ok 68 - loaded chassis stays at rest on flat ground and braking drives nose-down pitch without net heave
+  ---
+  duration_ms: 7.60825
+  type: 'test'
+  ...
+# Subtest: front and rear see the same terrain with a delay; loss and recovery of contact are observable
+ok 69 - front and rear see the same terrain with a delay; loss and recovery of contact are observable
+  ---
+  duration_ms: 5.250834
+  type: 'test'
+  ...
+# Subtest: halving the integration step preserves target metrics and all presets have actionable trade-offs
+ok 70 - halving the integration step preserves target metrics and all presets have actionable trade-offs
+  ---
+  duration_ms: 61.759291
+  type: 'test'
+  ...
+# Subtest: distance lookup compensates for non-uniform parameter speed even on a straight path
+ok 71 - distance lookup compensates for non-uniform parameter speed even on a straight path
+  ---
+  duration_ms: 0.418625
+  type: 'test'
+  ...
+# Subtest: road edges maintain requested separation and are normal to the centerline
+ok 72 - road edges maintain requested separation and are normal to the centerline
+  ---
+  duration_ms: 0.3465
+  type: 'test'
+  ...
+# Subtest: patrol preserves the four-second round trip while spending the requested time at the endpoint
+ok 73 - patrol preserves the four-second round trip while spending the requested time at the endpoint
+  ---
+  duration_ms: 0.255333
+  type: 'test'
+  ...
+1..73
+# tests 73
+# suites 0
+# pass 73
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2005.703209
