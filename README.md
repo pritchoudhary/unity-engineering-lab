@@ -2,7 +2,15 @@
 
 Pritish Choudhary's Unity Engineering Lab. The browser portfolio is embedded in the existing Portfoliobox site at pritishchoudhary.com. Native Unity scenes are a separate experience; browser lessons are not Unity WebGL builds.
 
-## Run the portfolio
+## Try the live experiments
+
+Visit **[pritishchoudhary.com](https://www.pritishchoudhary.com/)** to explore all ten browser studies and change their controls directly in your browser. No installation, repository download, Unity Editor or local HTTP server is needed.
+
+Portfoliobox hosts the main site and embeds the published browser app served by GitHub Pages. The live website stays available independently of the developer's computer. Native Unity scenes are separate and require the Unity Editor; the browser lessons are JavaScript experiences, not Unity WebGL builds.
+
+## Develop and preview locally
+
+This section is only for contributors who want to edit or test the source. Visitors should use the live website above.
 
 Requires Node 22 and npm. From this directory:
 
@@ -13,7 +21,7 @@ npm run build
 python3 -m http.server 3080 --bind 127.0.0.1 --directory out
 ```
 
-Open http://127.0.0.1:3080/. The static preview avoids a macOS sandbox FSEvent failure observed with Turbopack's development watcher. Production builds use the supported Webpack option because Turbopack's CSS worker also encountered a sandbox port-binding failure. `npm run dev` is available in an ordinary supported development environment. The build produces `out/`; the Python server is for local review only.
+Open [the local preview](http://127.0.0.1:3080/). Stop it with Ctrl+C when finished; this does not affect the published website. The static preview avoids a macOS sandbox FSEvent failure observed with Turbopack's development watcher. Production builds use the supported Webpack option because Turbopack's CSS worker also encountered a sandbox port-binding failure. `npm run dev` is available in an ordinary supported development environment. The build produces `out/`; the Python server is for local review only.
 
 ## Unity CLI
 
