@@ -26,3 +26,7 @@ Apply to Engineering Lab first, then the other current embedded profile pages wh
 - This is a layout correction; no simulation models changed. No physical-device or throttled performance claim. Native wrapper update and production publication remain pending.
 
 Final native-wrapper formula was then tested at 320×568, 390×654, 768×800, 1280×800 and 844×390. All frame bottoms remained within the outer viewport, including short landscape; no horizontal overflow. At 390×654 the frame is 544 px tall and ends at y=614; at 1280×800 it is 640 px tall and ends at y=761.
+
+## Native frame applied
+
+Saved the Engineering Lab iframe style through Portfoliobox’s native Source editor, preserving its verification marker and source URL. Portfoliobox applied Save publicly without a separate Publish step. Verified public DOM contains the responsive rule. At 390 × 654 the frame spans y=70–614 (544px); at 1280 × 800 it spans y=121.27–761.27 (640px). Neither viewport has horizontal overflow. Other profile-page wrappers were not changed. The internal compact CSS remains in this PR and is not yet published.
