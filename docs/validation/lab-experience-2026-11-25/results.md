@@ -1,5 +1,7 @@
 # Interactive lab experience — November 25, 2026
 
+Update: browser access is now available. See [browser review](browser-review.md) for completed responsive/interaction/performance checks, the applied native menu change and remaining publication limits. The original milestone below is retained as history.
+
 ## Reviewable implementation
 
 - Replaced the homepage catalog with practical questions, ten distinct server-rendered mechanism illustrations, topic filtering and optional learning notes. The collection remains complete on the initial server render; filtering does not run simulations.
