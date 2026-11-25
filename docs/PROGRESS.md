@@ -298,3 +298,8 @@ All73 existing tests, TypeScript, production static build and exported link/anch
 ## November 25 — Chrome review and native menu consolidation
 
 Completed responsive review of the combined career page at 390/768/1280 px, homepage filters and keyboard activation, mobile spring and camera playback, plus short local and live-iframe performance samples. Renamed native Experience to Experience & Skills and removed only the separate Skills menu link; verified the public menu and preserved /capabilities. Matched the source navigation label and added a favicon. All 73 tests, production mirror build with TypeScript and static exported link checks pass. Generated publication remains approval-gated; live embedded content is still the previous release. See validation/lab-experience-2026-11-25/browser-review.md.
+
+
+## November 25 — Approved redesign published
+
+User approved the prepared PR #2 mirror. Deployed source 92911e2 via mirror commits 81b2072 and f7c599e (retained old hashed assets for cached clients). Pages reports built; public routes return the new content. Chrome confirmed combined career disclosure, spring playback and catalog filters inside Portfoliobox. Published iframe sample: event max 24 ms, zero long tasks. Source PR remains unmerged. Full details in validation/lab-experience-2026-11-25/browser-review.md.

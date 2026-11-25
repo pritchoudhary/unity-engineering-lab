@@ -33,3 +33,12 @@ Chrome showed CSS preload-unused warnings on the local static export. The affect
 All 73 repository tests passed again. Production build (including TypeScript) passed. Static href/src audit passed for all 18 exported HTML files; combined label and icon exist. git diff --check passed.
 
 The mirror export is prepared for review. Repository AGENTS.md requires explicit approval to publish the generated website. The current request explicitly authorized the native navigation change; it did not explicitly approve publishing the generated PR release. Keep the domain on Portfoliobox and deploy only the generated mirror after approval. No DNS or hosting migration is needed.
+
+
+## Approved publication — November 25, 2026
+
+Pritish explicitly approved publication of the prepared PR #2 mirror. Published the reviewed archive (SHA256 842f6f75a0ddef97b2c63c83778413d8330fed6176088c2d5d24a246c9aa46ad), built from source 92911e2, to the existing pritchoudhary.github.io mirror in commit 81b2072. Follow-up f7c599e retains previous hashed assets after observing cached old iframe HTML requesting removed assets during rollout. GitHub Pages reports built for f7c599e with no build error. No domain/hosting change or source PR merge.
+
+Direct HTTP checks of /, /experience/ and /skills/ return 200 and the redesigned content. The restored old stylesheet also returns 200. In Chrome's smartpritish profile, the released combined page rendered inside Portfoliobox and earlier roles expanded. The released homepage spring completed with the expected 44.4% peak and matching prediction; Tools/Cameras filters returned 3/2 entries. Legacy Skills rendered its new combined-page pointer. Session-only release query parameters were used to bypass the browser's cached iframe document; persisted native embed URLs were not changed. Cached visits may show the previous release until refresh/expiry, with its assets retained.
+
+Published homepage iframe sample after spring/filter interaction: width/scrollWidth 787/787, 10 qualifying event entries, event p95/max 24/24 ms, zero long tasks, latest 240 frame intervals p95/max 8.9/9.3 ms; script encoded bytes 143,821. Same short, unthrottled Mac-sample limitations apply.
