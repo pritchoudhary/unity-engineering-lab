@@ -66,3 +66,61 @@ body{font-size:16px}.nav nav{font-size:15px;line-height:1.6;flex-wrap:wrap}.bran
 .mix-pinned .mix-console :is(input,button,select),.mix-pinned .mix-details :is(input,button,summary){scroll-margin-top:calc(var(--monitor-height,340px) + 16px);scroll-margin-bottom:20px}
 @media(max-width:700px){#workbench .mix-preview>svg{height:18svh;min-height:110px}#workbench .mix-preview .stage-caption{font-size:12px;display:block}#workbench .mix-preview .stage-caption span{display:none}.mix-console-heading{margin-bottom:10px}#workbench .mix-console-heading h3{font-size:22px}.mix-console-heading>span{display:none}.mix-channels output{font-size:18px}.mix-channels .instant-option{grid-column:1/-1}}
 #workbench code{overflow-wrap:anywhere}
+
+/* Embedded sizing: reserve room for controls inside the host's shorter viewport. */
+.in-portfolio .wrap{max-width:1080px;padding-left:24px;padding-right:24px}
+.in-portfolio #workbench .lesson-header{padding:20px 22px}
+.in-portfolio #workbench .lesson-header h2{font-size:30px;margin:8px 0 12px;letter-spacing:-.6px}
+.in-portfolio #workbench .lesson-header p{font-size:16px;line-height:1.6;margin:0}
+.in-portfolio #workbench .lesson-route{gap:12px;margin-top:16px;padding-top:12px}
+.in-portfolio #workbench .application-intro{padding-top:12px;padding-bottom:16px}
+.in-portfolio #workbench .application-intro h2,.in-portfolio .systems-intro h2{font-size:30px;margin:10px 0}
+.in-portfolio #workbench .application-intro p,.in-portfolio .systems-intro p{font-size:16px;line-height:1.6}
+.in-portfolio #workbench .application-nav,.in-portfolio #workbench .health-tabs{margin-bottom:14px}
+.in-portfolio #workbench .application-nav button,.in-portfolio #workbench .health-tabs button{font-size:14px;padding:10px 12px;min-height:44px}
+.in-portfolio .mix-heading{padding:6px 14px}
+.in-portfolio .mix-heading>span{font-size:12px}
+.in-portfolio .mix-heading button{min-height:36px}
+.in-portfolio .mix-preview{padding:4px 14px}
+.in-portfolio #workbench .mix-preview>svg{height:clamp(110px,23svh,220px);min-height:0;max-width:760px;margin:0 auto}
+.in-portfolio #workbench .mix-preview .systems-world{height:clamp(100px,22svh,200px);min-height:0}
+.in-portfolio #workbench .mix-preview .frame-state{display:none}
+.in-portfolio .mix-transport{padding:8px 14px;gap:8px 12px}
+.in-portfolio .mix-console{padding:14px}
+.in-portfolio .mix-console-heading{margin-bottom:12px}
+.in-portfolio #workbench .mix-console-heading h3{font-size:20px}
+.in-portfolio .mix-console-heading>span{display:none}
+.in-portfolio #workbench .mix-channels>label{padding:12px;font-size:14px}
+.in-portfolio .mix-channels output{font-size:18px;line-height:1.4;margin:5px 0}
+.in-portfolio #workbench .mix-channels input[type=range]{min-height:32px;margin:4px 0 0}
+.in-portfolio #workbench .mix-channels button{padding:8px 12px;min-height:44px}
+.in-portfolio .mix-health-stage{max-height:clamp(160px,27svh,260px)}
+.in-portfolio .mix-details{padding:14px}
+.in-portfolio .mix-details summary{font-size:14px}
+.in-portfolio #workbench .tuning-brief{padding:20px}
+.in-portfolio #workbench .tuning-brief h3{font-size:25px}
+@media(max-width:700px){
+ .in-portfolio .wrap{padding-left:12px;padding-right:12px}
+ .in-portfolio #workbench .lesson-header{padding:16px}
+ .in-portfolio #workbench .lesson-header h2{font-size:26px}
+ .in-portfolio #workbench .application-intro h2,.in-portfolio .systems-intro h2{font-size:26px}
+ .in-portfolio #workbench .mix-preview>svg{height:clamp(110px,20svh,150px)}
+ .in-portfolio #workbench .mix-preview .systems-world{height:clamp(95px,18svh,130px)}
+ .in-portfolio .mix-console,.in-portfolio .mix-transport{padding:10px}
+ .in-portfolio .mix-channels{gap:8px}
+ .in-portfolio .mix-channels output{font-size:16px}
+ .in-portfolio #workbench .mix-channels>label{padding:10px}
+ .in-portfolio .mix-preview .stage-caption{font-size:12px}
+}
+.in-portfolio #workbench .mix-preview>svg{height:clamp(190px,30svh,250px)}
+@media(max-width:700px){
+ .in-portfolio #workbench .mix-preview>svg{height:clamp(120px,23svh,155px)}
+ .in-portfolio .mix-transport,.in-portfolio .mix-transport .experiment-timeline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+ .in-portfolio .mix-transport:has(.experiment-timeline){display:block}
+ .in-portfolio #workbench .mix-transport .scrubber{min-width:0;font-size:13px;line-height:1.4}
+ .in-portfolio #workbench .mix-transport .scrubber output{float:none;display:block}
+ .in-portfolio #workbench .mix-transport .scenario-actions{gap:4px}
+ .in-portfolio #workbench .mix-transport button{font-size:13px;padding:7px 9px;min-height:40px}
+ .in-portfolio #workbench .mix-transport .scenario-actions button:first-child{flex:1}
+ .in-portfolio #workbench .mix-channels>label{scroll-margin-top:calc(var(--monitor-height,300px) + 8px)}
+}
