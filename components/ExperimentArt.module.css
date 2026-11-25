@@ -1,0 +1,38 @@
+.art {
+  --art-ink: #20362f;
+  --art-paper: #f5f1e6;
+  --art-rust: #f19c6b;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--art-paper);
+  background: var(--art-ink);
+  aspect-ratio: 12 / 7;
+  border-radius: inherit;
+}
+.art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.large { max-width: 960px; }
+.panelFill { fill: #30483f; }
+.creamFill { fill: var(--art-paper); stroke: var(--art-ink); }
+.rustFill { fill: var(--art-rust); stroke: var(--art-ink); }
+.rustLine { stroke: var(--art-rust); }
+.track { stroke: #4b6257; }
+.faint { stroke: #8ea394; opacity: .48; }
+.dashed { stroke: #bcc7b9; stroke-dasharray: 5 7; }
+.lift {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 220ms ease-out;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .art:hover .lift,
+  :global(a:hover) .art .lift,
+  :global(a:focus-visible) .art .lift { transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lift { transition: none; }
+}

@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "kind": "static export audit; not browser QA",
+  "projectPages": 10,
+  "internalLinkIssues": [],
+  "homepageSvgCount": 12,
+  "legacySkillsCanonical": "https://pritishchoudhary.com/experience/",
+  "careerAnchors": [
+    "capabilities",
+    "experience",
+    "toolkit",
+    "role-lumos",
+    "role-tims",
+    "role-iconic"
+  ],
+  "homepageInitialScriptFiles": [
+    {
+      "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+      "bytes": 203721,
+      "gzipBytes": 64115
+    },
+    {
+      "path": "/_next/static/chunks/794-96ab5d7caefc5d69.js",
+      "bytes": 242282,
+      "gzipBytes": 67408
+    },
+    {
+      "path": "/_next/static/chunks/main-app-b06cc86b797bf5c2.js",
+      "bytes": 513,
+      "gzipBytes": 224
+    },
+    {
+      "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "bytes": 7642,
+      "gzipBytes": 3225
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-748856f64f5e48e2.js",
+      "bytes": 2133,
+      "gzipBytes": 1096
+    },
+    {
+      "path": "/_next/static/chunks/app/page-cc4feab69c0c4d52.js",
+      "bytes": 9556,
+      "gzipBytes": 3828
+    },
+    {
+      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "bytes": 112594,
+      "gzipBytes": 39473
+    },
+    {
+      "path": "/_next/static/chunks/webpack-052e98ad78d338d5.js",
+      "bytes": 3625,
+      "gzipBytes": 1901
+    }
+  ],
+  "homepageInitialJavaScriptGzipBytes": 181270,
+  "note": "Gzip estimates are file sizes, not measured transfer, interaction latency or rendering performance. No browser/device/frame/iframe performance claims."
+}

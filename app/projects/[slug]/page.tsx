@@ -1,14 +1,27 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import {notFound} from 'next/navigation';
 import ProjectExperiment from '../../../components/ProjectExperiment';
-import { notFound } from 'next/navigation';
-import { projects } from '../../../lib/projects';
+import ExperimentArt from '../../../components/ExperimentArt';
 import SpringLab from '../../../components/SpringLab';
+import styles from '../../../components/LabExperience.module.css';
+import {projects} from '../../../lib/projects';
+import {experimentGuides} from '../../../lib/experiment-guides';
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
- const {slug}=await params;const project=projects.find(p=>p.slug===slug);if(!project)return {};
- return {title:project.title,description:project.description,alternates:{canonical:`/projects/${slug}/`},
-  openGraph:{type:'website',title:project.title,description:project.description,url:`/projects/${slug}/`,images:[{url:'/social-preview.jpg'}]},
-  twitter:{card:'summary_large_image',title:project.title,description:project.description,images:['/social-preview.jpg']}};
+ const {slug}=await params,p=projects.find(x=>x.slug===slug);if(!p)return {};
+ return {title:p.title,description:p.description,alternates:{canonical:`/projects/${slug}/`},openGraph:{type:'website',title:p.title,description:p.description,url:`/projects/${slug}/`,images:[{url:'/social-preview.jpg'}]},twitter:{card:'summary_large_image',title:p.title,description:p.description,images:['/social-preview.jpg']}};
 }
 export function generateStaticParams(){return projects.map(p=>({slug:p.slug}));}
-export default async function Project({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const p=projects.find(x=>x.slug===slug);if(!p)notFound();return <main id="main" className="wrap project-detail"><Link className="text-link" href="/#experiments">← All experiments</Link><div className="eyebrow detail-kicker">EXPERIMENT {p.number} / {p.category}</div><h1>{p.title}</h1><p className="detail-lead">{p.question}</p><div className="detail-meta"><span className="badge">{p.status}</span><span>Roadmap: {p.date}</span></div><p className="detail-description">{p.detail}</p><ProjectExperiment slug={slug}/>{slug==='spring-physics-lab'&&<details className="model-details"><summary>Under the hood: explore the spring model</summary><SpringLab/><div className="notes"><section><span className="eyebrow">01 / MODEL</span><h2>Small system.<br/>Visible trade-offs.</h2><p>The spring pulls toward equilibrium with force −kx. The damper opposes velocity with force −cv. Together they produce acceleration (−kx − cv) / m.</p><p>The damping ratio ζ = c / 2√(mk) separates three responses: oscillation below 1, critical damping at 1, and a slower non-oscillating response above 1.</p></section><section><span className="eyebrow">02 / IMPLEMENTATION</span><h2>Time matters.</h2><p>The browser prototype uses semi-implicit Euler at a fixed 1/240 second step. A frame accumulator separates rendering from simulation. Long frames are capped at 50 ms to avoid catch-up spikes; simulated time can fall behind wall time.</p><p>Mass is limited to 0.25–5 kg, stiffness to 1–100 N/m, and damping to 0–50 N·s/m. Numerical integration approximates the continuous model and introduces small energy errors.</p></section><section><span className="eyebrow">03 / REPRODUCIBILITY</span><h2>Inspect the experiment.</h2><p>The local project includes a matching C# solver, Unity scene generator, and validation checks. This browser demonstration is implemented in JavaScript; it is not an embedded Unity WebGL build.</p><p>Next: validate the Unity scene visually, produce the WebGL build, and compare the two implementations before publication.</p></section></div></details>}</main>}
+export default async function Project({params}:{params:Promise<{slug:string}>}){
+ const {slug}=await params,p=projects.find(x=>x.slug===slug);if(!p)notFound();
+ const guide=experimentGuides[slug],index=projects.indexOf(p),next=projects[(index+1)%projects.length];
+ return <main id="main" className={`wrap ${styles.detail}`}><Link className={styles.back} href="/#experiments">All experiments</Link>
+  <section className={styles.detailHero}><div><span className={styles.introLabel}>{p.title} / {guide.group}</span><h1>{guide.hook}</h1><p>{guide.payoff}</p><div className={styles.detailActions}><a href="#workbench" className="button dark">Try the experiment</a><a href="#failure" className="text-link">Find its limits</a></div></div><div className={styles.detailArt}><ExperimentArt slug={slug} large/></div></section>
+  <div className={styles.applicationStrip} aria-label="Practical applications">{guide.applications.map(a=><span key={a}>{a}</span>)}</div>
+  <section className={styles.brief} aria-label="Your experiment briefing"><article><h2>The question</h2><p>{p.question}</p></article><article><h2>Your first change</h2><p>{guide.tune}</p></article><article><h2>The evidence</h2><p>{guide.compare}</p></article></section>
+  <section id="workbench" className={styles.workbench}><h2>Take the controls</h2><p>Choose an application below. Use its named reference and repeatable inputs to judge your result.</p><ProjectExperiment slug={slug}/></section>
+  <section id="failure" className={styles.failure}><h2>Push it until the trade-off appears.</h2><p>{guide.failure}</p></section>
+  {slug==='spring-physics-lab'&&<details className="model-details"><summary>Under the hood: inspect the spring model</summary><SpringLab/><div className="notes"><section><h2>What pulls it back?</h2><p>A spring pulls toward equilibrium with force −kx. A damper opposes velocity with force −cv. Together they produce acceleration (−kx − cv) / m.</p></section><section><h2>Why does it feel different?</h2><p>The damping ratio ζ = c / 2√(mk) separates oscillation, critical damping and a slower non-oscillating response. The browser integrator uses a fixed 1/240 second step; numerical approximation still introduces error.</p></section><section><h2>What is validated?</h2><p>This is a JavaScript teaching model with corresponding C# source and saved Unity scenes. It is not an embedded Unity WebGL build. Clean final exported-player validation remains pending.</p></section></div></details>}
+  <nav className={styles.next} aria-label="Keep exploring"><Link prefetch={false} href={`/projects/${next.slug}/`}>Next question: {experimentGuides[next.slug].hook}</Link><a href="https://github.com/pritchoudhary/unity-engineering-lab">Inspect the Unity source</a></nav>
+ </main>;
+}
