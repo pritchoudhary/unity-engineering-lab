@@ -286,3 +286,20 @@ Added ten-scene macOS/WebGL export methods, a runtime Labs selector, explicit va
 Earlier macOS normal/validation and WebGL validation builds succeeded, but final-source exported validation is incomplete. The actual browser report passed 50 saved-scene and 161 shared checks while failing overall with 20 runtime primitive-collider stripping errors. Added targeted linker retention; the fix and new responsive template require a rebuilt browser rerun. Actual macOS Spring rendering was observed, while pointer interaction remained unresolved. The macOS harness did not finish. Temporary build artifacts/reports were lost after the session interruption; retained observations and remaining checks are documented in `validation/exported-players-2026-11-24/results.md`. A resumed CLI attempt stalled at macOS service initialization and was stopped; native/browser control tools were unavailable. Do not claim clean final player/WebGL validation.
 
 The user explicitly authorized pushing the fixes, removing the draft/unmerged paragraph from PR #1, marking it ready and merging after required checks. No website deployment or domain change is included. Actual GitHub outcome is recorded after the operation.
+
+
+## November 25 — Website discovery and teaching presentation redesign prepared
+
+On `refine/interactive-lab-experience`, implemented a question-led homepage with distinct original mechanism illustrations for all ten experiments, lightweight topic filtering and optional learning notes. Reworked every project introduction into practical applications, a useful first change, fixed-comparison guidance and an explicit failure case, preserving the actual experiment controls below. Increased shared control/readout typography and hit areas. Combined Skills and Experience with practical example links and progressive disclosure of earlier roles; the old Skills route remains a useful canonical pointer. No new animation framework, live homepage simulation collection or autoplay was introduced.
+
+All73 existing tests, TypeScript, production static build and exported link/anchor checks passed. All ten SVG scenes were server-rendered/rasterized and visually inspected. Initial homepage JavaScript gzip estimate181,270bytes is an artifact measure, not a browser performance result. Actual browser/keyboard/touch/responsive and Portfoliobox iframe performance checks remain pending. The user reauthorized computer use, but the current tool inventory still does not expose browser/native control. No live admin change, website publication, domain change or new preview-server startup occurred. Results, artwork contact sheet and rollout checklist are in `validation/lab-experience-2026-11-25`.
+
+
+## November 25 — Chrome review and native menu consolidation
+
+Completed responsive review of the combined career page at 390/768/1280 px, homepage filters and keyboard activation, mobile spring and camera playback, plus short local and live-iframe performance samples. Renamed native Experience to Experience & Skills and removed only the separate Skills menu link; verified the public menu and preserved /capabilities. Matched the source navigation label and added a favicon. All 73 tests, production mirror build with TypeScript and static exported link checks pass. Generated publication remains approval-gated; live embedded content is still the previous release. See validation/lab-experience-2026-11-25/browser-review.md.
+
+
+## November 25 — Approved redesign published
+
+User approved the prepared PR #2 mirror. Deployed source 92911e2 via mirror commits 81b2072 and f7c599e (retained old hashed assets for cached clients). Pages reports built; public routes return the new content. Chrome confirmed combined career disclosure, spring playback and catalog filters inside Portfoliobox. Published iframe sample: event max 24 ms, zero long tasks. Source PR remains unmerged. Full details in validation/lab-experience-2026-11-25/browser-review.md.

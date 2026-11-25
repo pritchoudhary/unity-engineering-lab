@@ -1,4 +1,5 @@
 'use client';
+import MixingDesk from './MixingDesk';
 
 import { useId, useMemo, useState } from 'react';
 import { grid, scatter, footprint, minimumDistance, surfaceLayout } from '../lib/placement.mjs';
@@ -93,22 +94,13 @@ function Study({ mode }: { mode: number }) {
 
   return <section className="practical placement-study">
     <header className="lesson-header"><h2>{names[mode]}</h2><p>{tasks[mode]}</p></header>
-    <div className="scenario-grid">
-      <div className="scenario-demo">
-        <LayoutView mode={mode} points={points.slice(0, visible)} allPoints={points}
-          reference={referencePoints} angle={angle} aligned={aligned} width={width} />
-        <p className="chart-note">{mode === 1 ? `Surface ${angle}°. ` : mode === 2 ? `${width} × ${width} m patch. ` : '36 exhibit pivots. '}Orange marks the current layout. Grey marks the fixed reference.
-          Both share one scale, fitted to their combined extent. Symbols identify pivots.</p>
-        <Range label="Reveal placements" value={visible} min={0} max={points.length}
+    <MixingDesk preview={<><LayoutView mode={mode} points={points.slice(0, visible)} allPoints={points}
+          reference={referencePoints} angle={angle} aligned={aligned} width={width} /></>} playback={<><Range label="Reveal placements" value={visible} min={0} max={points.length}
           onChange={setShown} unit={` / ${points.length}`} />
-        <div className="feel-presets">
+<div className="feel-presets">
           <button onClick={() => setShown(0)}>Inspect from start</button>
           <button onClick={() => setShown(200)}>Show all</button>
-        </div>
-      </div>
-      <aside className="scenario-tuning">
-        <h3>Change one thing</h3>
-        {mode === 0 && <>
+        </div></>} controls={<div className="mix-channels">{mode === 0 && <>
           <Range label="Spacing" value={spacing} min={.5} max={3} step={.25} unit=" m" onChange={setSpacing} />
           <Range label="Columns" value={columns} min={3} max={12} onChange={setColumns} />
           <div className="feel-presets">
@@ -116,7 +108,7 @@ function Study({ mode }: { mode: number }) {
             <button onClick={() => setSpacing(2)}>Standard · 2 m</button>
           </div>
         </>}
-        {mode === 1 && <>
+{mode === 1 && <>
           <Range label="Surface slope" value={angle} min={0} max={60} step={5} unit="°" onChange={setAngle} />
           <Range label="Maximum slope" value={limit} min={0} max={60} step={5} unit="°" onChange={setLimit} />
           <label className="instant-option"><input type="checkbox" checked={aligned}
@@ -126,7 +118,7 @@ function Study({ mode }: { mode: number }) {
             <button onClick={() => setLimit(45)}>Allow · 45°</button>
           </div>
         </>}
-        {mode === 2 && <>
+{mode === 2 && <>
           <Range label="Minimum spacing" value={spacing} min={.5} max={4} step={.25} unit=" m" onChange={setSpacing} />
           <Range label="Patch width" value={width} min={2} max={20} unit=" m" onChange={setWidth} />
           <Range label="Requested trees" value={count} min={1} max={200} onChange={setCount} />
@@ -140,9 +132,8 @@ function Study({ mode }: { mode: number }) {
             </button>
           </div>
         </>}
-        <button className="button dark" onClick={reset}>Reset lesson</button>
-      </aside>
-    </div>
+<button className="button dark" onClick={reset}>Reset lesson</button></div>} details={<><p className="chart-note">{mode === 1 ? `Surface ${angle}°. ` : mode === 2 ? `${width} × ${width} m patch. ` : '36 exhibit pivots. '}Orange marks the current layout. Grey marks the fixed reference.
+          Both share one scale, fitted to their combined extent. Symbols identify pivots.</p><div className="mix-context"><h3>Change one thing</h3></div></>}/>
     <div className="tuning-brief">
       <h3>Read the result</h3>
       <div className="metric-grid">{metrics.map(([label, value, note]) =>

@@ -1,4 +1,5 @@
 'use client';
+import MixingDesk from './MixingDesk';
 
 import { useEffect, useId, useMemo, useState } from 'react';
 import { defaults, study, challengeMet, pointAt, heightAt, type Parameters, type Shot, type StudyResult } from '../lib/ballistics.mjs';
@@ -84,42 +85,33 @@ function Lesson({mode}:{mode:number}) {
   ];
   return <section className="practical ballistics-study">
     <header className="lesson-header"><h2>{names[mode]}</h2><p>{tasks[mode]}</p></header>
-    <div className="scenario-grid">
-      <div className="scenario-demo">
-        <div className="ballistics-legend"><span>Orange · tuned {mode===1&&!shot.found?'candidate':'shot'}</span><span>Dashed grey · {references[mode]}</span><span>Teal · target</span></div>
-        <Trajectory mode={mode} p={p} result={result} time={time}/>
-        <p className="chart-note">World metres. Both paths share one scale fitted to their combined extent.
-          {mode===1?' Grey is an unobstructed ghost; the orange projectile stops at cover.':''}
-          {mode===2?' The teal outline marks the initial target position. Playback stops at the tuned impact, with the target and projectile together.':''}</p>
-        <label className="scrubber" htmlFor={timeId}>Inspect time <output htmlFor={timeId}>{time.toFixed(2)} s</output>
+    <MixingDesk preview={<><div className="ballistics-legend"><span>Orange · tuned {mode===1&&!shot.found?'candidate':'shot'}</span><span>Dashed grey · {references[mode]}</span><span>Teal · target</span></div>
+<Trajectory mode={mode} p={p} result={result} time={time}/></>} playback={<><label className="scrubber" htmlFor={timeId}>Inspect time <output htmlFor={timeId}>{time.toFixed(2)} s</output>
           <input id={timeId} type="range" min={0} max={result.duration} step="any" value={time} onChange={e=>{setPlaying(false);const next=Number(e.target.value);setTime(next>=result.duration-1e-8?result.duration:next);}}/></label>
-        <div className="scenario-actions">
+<div className="scenario-actions">
           <button className="button dark" disabled={manual} onClick={()=>setPlaying(v=>!v)}>{playing?'Pause':time>=result.duration?'Replay':'Play'}</button>
           <button className="button outline" onClick={()=>{setPlaying(false);setTime(0);}}>Rewind</button>
           <button className="button outline" disabled={!shot.found} onClick={()=>{setPlaying(false);setTime(blocked?result.impactTime:shot.time);}}>{blocked?'Inspect cover impact':'Inspect tuned arrival'}</button>
-        </div>
-        <p className="chart-note">Starts paused. Tuning or scrubbing pauses and rewinds as appropriate.{manual?' Reduced motion is enabled: use the manual timeline and arrival button.':''}</p>
-        <div className="ballistics-state" aria-live="polite"><h3>{status}</h3><p>{explanation}</p></div>
-      </div>
-      <aside className="scenario-tuning"><h3>Change one thing</h3>
-        <p>The grey reference keeps its named rule. Other target and gravity inputs stay shared. Reset before each controlled comparison.</p>
-        <Range label="Target distance" value={p.distance} min={4} max={30} unit=" m" onChange={distance=>change({distance})}/>
-        <Range label="Target height" value={p.height} min={0} max={6} step={.5} unit=" m" onChange={height=>change({height})}/>
-        <Range label={mode===1?'Speed budget':'Launch speed'} value={p.speed} min={5} max={25} unit=" m/s" onChange={speed=>change({speed})}/>
-        <Range label="Gravity" value={p.gravity} min={2} max={20} step={.01} unit=" m/s²" onChange={gravity=>change({gravity})}/>
-        {mode===0&&<label className="instant-option"><input type="checkbox" checked={p.high} onChange={e=>change({high:e.target.checked})}/> Use high arc</label>}
-        {mode===1&&<Range label="Fuse duration" value={p.fuse} min={.75} max={3} step={.05} unit=" s" onChange={fuse=>change({fuse})}/>}
-        {mode===2&&<Range label="Target velocity" value={p.targetSpeed} min={-8} max={8} unit=" m/s" onChange={targetSpeed=>change({targetSpeed})}/>}
-        <h3>Repeat a comparison</h3>
-        <div className="feel-presets">
+        </div></>} controls={<div className="mix-channels"><Range label="Target distance" value={p.distance} min={4} max={30} unit=" m" onChange={distance=>change({distance})}/>
+<Range label="Target height" value={p.height} min={0} max={6} step={.5} unit=" m" onChange={height=>change({height})}/>
+<Range label={mode===1?'Speed budget':'Launch speed'} value={p.speed} min={5} max={25} unit=" m/s" onChange={speed=>change({speed})}/>
+<Range label="Gravity" value={p.gravity} min={2} max={20} step={.01} unit=" m/s²" onChange={gravity=>change({gravity})}/>
+{mode===0&&<label className="instant-option"><input type="checkbox" checked={p.high} onChange={e=>change({high:e.target.checked})}/> Use high arc</label>}
+{mode===1&&<Range label="Fuse duration" value={p.fuse} min={.75} max={3} step={.05} unit=" s" onChange={fuse=>change({fuse})}/>}
+{mode===2&&<Range label="Target velocity" value={p.targetSpeed} min={-8} max={8} unit=" m/s" onChange={targetSpeed=>change({targetSpeed})}/>}
+<div className="feel-presets">
           {mode===0?<><button onClick={()=>change({high:false})}>Low arc</button><button onClick={()=>change({high:true})}>High arc</button></>:
           mode===1?<><button onClick={()=>change({fuse:1})}>Short fuse · 1 s</button><button onClick={()=>change({fuse:2})}>Long fuse · 2 s</button></>:
           <><button onClick={()=>change({targetSpeed:6})}>Receding · +6 m/s</button><button onClick={()=>change({targetSpeed:-8})}>Closing · −8 m/s</button></>}
         </div>
-        <button className="button outline" onClick={()=>change(mode===0?{...defaults,speed:5}:mode===1?{...defaults,speed:5}:{...defaults,speed:8,targetSpeed:8})}>Run failure case</button>
-        <button className="button dark" onClick={reset}>Reset lesson</button>
-      </aside>
-    </div>
+<button className="button outline" onClick={()=>change(mode===0?{...defaults,speed:5}:mode===1?{...defaults,speed:5}:{...defaults,speed:8,targetSpeed:8})}>Run failure case</button>
+<button className="button dark" onClick={reset}>Reset lesson</button></div>} details={<><p className="chart-note">World metres. Both paths share one scale fitted to their combined extent.
+          {mode===1?' Grey is an unobstructed ghost; the orange projectile stops at cover.':''}
+          {mode===2?' The teal outline marks the initial target position. Playback stops at the tuned impact, with the target and projectile together.':''}</p>
+<p className="chart-note">Starts paused. Tuning or scrubbing pauses and rewinds as appropriate.{manual?' Reduced motion is enabled: use the manual timeline and arrival button.':''}</p>
+<div className="ballistics-state" aria-live="polite"><h3>{status}</h3><p>{explanation}</p></div><div className="mix-context"><h3>Change one thing</h3>
+<p>The grey reference keeps its named rule. Other target and gravity inputs stay shared. Reset before each controlled comparison.</p>
+<h3>Repeat a comparison</h3></div></>}/>
     <div className="tuning-brief"><h3>Read the result</h3>
       <div className="metric-grid">{metrics.map(([label,value,note])=><div className="metric" key={label}><span>{label}</span><strong>{value}</strong><small>{note}</small></div>)}</div>
       <div className="placement-challenge"><h3>Try it</h3><p>{goals[mode]}</p><p role="status">{achieved?'Challenge met. Explain what changed while the comparison stayed fixed.':'Adjust the controls and compare the measurements.'}</p></div>
