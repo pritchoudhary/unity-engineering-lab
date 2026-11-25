@@ -24,3 +24,5 @@ Apply to Engineering Lab first, then the other current embedded profile pages wh
 - A local host fixture reproducing the observed desktop and mobile host header/gutters tested all ten experiment routes at 320, 390, 768 and 1280 px: 40 checks with no outer or inner horizontal overflow, embedded mode active and iframe bottom within the viewport. This sweep used the intermediate 12vw / 320px-minimum wrapper; the final wrapper adds extra header room at tablet widths and a smaller minimum for short screens.
 - Spring was visually inspected on desktop and mobile; Balanced selects 1800 N·s/m. At 390 × 654 the revised spring monitor measures 293 px. Scene inspector monitor measures 218 px.
 - This is a layout correction; no simulation models changed. No physical-device or throttled performance claim. Native wrapper update and production publication remain pending.
+
+Final native-wrapper formula was then tested at 320×568, 390×654, 768×800, 1280×800 and 844×390. All frame bottoms remained within the outer viewport, including short landscape; no horizontal overflow. At 390×654 the frame is 544 px tall and ends at y=614; at 1280×800 it is 640 px tall and ends at y=761.
