@@ -20,3 +20,49 @@ body{font-size:16px}.nav nav{font-size:14px;gap:24px;flex-wrap:wrap}.brand small
 .intro-scene text{font-size:19px}@media(max-width:1000px){.new-hero{grid-template-columns:1fr}.spring-intro{width:100%;max-width:680px}}@media(max-width:650px){.intro-scene text{font-size:25px}}
 /* Shared lab instruments: readable controls and deliberate states, no decorative loops. */
 body{font-size:16px}.nav nav{font-size:15px;line-height:1.6;flex-wrap:wrap}.brand small{font-size:11px;letter-spacing:1.3px}.footer{font-size:14px}.eyebrow{font-size:13px;line-height:1.7}.button{font-size:15px;line-height:1.5;min-height:44px;padding:12px 19px}.text-link{font-size:15px;line-height:1.7}summary:focus-visible{outline:3px solid var(--orange);outline-offset:5px}button:disabled{cursor:default;filter:none}#workbench .practical,#workbench .health-lab{border-color:#bdcabb;border-radius:12px}#workbench .health-tabs,#workbench .application-nav{gap:8px;margin-bottom:22px}#workbench .health-tabs button,#workbench .application-nav button,#workbench .scenario-tabs button{font:16px/1.6 Arial,sans-serif;padding:15px 18px;min-height:52px;border-radius:7px}#workbench .health-tabs small{font-size:14px}#workbench .lesson-header{background:#1d3b32;padding:32px;color:#f2f5ec}#workbench .lesson-header h2{line-height:1.15}#workbench .lesson-header p{font-size:18px;line-height:1.8;max-width:760px}#workbench .scenario-tuning{background:#e7ede3;padding:28px;border-color:#c1ccbd}#workbench .scenario-tuning label{font-size:16px;line-height:1.7;margin:25px 0}#workbench .scenario-tuning p{font-size:16px;line-height:1.8}#workbench .scenario-tuning small{font-size:14px;line-height:1.8}#workbench input[type=range]{min-height:32px;accent-color:#a83e1c;cursor:pointer}#workbench .feel-presets{flex-wrap:wrap}#workbench .feel-presets button{font-size:14px;line-height:1.5;min-height:44px;padding:10px 12px}#workbench .scrubber{font-size:15px;line-height:1.7;padding:18px 0;border-top:1px solid #cbd6c5}#workbench .tuning-brief p,#workbench .scenario-guidance p{font-size:16px;line-height:1.8}#workbench .chart-note,#workbench .scenario-disclaimer,#workbench .plot-legend,#workbench .stage-caption{font-size:14px;line-height:1.8}#workbench .scenario-actions{gap:10px}#workbench .scenario-actions button{min-height:44px}#workbench .metric{border-radius:9px}#workbench .metric small,#workbench .metric span{font-size:14px;line-height:1.6}#workbench .application-intro p{font-size:17px;line-height:1.8}#workbench .application-nav{grid-template-columns:repeat(4,minmax(0,1fr))}#workbench .scenario-demo{min-width:0}#workbench svg{max-width:100%}@media(max-width:750px){#workbench .application-nav{grid-template-columns:repeat(2,minmax(0,1fr))}#workbench .lesson-header{padding:25px 22px}#workbench .lesson-header p{font-size:17px}#workbench .scenario-tuning{padding:23px}#workbench .health-tabs button{padding:13px 16px}.brand small{font-size:10px}.nav nav{font-size:15px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Mixing desk: keep the monitored stage above native tuning channels. */
+#workbench .practical{overflow:visible}
+#workbench .lesson-header{border-radius:10px 10px 0 0}
+.mixing-desk{isolation:isolate;background:#f6f7f1;border-top:1px solid #bdcabb;min-width:0}
+.mix-monitor{background:#e9ede2;z-index:5}
+.mix-pinned .mix-monitor{position:sticky;top:0;box-shadow:0 5px 12px #24382c12}
+.mix-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;border-bottom:1px solid #c6d1be}
+.mix-heading>span{font:14px monospace;letter-spacing:.06em;text-transform:uppercase;color:#344d39}
+.mix-heading button{font-size:14px;border:1px solid #a9b99f;padding:7px 12px;border-radius:6px;min-height:36px;background:transparent;color:#25372d}
+.mix-heading button[aria-pressed=true]{background:#25372d;color:#fff}
+.mix-preview{padding:8px 20px;min-width:0}
+#workbench .mix-preview>svg{display:block;width:100%;height:min(30svh,290px);min-height:140px;margin:0;object-fit:contain}
+#workbench .mix-preview .stage-caption,#workbench .mix-preview .steering-legend,#workbench .mix-preview .ballistics-legend{margin:0;padding:3px 0;font-size:13px;line-height:1.4}
+.mix-transport{padding:10px 20px;background:#f7f8f2;border-top:1px solid #c6d1be;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
+.mix-transport .experiment-timeline{width:100%;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
+#workbench .mix-transport .scrubber{flex:1;min-width:150px;margin:0;padding:0;border:0;font-size:14px;line-height:1.4}
+#workbench .mix-transport .scrubber input{margin:2px 0 0;min-height:28px}
+#workbench .mix-transport .scenario-actions{margin:0;gap:6px}
+#workbench .mix-transport button{padding:8px 12px;font-size:14px;min-height:40px}
+#workbench .mix-transport .playback-note{flex-basis:100%;margin:0;font-size:12px;line-height:1.4}
+.mix-transport>label:not(.scrubber){flex:1;min-width:180px;font-size:14px}.mix-transport>label input{display:block;width:100%}
+.mix-transport .feel-presets{margin:0}
+.mix-console{padding:20px;background:#e1e8da;border-top:1px solid #bccbb2}
+.mix-console-heading{display:flex;align-items:baseline;gap:16px;justify-content:space-between;margin-bottom:16px}
+#workbench .mix-console-heading h3{font:24px Georgia,serif;margin:0}.mix-console-heading span{font-size:14px;color:#52614e}
+.mix-channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+#workbench .mix-channels>label{display:block;background:#f6f7f1;border:1px solid #bdcbb4;border-radius:9px;padding:16px;margin:0;font-size:15px;line-height:1.5;min-width:0}
+.mix-channels output{display:block;font:22px/1.5 monospace;color:#25372d;margin:7px 0;overflow-wrap:anywhere}
+#workbench .mix-channels input[type=range]{width:100%;display:block;margin:8px 0 0;min-height:40px;accent-color:#385c3b}
+.mix-channels small{display:block;font-size:13px;line-height:1.6;margin-top:8px;color:#52614e}
+#workbench .mix-channels .instant-option{display:flex;align-items:center;gap:10px;font-size:14px}
+.mix-channels .instant-option input{flex-shrink:0}
+#workbench .mix-channels .feel-presets,#workbench .mix-channels .systems-presets{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;margin:0}
+#workbench .mix-channels button{font-size:14px;line-height:1.5;min-height:44px;border:1px solid #a7b69d;border-radius:7px;padding:10px 14px;background:#f6f7f1;color:#25372d}
+#workbench .mix-channels button[aria-pressed=true]{background:#25372d;color:#fff}.mix-channels select{max-width:100%;width:100%;font-size:16px}
+.mix-details{padding:18px 20px;border-top:1px solid #bdcbb4}.mix-details summary{font-size:16px;cursor:pointer}.mix-details>div{padding-top:18px;max-width:850px;margin:auto}.mix-details .response-plot{display:block;width:100%;height:auto}.mix-context{display:grid;gap:12px;margin-top:20px}.mix-context p{font-size:16px;line-height:1.7}.mix-context h3{font:24px Georgia,serif}
+#workbench .mix-preview .systems-pair{margin:0;gap:18px;grid-template-columns:1fr 1fr}#workbench .mix-preview .systems-pair h3{font:16px Georgia,serif;margin:4px 0}#workbench .mix-preview .systems-world{height:min(27svh,250px);width:100%;object-fit:contain}#workbench .mix-preview .frame-state{font-size:13px;line-height:1.5;margin:3px 0}
+@media(max-width:700px){.mix-channels{grid-template-columns:repeat(2,minmax(0,1fr))}.mix-console-heading{display:block}.mix-console-heading span{display:block;margin-top:7px}.mix-console{padding:14px}.mix-heading{padding:8px 12px}.mix-preview{padding:6px 10px}.mix-transport{padding:8px 12px}.mix-console-heading span{font-size:13px}#workbench .mix-preview>svg{height:24svh;min-height:120px}#workbench .mix-preview .systems-world{height:20svh;min-height:110px}#workbench .mix-preview .frame-state{display:none}#workbench .mix-channels>label{padding:12px}#workbench .mix-transport .playback-note{display:none}}
+@media(max-width:380px){.mix-channels{grid-template-columns:1fr}}
+@media(max-height:540px){.mix-pinned .mix-monitor{position:static}}
+.mix-health-stage{display:grid;grid-template-columns:minmax(160px,1fr) minmax(0,2fr);gap:16px;max-height:36svh;overflow:auto;overscroll-behavior:contain}.mix-health-stage .health-tree,.mix-health-stage .health-inspector{padding:12px;background:#f6f7f1;min-width:0}.mix-health-stage .health-tree button{min-height:44px}.mix-health-stage .try-this{margin-top:12px}.mix-health-stage .health-field code{overflow-wrap:anywhere}.mix-channels>.eyebrow,.mix-channels>.try-this{grid-column:1/-1}
+@media(max-width:500px){.mix-health-stage{grid-template-columns:minmax(110px,1fr) minmax(0,1.4fr);gap:6px}.mix-health-stage .health-tree,.mix-health-stage .health-inspector{padding:6px}.mix-health-stage .health-tree button{font-size:13px!important;padding-left:5px!important}.mix-health-stage .health-inspector h3{font-size:19px}}
+.mix-pinned .mix-console :is(input,button,select),.mix-pinned .mix-details :is(input,button,summary){scroll-margin-top:calc(var(--monitor-height,340px) + 16px);scroll-margin-bottom:20px}
+@media(max-width:700px){#workbench .mix-preview>svg{height:18svh;min-height:110px}#workbench .mix-preview .stage-caption{font-size:12px;display:block}#workbench .mix-preview .stage-caption span{display:none}.mix-console-heading{margin-bottom:10px}#workbench .mix-console-heading h3{font-size:22px}.mix-console-heading>span{display:none}.mix-channels output{font-size:18px}.mix-channels .instant-option{grid-column:1/-1}}
+#workbench code{overflow-wrap:anywhere}
