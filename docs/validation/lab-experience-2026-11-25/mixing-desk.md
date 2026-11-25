@@ -18,3 +18,7 @@ All ten experiment routes / 31 applications use a shared MixingDesk component. T
 ## Limits
 
 The layout sweep checks mounting, inputs, and page overflow, not every possible parameter combination or visual collision. No physical phone or low-end CPU throttling. CSS preload-unused warnings from the existing export persist. No native Unity source or player build changed.
+
+## Published release
+
+Source cc86932 was published to the existing mirror in commit 81410cda65001fdaf4d4bc66a1e12bdd4aa76f89. Existing hashed assets were retained for cached documents. GitHub Pages returned `built`, with no error. A public HTTP request returned the Mixing Desk markup and new stylesheet. In the real Portfoliobox iframe, the new pin control, transport, preset bank and tuning input rendered; Run comparison advanced time, and Balanced selected 1800 N·s/m and rewound the run. A session-only release query on the iframe source avoided cached old HTML during verification; the native embed configuration was not changed. Source PR #2 remains open and unmerged.
