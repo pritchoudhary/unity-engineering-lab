@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+[InitializeOnLoad]
+internal static class ScheduledPathfindingReview
+{
+ const string Key="EngineeringLab.ScheduledPathfindingReview.20261126";
+ const string Report="/private/tmp/engineering-lab-native-review-20261126.json";
+ const string Project="/Users/pritishchoudhary/Documents/Codex/2026-10-29/le/outputs/unity-engineering-lab/unity/Assets";
+ [Serializable] sealed class Result {public string status,stage,unityVersion,error; public int modelChecks,playChecks; public bool sceneImported;}
+ static ScheduledPathfindingReview(){
+  if(Application.dataPath!=Project)return;
+  EditorApplication.playModeStateChanged+=Changed;
+  if(!SessionState.GetBool(Key,false)&&!File.Exists(Report))EditorApplication.delayCall+=Begin;
+ }
+ static void Begin(){
+  if(EditorApplication.isCompiling||EditorApplication.isUpdating){EditorApplication.delayCall+=Begin;return;}
+  if(EditorApplication.isPlayingOrWillChangePlaymode||EditorSceneManager.GetActiveScene().isDirty){Write("blocked","precondition","Review requires a clean scene in Edit mode.",false,0,0);return;}
+  SessionState.SetBool(Key,true);
+  SessionState.SetString(Key+".scene",EditorSceneManager.GetActiveScene().path);
+  try{
+   EngineeringLab.Pathfinding.Editor.PathfindingEditor.GenerateAndValidate();
+   Write("running","scene-import","",true,64,0);
+   EditorApplication.isPlaying=true;
+  }catch(Exception e){Write("failed","scene-import",e.ToString(),false,0,0);}
+ }
+ static void Changed(PlayModeStateChange state){
+  if(!SessionState.GetBool(Key,false))return;
+  if(state==PlayModeStateChange.EnteredPlayMode)EditorApplication.delayCall+=Run;
+  if(state==PlayModeStateChange.EnteredEditMode){
+   var path=SessionState.GetString(Key+".scene","");
+   if(!string.IsNullOrEmpty(path)&&File.Exists(path))EditorSceneManager.OpenScene(path);
+  }
+ }
+ static void Run(){
+  try{
+   EngineeringLab.Pathfinding.Editor.PathfindingEditor.ValidatePlayMode();
+   Write("passed","play-mode","",true,64,10);
+  }catch(Exception e){Write("failed","play-mode",e.ToString(),true,64,0);}
+  finally{EditorApplication.isPlaying=false;}
+ }
+ static void Write(string status,string stage,string error,bool imported,int models,int play){
+  File.WriteAllText(Report,JsonUtility.ToJson(new Result{status=status,stage=stage,error=error,unityVersion=Application.unityVersion,sceneImported=imported,modelChecks=models,playChecks=play},true));
+  Debug.Log("SCHEDULED_PATHFINDING_REVIEW "+status+" "+stage);
+ }
+}

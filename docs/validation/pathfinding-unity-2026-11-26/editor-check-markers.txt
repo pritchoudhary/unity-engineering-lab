@@ -1,0 +1,5 @@
+PATHFINDING_MODEL_PASS 64 checks
+PATHFINDING_SCENE_PASS
+SCHEDULED_PATHFINDING_REVIEW running scene-import
+PATHFINDING_PLAY_PASS 10 controlled-input checks; not physical pointer or visual certification
+SCHEDULED_PATHFINDING_REVIEW passed play-mode
