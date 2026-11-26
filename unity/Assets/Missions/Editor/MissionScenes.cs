@@ -8,7 +8,7 @@ namespace EngineeringLab.Missions.Editor
   static void Open(){EditorWindow.GetWindow<Selector>("Native missions");}
   public sealed class Selector:EditorWindow
   {
-   void OnGUI(){EditorGUILayout.LabelField("Play, experiment, then inspect the lab",EditorStyles.boldLabel);EditorGUILayout.HelpBox("Open a saved scene and press Play. Missions start paused. Use Inspect analytical lab for the three application studies. Save your own scene changes before switching.",MessageType.Info);for(int i=0;i<NativeMission.SceneNames.Length;i++){int k=i;if(UnityEngine.GUILayout.Button((i+1)+". "+NativeMission.Titles[i])){if(EditorApplication.isPlaying){EditorUtility.DisplayDialog("Leave Play mode","Stop Play mode before switching scenes.","OK");return;}if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())EditorSceneManager.OpenScene("Assets/Scenes/"+NativeMission.SceneNames[k]+".unity");}}}
+   void OnGUI(){EditorGUILayout.LabelField("Play, experiment, then inspect the lab",EditorStyles.boldLabel);EditorGUILayout.HelpBox("Open a saved scene and press Play. Missions start paused. Use Inspect analytical lab for the three application studies. Save your own scene changes before switching.",MessageType.Info);for(int i=0;i<LabScenes.Names.Length;i++){int k=i;if(UnityEngine.GUILayout.Button((i+1)+". "+LabScenes.Titles[i])){if(EditorApplication.isPlaying){EditorUtility.DisplayDialog("Leave Play mode","Stop Play mode before switching scenes.","OK");return;}if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())EditorSceneManager.OpenScene("Assets/Scenes/"+LabScenes.Names[k]+".unity");}}}
   }
  }
 }

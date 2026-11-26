@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VisibilityLab.unity
     guid: 5edd16239f82425fa7cbcf40e88696f0
+  - enabled: 1
+    path: Assets/Scenes/PathfindingLab.unity
+    guid: b660ba3368404d91a08f348b3283806e
   m_configObjects: {}

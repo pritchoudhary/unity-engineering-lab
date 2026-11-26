@@ -9,7 +9,7 @@ using UnityEngine;
 namespace EngineeringLab.Missions.Editor
 {
     /// <summary>
-    /// Reproducible local exports of the ten saved scenes. A validation export only
+    /// Reproducible local exports of the eleven saved scenes. A validation export only
     /// compiles the opt-in harness; launching the export does not itself run tests.
     /// Switch the Editor to the requested target before invoking these methods.
     /// </summary>
@@ -47,12 +47,12 @@ namespace EngineeringLab.Missions.Editor
 
         static string[] SavedScenes()
         {
-            if (NativeMission.SceneNames.Length != 10) throw new BuildFailedException("Expected ten named native scenarios.");
-            var scenes = new string[NativeMission.SceneNames.Length];
+            if (LabScenes.Names.Length != 11) throw new BuildFailedException("Expected eleven named native labs.");
+            var scenes = new string[LabScenes.Names.Length];
             var names = new HashSet<string>(StringComparer.Ordinal);
             for (int i = 0; i < scenes.Length; i++)
             {
-                string name = NativeMission.SceneNames[i];
+                string name = LabScenes.Names[i];
                 if (!names.Add(name)) throw new BuildFailedException("Duplicate scenario scene: " + name);
                 scenes[i] = "Assets/Scenes/" + name + ".unity";
                 if (!AssetDatabase.LoadAssetAtPath<SceneAsset>(scenes[i]))

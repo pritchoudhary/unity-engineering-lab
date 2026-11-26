@@ -38,8 +38,8 @@ namespace EngineeringLab.Missions
 
         public bool LoadMissionScene(int index)
         {
-            if (index < 0 || index >= SceneNames.Length || navigationLoad != null) return false;
-            string path = "Assets/Scenes/" + SceneNames[index] + ".unity";
+            if (index < 0 || index >= LabScenes.Names.Length || navigationLoad != null) return false;
+            string path = "Assets/Scenes/" + LabScenes.Names[index] + ".unity";
             OpenNavigationMenu();
             if (!Application.CanStreamedLevelBeLoaded(path))
             {
@@ -87,12 +87,12 @@ namespace EngineeringLab.Missions
             bool oldEnabled = GUI.enabled;
             GUI.enabled = navigationLoad == null;
             if (Action(new Rect(left + panelWidth - 100, top + 16, 80, 40), "Close")) CloseNavigationMenu();
-            GUI.Label(new Rect(left + 20, top + 65, panelWidth - 40, 42), "Ten playable scenarios. Each opens paused; your current run stays paused when you close this menu.", hudSmall);
+            GUI.Label(new Rect(left + 20, top + 65, panelWidth - 40, 42), "Playable scenarios and navigation lessons. Each opens paused; your current run stays paused when you close this menu.", hudSmall);
             var viewport = new Rect(left + 20, top + 118, panelWidth - 40, Mathf.Max(60, height - 218));
             float rowWidth = Mathf.Max(160, viewport.width - 20);
-            navigationScroll = GUI.BeginScrollView(viewport, navigationScroll, new Rect(0, 0, rowWidth, SceneNames.Length * 62), false, false);
-            for (int i = 0; i < SceneNames.Length; i++)
-                if (Action(new Rect(0, i * 62, rowWidth, 52), (i + 1).ToString("00") + "   " + Titles[i] + (i == kind ? "   · current" : ""), false, i == kind)) LoadMissionScene(i);
+            navigationScroll = GUI.BeginScrollView(viewport, navigationScroll, new Rect(0, 0, rowWidth, LabScenes.Names.Length * 62), false, false);
+            for (int i = 0; i < LabScenes.Names.Length; i++)
+                if (Action(new Rect(0, i * 62, rowWidth, 52), (i + 1).ToString("00") + "   " + LabScenes.Titles[i] + (i == kind ? "   · current" : ""), false, i == kind)) LoadMissionScene(i);
             GUI.EndScrollView();
             GUI.enabled = oldEnabled;
             string status = navigationLoad != null ? "Opening lab…" : navigationError;

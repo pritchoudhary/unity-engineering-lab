@@ -310,3 +310,9 @@ User approved the prepared PR #2 mirror. Deployed source 92911e2 via mirror comm
 - Added Pathfinding Lab as project eleven: continuous warehouse visibility-graph navigation, square-body clearance, last-heard sound investigation, and optional weighted-grid search studies.
 - Verified 88 model tests, production static build, desktop/tablet/mobile layout, sound memory, route comparison and doorway failure. Full evidence and limitations: `docs/validation/complete-redesign-2026-11-26/review.md`.
 - Publication and native Portfoliobox count-neutral footer copy remain pending approval of the concrete PR. No native Unity implementation is claimed for Pathfinding.
+
+## 2026-11-26 — PR #5 published; Unity pathfinding integration under review
+
+User explicitly approved merge/publication of PR #5. Merged source 649b76e and published generated mirror b51c2b3; Pages reports built. Actual Portfoliobox iframe shows eleven experiments and the new warehouse clearance interaction works. Native footer count cleanup remains blocked by Chrome control failure; no editor mutation occurred.
+
+Added native warehouse pathfinding source, scene, three lessons, shared scene/build registry, C# checks and browser parity fixture on feat/unity-spatial-pathfinding. All 64 compiled C# checks and 89 web tests pass; full runtime/Editor source compilation passes with an installed-assembly CS1701 warning. Two actual Unity batch attempts stalled before script compilation/entry-point execution; both stopped. Scene import, Play-mode, physical controls, screenshots and exports remain pending, so the native integration is draft review work. See validation/pathfinding-unity-2026-11-26/results.md and PATHFINDING-UNITY.md.
