@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "bcae1f3",
+  "unityVersion": "6000.5.2f1",
+  "files": {
+    "unity/Assets/Pathfinding/SpatialNavigation.cs": "b0f7910a3bb7c07d3f266487dc16a315b3e3d901f7980a7ef6e01780464d9563",
+    "unity/Assets/Pathfinding/SpatialNavigationChecks.cs": "74d36bb5257a13b5910a97a3d05d05e795984cd90811e37ad370a4e687a809ea",
+    "unity/Assets/Pathfinding/PathfindingLab.cs": "fee4ca2cfa6af3df6086fb6fe4ba66b30f110d2edd7d55b38645618d47062be8",
+    "unity/Assets/Pathfinding/Editor/PathfindingEditor.cs": "c3138f79bdfcce7940d033faf7a681d59cc2e5768931eae8454797f2ab227573",
+    "unity/Assets/Scenes/PathfindingLab.unity": "903766dde0345ab86fc69cb4415ec96fda682727bc6242c3a999e40b24e78cfc"
+  }
+}

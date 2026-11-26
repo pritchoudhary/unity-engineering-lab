@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "stage": "play-mode",
+  "unityVersion": "6000.5.2f1",
+  "error": "",
+  "modelChecks": 64,
+  "playChecks": 10,
+  "sceneImported": true
+}

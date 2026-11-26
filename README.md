@@ -4,7 +4,7 @@ Pritish Choudhary's Unity Engineering Lab. The browser portfolio is embedded in 
 
 ## Try the live experiments
 
-Visit **[pritishchoudhary.com](https://www.pritishchoudhary.com/)** to explore all ten browser studies and change their controls directly in your browser. No installation, repository download, Unity Editor or local HTTP server is needed.
+Visit **[pritishchoudhary.com](https://www.pritishchoudhary.com/)** to explore the browser studies and change their controls directly in your browser. No installation, repository download, Unity Editor or local HTTP server is needed.
 
 Portfoliobox hosts the main site and embeds the published browser app served by GitHub Pages. The live website stays available independently of the developer's computer. Native Unity scenes are separate and require the Unity Editor; the browser lessons are JavaScript experiences, not Unity WebGL builds.
 
@@ -100,3 +100,8 @@ As explicitly requested on November 24, this repository is now public: https://g
 The homepage starts with a lightweight analytic spring comparison; visitors predict, test and inspect the result. It starts paused and respects reduced motion. The full four-application lesson opens on request. Each experiment's main component loads separately. Flocking/Camera/Visibility calculations run in a worker, cache bounded deterministic results, and accept only the latest requested comparison. Controls remain available during calculation; stale measurements are hidden.
 
 For local performance review, append `?labPerf=1` to a route. The hidden `#lab-performance-report` output samples visible requestAnimationFrame cadence, supported Event Timing entries (16 ms threshold), long tasks and observed JavaScript resource sizes. Normal visits do not run this sampler. These are diagnostic samples on the review browser, not universal device or frame-rendering guarantees. No telemetry is sent.
+
+
+## Spatial pathfinding in Unity (under review)
+
+Open `unity/Assets/Scenes/PathfindingLab.unity` or **Tools → Engineering Lab → Open Pathfinding Lab**. The C# companion has warehouse route search, square-body doorway clearance and event-based sound investigation. It is registered with the native lab selector and player export list. The optional browser grid lessons remain browser-only. Native scene import, visual/physical Play review and exports are pending; compiled model checks are not a completed Unity playthrough. See [Pathfinding integration](docs/PATHFINDING-UNITY.md).
