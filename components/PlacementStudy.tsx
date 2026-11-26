@@ -1,5 +1,6 @@
 'use client';
 import MixingDesk from './MixingDesk';
+import {learningPaths} from '../lib/learning-paths';
 
 import { useId, useMemo, useState } from 'react';
 import { grid, scatter, footprint, minimumDistance, surfaceLayout } from '../lib/placement.mjs';
@@ -94,7 +95,7 @@ function Study({ mode }: { mode: number }) {
 
   return <section className="practical placement-study">
     <header className="lesson-header"><h2>{names[mode]}</h2><p>{tasks[mode]}</p></header>
-    <MixingDesk preview={<><LayoutView mode={mode} points={points.slice(0, visible)} allPoints={points}
+    <MixingDesk guide={learningPaths.placement[mode]} evidence={<>{metrics[0][0]}: {metrics[0][1]} · {achieved?"Challenge met":"Keep exploring"}</>} preview={<><LayoutView mode={mode} points={points.slice(0, visible)} allPoints={points}
           reference={referencePoints} angle={angle} aligned={aligned} width={width} /></>} playback={<><Range label="Reveal placements" value={visible} min={0} max={points.length}
           onChange={setShown} unit={` / ${points.length}`} />
 <div className="feel-presets">

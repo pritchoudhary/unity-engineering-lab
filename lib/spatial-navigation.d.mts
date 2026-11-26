@@ -1,0 +1,11 @@
+export type Point=[number,number];
+export type Obstacle={x:number;y:number;w:number;h:number};
+export type SpatialRun={path:Point[];distance:number|null;expanded:number[];nodes:Point[];edges:{a:number;b:number;cost:number}[];inflated:Obstacle[];reason:string};
+export const WORLD:{width:number;height:number};
+export const warehouse:Obstacle[];
+export const closedWarehouse:Obstacle[];
+export function length(a:Point,b:Point):number;
+export function segmentInterior(a:Point,b:Point,r:Obstacle):boolean;
+export function planRoute(start:Point,goal:Point,obstacles?:Obstacle[],clearance?:number,algorithm?:'astar'|'dijkstra'):SpatialRun;
+export function pointAlong(path:Point[],fraction:number):Point|null;
+export function hearInWorld(source:Point,listener:Point,obstacles:Obstacle[],budget:number):{heard:boolean;distance:number|null;location:Point|null;path:Point[]};

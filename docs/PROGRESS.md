@@ -303,3 +303,10 @@ Completed responsive review of the combined career page at 390/768/1280 px, home
 ## November 25 — Approved redesign published
 
 User approved the prepared PR #2 mirror. Deployed source 92911e2 via mirror commits 81b2072 and f7c599e (retained old hashed assets for cached clients). Pages reports built; public routes return the new content. Chrome confirmed combined career disclosure, spring playback and catalog filters inside Portfoliobox. Published iframe sample: event max 24 ms, zero long tasks. Source PR remains unmerged. Full details in validation/lab-experience-2026-11-25/browser-review.md.
+
+## 2026-11-26 — Complete browser workspaces and spatial pathfinding (pending PR approval)
+
+- Applied the shared prediction/experiment/evidence/explanation workspace to all 31 applications across the ten existing browser projects, preserving their distinct scenes and comparisons.
+- Added Pathfinding Lab as project eleven: continuous warehouse visibility-graph navigation, square-body clearance, last-heard sound investigation, and optional weighted-grid search studies.
+- Verified 88 model tests, production static build, desktop/tablet/mobile layout, sound memory, route comparison and doorway failure. Full evidence and limitations: `docs/validation/complete-redesign-2026-11-26/review.md`.
+- Publication and native Portfoliobox count-neutral footer copy remain pending approval of the concrete PR. No native Unity implementation is claimed for Pathfinding.

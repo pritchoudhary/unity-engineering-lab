@@ -3,6 +3,7 @@ import styles from './ExperimentArt.module.css';
 
 type Props = { slug: string; large?: boolean; className?: string; decorative?: boolean };
 const descriptions: Record<string, string> = {
+ 'pathfinding-lab':'A robot navigates around warehouse storage through a doorway, with visible graph connections and a sound source.',
   'spring-physics-lab': 'A menu highlight overshoots its destination, then settles along a spring response curve.',
   'scene-health-inspector': 'Three scene objects expose a disconnected dependency beside a deliberate repair connection.',
   'vehicle-suspension': 'A suspended vehicle body rides above two wheels on an uneven proving road.',
@@ -27,6 +28,17 @@ function Robot({ x, y, rotate = 0 }: { x: number; y: number; rotate?: number }) 
 
 function Scene({ slug }: { slug: string }) {
   switch (slug) {
+    case 'pathfinding-lab': return <Drawing>
+      <rect x="65" y="40" width="350" height="220" rx="12" className={styles.faint}/>
+      <path d="M205 40v90m0 55v75" strokeWidth="15"/>
+      <rect x="280" y="75" width="70" height="45" rx="5" className={styles.panelFill}/>
+      <rect x="280" y="190" width="70" height="45" rx="5" className={styles.panelFill}/>
+      <path d="M112 87 190 143 220 143 265 135 365 155M112 87 190 172 220 172 365 155M265 135 265 175 365 155" className={styles.faint}/>
+      <path d="M112 87 190 143 220 143 365 155" className={styles.rustLine} strokeWidth="5"/>
+      {[190,220].map(x=><circle key={x} cx={x} cy="143" r="5" className={styles.rustFill}/>)}
+      <Robot x={112} y={87} rotate={35}/><circle cx="365" cy="155" r="11" className={styles.rustFill}/>
+      <path d="M382 138q17 17 0 34m10-43q26 26 0 52" className={styles.rustLine}/>
+    </Drawing>;
     case 'spring-physics-lab': return <Drawing>
       <rect x="54" y="48" width="372" height="84" rx="20" className={styles.panelFill}/>
       <path d="M178 68v44m124-44v44" className={styles.faint}/>

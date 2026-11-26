@@ -1,5 +1,6 @@
 'use client';
 import MixingDesk from './MixingDesk';
+import {learningPaths} from '../lib/learning-paths';
 
 import { useEffect, useId, useMemo, useState } from 'react';
 import { defaults, study, challengeMet, pointAt, heightAt, type Parameters, type Shot, type StudyResult } from '../lib/ballistics.mjs';
@@ -50,7 +51,7 @@ function Lesson({mode}:{mode:number}) {
     if(!playing) return;
     let frame=0, previous=performance.now(), elapsed=time>=result.duration?0:time;
     const tick=(now:number)=>{
-      elapsed=Math.min(result.duration,elapsed+Math.min(.05,(now-previous)/1000));previous=now;setTime(elapsed);
+      elapsed=Math.min(result.duration,elapsed+Math.max(0,Math.min(.05,(now-previous)/1000)));previous=now;setTime(elapsed);
       if(elapsed>=result.duration)setPlaying(false);else frame=requestAnimationFrame(tick);
     };
     frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);
@@ -85,7 +86,7 @@ function Lesson({mode}:{mode:number}) {
   ];
   return <section className="practical ballistics-study">
     <header className="lesson-header"><h2>{names[mode]}</h2><p>{tasks[mode]}</p></header>
-    <MixingDesk preview={<><div className="ballistics-legend"><span>Orange · tuned {mode===1&&!shot.found?'candidate':'shot'}</span><span>Dashed grey · {references[mode]}</span><span>Teal · target</span></div>
+    <MixingDesk guide={learningPaths.ballistics[mode]} evidence={<>{status} · {metrics[0][0]}: {metrics[0][1]}</>} onSuspend={()=>setPlaying(false)} preview={<><div className="ballistics-legend"><span>Orange · tuned {mode===1&&!shot.found?'candidate':'shot'}</span><span>Dashed grey · {references[mode]}</span><span>Teal · target</span></div>
 <Trajectory mode={mode} p={p} result={result} time={time}/></>} playback={<><label className="scrubber" htmlFor={timeId}>Inspect time <output htmlFor={timeId}>{time.toFixed(2)} s</output>
           <input id={timeId} type="range" min={0} max={result.duration} step="any" value={time} onChange={e=>{setPlaying(false);const next=Number(e.target.value);setTime(next>=result.duration-1e-8?result.duration:next);}}/></label>
 <div className="scenario-actions">

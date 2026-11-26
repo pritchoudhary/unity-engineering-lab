@@ -1,5 +1,6 @@
 'use client';
 import MixingDesk from './MixingDesk';
+import {learningPaths} from '../lib/learning-paths';
 import {useId,useMemo,useState} from 'react';
 import ExperimentTimeline from './ExperimentTimeline';
 import {defaults,comparison,inspect,obstacle,agentRadius,type SteeringParameters,type SteeringRun} from '../lib/steering.mjs';
@@ -44,7 +45,7 @@ function Lesson({mode}:{mode:number}){
   ['Centre separation',`${current.error.toFixed(2)} m`,'Contact is 0.4 m: robot radius 0.3 m + courier radius 0.1 m']
  ];
  return <section className="practical steering-study"><header className="lesson-header"><h2>{names[mode]}</h2><p>{tasks[mode]}</p></header>
- <MixingDesk preview={<><div className="steering-legend"><span>Orange · tuned robot</span><span>Dashed grey · reference</span><span>Teal · destination / courier</span></div>
+ <MixingDesk guide={learningPaths.steering[mode]} evidence={<>{current.collision?"Collision":current.completed?"Destination reached":"Time budget exhausted"} · {metrics[0][0]}: {metrics[0][1]}</>} preview={<><div className="steering-legend"><span>Orange · tuned robot</span><span>Dashed grey · reference</span><span>Teal · destination / courier</span></div>
 <Map mode={mode} current={current} reference={reference} time={time} p={p}/></>} playback={<><ExperimentTimeline key={JSON.stringify(p)} t={time} setT={setTime} duration={duration} step="any"/></>} controls={<div className="mix-channels"><Range label="Speed limit" value={p.speed} min={1} max={5} step={.5} unit="m/s" onChange={speed=>change({speed})}/>
 <Range label="Acceleration limit" value={p.acceleration} min={1} max={8} step={.5} unit="m/s²" onChange={acceleration=>change({acceleration})}/>
 {mode===0?<Range label="Slowing radius" value={p.slowRadius} min={.25} max={6} step={.25} unit="m" onChange={slowRadius=>change({slowRadius})}/>:mode===1?<Range label="Look ahead" value={p.lookAhead} min={.1} max={3} step={.1} unit="s" onChange={lookAhead=>change({lookAhead})}/>:<Range label="Prediction horizon" value={p.prediction} min={0} max={3} step={.25} unit="s" onChange={prediction=>change({prediction})}/>}

@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 function Loading(){return <p className="experiment-loading" role="status">Opening this experiment…</p>;}
+const Pathfinding=dynamic(()=>import('./PathfindingStudy'),{loading:Loading});
 const Spring=dynamic(()=>import('./SpringApplications'),{loading:Loading});
 const Health=dynamic(()=>import('./SceneHealthLab'),{loading:Loading});
 const Vehicle=dynamic(()=>import('./VehicleStudy'),{loading:Loading});
@@ -10,6 +11,7 @@ const Ballistics=dynamic(()=>import('./BallisticsStudy'),{loading:Loading});
 const Steering=dynamic(()=>import('./SteeringStudy'),{loading:Loading});
 const Systems=dynamic(()=>import('./SystemStudies'),{loading:Loading});
 export default function ProjectExperiment({slug}:{slug:string}){
+ if(slug==='pathfinding-lab')return <Pathfinding/>;
  if(slug==='spring-physics-lab')return <Spring/>;
  if(slug==='scene-health-inspector')return <Health/>;
  if(slug==='vehicle-suspension')return <Vehicle/>;
