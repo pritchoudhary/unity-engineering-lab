@@ -4,7 +4,7 @@
 
 PR #5 merged at source `649b76ebb33f0b149bc27421ee91926cb7ad1a1b`. Its generated-only mirror is `b51c2b30ef1740db34b1bfa43ec0157c9a7b4698`; GitHub Pages reports `built` with no error. Build used `SITE_ORIGIN=https://pritchoudhary.github.io LAB_EMBED_MIRROR=1`. No review fixture, source maps or Unity assets copied. Previous hashed assets retained for cached clients.
 
-Verified the actual Portfoliobox homepage iframe shows eleven experiments, opened Pathfinding from its catalog and selected Wide cargo: body route fails, point reference remains 16 m, body/doorway reads 2.60/2.40 m. Native Chrome editor access stalled; no native page mutation occurred. Its footer still says “Ten interactive studies”; replace only that phrase with “Interactive studies” when editor input works, preserving the existing VERIFY marker and iframe.
+Verified the actual Portfoliobox homepage iframe shows eleven experiments, opened Pathfinding from its catalog and selected Wide cargo: body route fails, point reference remains 16 m, body/doorway reads 2.60/2.40 m. Native Chrome editor access initially stalled, then recovered on retry. Updated the footer to “Interactive studies”, preserving its existing VERIFY marker and responsive iframe. A fresh public response verified the count-neutral wording.
 
 ## Native changes
 
